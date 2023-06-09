@@ -1,0 +1,93 @@
+site_name: InMo Docs
+site_author: Ovsiannikov Aleksei
+site_description: >-
+    Single documentation place for all Insanus Mokrassar libraries
+site_url: https://docs.inmo.dev/
+repo_name: InsanusMokrassar/docs
+repo_url: https://github.com/InsanusMokrassar/docs
+
+nav:
+    - Home: 'index.md'
+    - 'Telegram Bot API':
+        - Introduction:
+            - 'tgbotapi/introduction/before-any-bot-project.md'
+            - 'tgbotapi/introduction/including-in-your-project.md'
+            - 'tgbotapi/introduction/proxy-setup.md'
+            - 'tgbotapi/introduction/first-bot.md'
+        - Updates retrieving:
+            - 'tgbotapi/updates/updates-filters.md'
+            - 'tgbotapi/updates/long-polling.md'
+            - 'tgbotapi/updates/webhooks.md'
+            - 'tgbotapi/updates/heroku.md'
+        - Logic handling: 'tgbotapi/logic/'
+        - DSLs: 'tgbotapi/dsls/'
+
+use_directory_urls: false
+
+theme:
+    name: material
+    hljs_languages:
+        - yaml
+        - kotlin
+        - javascript
+        - xml
+        - groovy
+    features:
+        - announce.dismiss
+        - content.action.edit
+        - content.action.view
+        - content.code.annotate
+        - content.code.copy
+        # - content.tabs.link
+        - content.tooltips
+        # - header.autohide
+        # - navigation.expand
+        - navigation.footer
+        - navigation.indexes
+        # - navigation.instant
+        # - navigation.prune
+        - navigation.sections
+        - navigation.tabs
+        # - navigation.tabs.sticky
+        - navigation.top
+        - navigation.tracking
+        - search.highlight
+        - search.share
+        - search.suggest
+        - toc.follow
+        # - toc.integrate
+    font:
+        text: Roboto
+        code: Roboto Mono
+
+markdown_extensions:
+    - toc:
+          permalink: True
+    - smarty
+    - callouts
+
+plugins:
+    - search
+    - autorefs
+    - include_dir_to_nav
+    
+# Customization
+#extra:
+#    annotate:
+#        json: [.s2]
+#    analytics:
+#        provider: google
+#        property: !ENV GOOGLE_ANALYTICS_KEY
+#    social:
+#        - icon: fontawesome/brands/github
+#          link: https://github.com/squidfunk
+#    - icon: fontawesome/brands/gitter
+#      link: https://gitter.im/squidfunk/mkdocs-material
+#    - icon: fontawesome/brands/docker
+#      link: https://hub.docker.com/r/squidfunk/mkdocs-material/
+#    - icon: fontawesome/brands/python
+#      link: https://pypi.org/project/mkdocs-material/
+#    - icon: fontawesome/brands/mastodon
+#      link: https://fosstodon.org/@squidfunk
+#    - icon: fontawesome/brands/twitter
+#      link: https://twitter.com/squidfunk

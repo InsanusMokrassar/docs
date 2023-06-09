@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "type": "command",
+            "name": "Rebuild",
+            "program": "mkdocs",
+            "args": ["build"],
+        },
+        {
+            "type": "command",
+            "name": "Serve",
+            "program": "mkdocs",
+            "args": ["serve"],
+        },
+        
+    ]
+}
