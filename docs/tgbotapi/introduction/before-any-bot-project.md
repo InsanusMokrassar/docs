@@ -9,4 +9,4 @@ Anyway, the most important link is [How do I create a bot?](https://core.telegra
 
 ## Next steps
 
-* [Including in your project](including-in-your-project.html)
+* [Including in your project](including-in-your-project.md)

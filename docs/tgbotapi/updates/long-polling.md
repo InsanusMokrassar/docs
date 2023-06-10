@@ -1,10 +1,10 @@
 # Long polling
 
-Long polling is a technology of getting updates for cases you do not have some dedicated server or you have no opportunity to receive updates via [webhooks](webhooks.html). More about this you can read in [wiki](https://en.wikipedia.org/wiki/Push_technology#Long_polling).
+Long polling is a technology of getting updates for cases you do not have some dedicated server or you have no opportunity to receive updates via [webhooks](webhooks.md). More about this you can read in [wiki](https://en.wikipedia.org/wiki/Push_technology#Long_polling).
 
 ## Related topics
 
-* [Updates filters](updates-filters.html)
+* [Updates filters](updates-filters.md)
 
 ## Long polling in this library
 
@@ -55,5 +55,5 @@ bot.startGettingOfUpdatesByLongPolling {
 
 ## See also
 
-* [Webhooks](webhooks.html)
-* [Updates filters](updates-filters.html)
+* [Webhooks](webhooks.md)
+* [Updates filters](updates-filters.md)

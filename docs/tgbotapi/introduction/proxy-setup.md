@@ -56,4 +56,4 @@ Explanation line by line:
 
 ## Next steps
 
-* [First bot](first-bot.html)
+* [First bot](first-bot.md)

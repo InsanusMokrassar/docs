@@ -150,5 +150,5 @@ implementation "dev.inmo:tgbotapi.utils:$tgbotapi_version"
 
 ## Next steps
 
-* [Proxy setup](proxy-setup.html)
-* [First bot](first-bot.html)
+* [Proxy setup](proxy-setup.md)
+* [First bot](first-bot.md)

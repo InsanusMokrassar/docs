@@ -122,5 +122,5 @@ In the example above server will started and binded for listening on `0.0.0.0:80
 
 ## See also
 
-* [Updates filters](updates-filters.html)
-* [Long polling](long-polling.html)
+* [Updates filters](updates-filters.md)
+* [Long polling](long-polling.md)

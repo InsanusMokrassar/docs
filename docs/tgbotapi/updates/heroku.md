@@ -2,7 +2,7 @@
 
 > NOTE: **Preview reading**
 >
-> It is recommended to visit our pages about [UpdatesFilters](updates-filters.html) and [Webhooks](webhooks.html) to have more clear understanding about what is happening in this examples page
+> It is recommended to visit our pages about [UpdatesFilters](updates-filters.md) and [Webhooks](webhooks.md) to have more clear understanding about what is happening in this examples page
 
 [Heroku](https://heroku.com/) is a popular place for bots hosting. In common case you will need to configure webhooks for your server to include getting updates without problems. There are several things related to heroku you should know:
 
@@ -11,7 +11,7 @@
 * Currently (`Sat Aug 15 5:04:21 +00 2020`) there is only one official server engine for ktor which is correctly working with Heroku: [Tomcat server engine](https://ktor.io/servers/configuration.html#tomcat)
 
 > NOTE: **Server configuration alternatives**
-> Here will be presented variants of configuration of webhooks and starting server. You always able to set webhook manualy, create your own ktor server and include webhooks handling in it or create and start server with only webhooks handling. More info you can get on page [Webhooks](webhooks.html)
+> Here will be presented variants of configuration of webhooks and starting server. You always able to set webhook manualy, create your own ktor server and include webhooks handling in it or create and start server with only webhooks handling. More info you can get on page [Webhooks](webhooks.md)
 
 ### Short example with Behaviour Builder
 

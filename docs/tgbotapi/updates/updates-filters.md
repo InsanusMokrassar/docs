@@ -9,7 +9,7 @@ Due to the fact, that anyway you will get updates in one format (`Update` object
 * `asUpdateReceiver` - required to represent this filter as common updates receiver which able to get any `Update`
 * `allowedUpdates` - required to determine, which updates are usefull for this filter
 
-Anyway, this filter can't work with updates by itself. For retrieving updates you should pass this filter to some of getting updates functions ([long polling](long-polling) or [webhooks](webhooks.html)).
+Anyway, this filter can't work with updates by itself. For retrieving updates you should pass this filter to some of getting updates functions ([long polling](long-polling) or [webhooks](webhooks.md)).
 
 ### SimpleUpdatesFilter
 
@@ -119,5 +119,5 @@ flowsUpdatesFilter {
 
 ## See also
 
-* [Long polling](long-polling.html)
-* [Webhooks](webhooks.html)
+* [Long polling](long-polling.md)
+* [Webhooks](webhooks.md)

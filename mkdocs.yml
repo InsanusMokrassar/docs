@@ -21,6 +21,14 @@ nav:
             - 'tgbotapi/updates/heroku.md'
         - Logic handling: 'tgbotapi/logic/'
         - DSLs: 'tgbotapi/dsls/'
+    - 'Krontab':
+        - Introduction:
+            - 'krontab/introduction/including-in-project.md'
+            - 'krontab/introduction/how-to-use.md'
+            - 'krontab/introduction/faq.md'
+        - Describing:
+            - 'krontab/describing/string-format.md'
+            - 'krontab/describing/krontabscheduler.md'
 
 use_directory_urls: false
 
