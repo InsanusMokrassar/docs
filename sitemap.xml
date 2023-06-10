@@ -6,6 +6,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.inmo.dev/krontab/index.html</loc>
+         <lastmod>2023-06-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.inmo.dev/krontab/describing/krontabscheduler.html</loc>
          <lastmod>2023-06-10</lastmod>
          <changefreq>daily</changefreq>
