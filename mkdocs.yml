@@ -96,7 +96,11 @@ markdown_extensions:
         pygments_lang_class: true
     - pymdownx.inlinehilite
     - pymdownx.snippets
-    - pymdownx.superfences
+    - pymdownx.superfences:
+        custom_fences:
+          - name: mermaid
+            class: mermaid
+            format: !!python/name:pymdownx.superfences.fence_code_format
 
 plugins:
     - search
@@ -104,7 +108,10 @@ plugins:
     - include_dir_to_nav
     
 # Customization
-#extra:
+extra:
+    analytics:
+        provider: google
+        property: G-6VXMCYZWH7
 #    annotate:
 #        json: [.s2]
 #    analytics:
