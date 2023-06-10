@@ -49,6 +49,18 @@
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+  
+
+
+  
+  
+
+
+  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-6VXMCYZWH7"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-6VXMCYZWH7",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-6VXMCYZWH7",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
 
     
     
@@ -373,6 +385,13 @@
         <li class="md-nav__item">
   <a href="#projects" class="md-nav__link">
     Projects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies-graph" class="md-nav__link">
+    Dependencies graph:
   </a>
   
 </li>
@@ -1213,6 +1232,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#dependencies-graph" class="md-nav__link">
+    Dependencies graph:
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1247,10 +1273,95 @@
 <h1 id="insanus-mokrassar-libraries-home">Insanus Mokrassar libraries home<a class="headerlink" href="#insanus-mokrassar-libraries-home" title="Permanent link">&para;</a></h1>
 <p>Hello :) It is my libraries docs place and I glad to welcome you here. I hope, this documentation place will help you.</p>
 <h2 id="projects">Projects<a class="headerlink" href="#projects" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://github.com/InsanusMokrassar/ktgbotapi">TelegramBotAPI</a></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Common and independent</th>
+<th align="center">TelegramBotAPI</th>
+<th align="right">Plagubot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="https://github.com/InsanusMokrassar/MicroUtils"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/dev.inmo/micro_utils.common?label=microutils&amp;style=flat-square" /></a></td>
+<td align="center"><a href="https://github.com/InsanusMokrassar/TelegramBotAPI"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/dev.inmo/tgbotapi?label=tgbotapi&amp;style=flat-square" /></a></td>
+<td align="right"><a href="https://github.com/InsanusMokrassar/PlaguBot"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/dev.inmo/plagubot.plugin?label=plagubot&amp;style=flat-square" /></a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/InsanusMokrassar/KSLog"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/dev.inmo/kslog?label=kslog&amp;style=flat-square" /></a></td>
+<td align="center"><a href="https://github.com/InsanusMokrassar/TelegramBotAPILibraries"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/dev.inmo/tgbotapi.libraries.cache.admins.common?label=tgbotapi.libraries&amp;style=flat-square" /></a></td>
+<td align="right"><a href="https://github.com/InsanusMokrassar/PlaguBotPlugins"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/dev.inmo/plagubot.plugins.commands?label=plagubot.plugins&amp;style=flat-square" /></a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/InsanusMokrassar/Krontab"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/dev.inmo/krontab?label=krontab&amp;style=flat-square" /></a></td>
+<td align="center"></td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/InsanusMokrassar/JSUIKitKBindings"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/dev.inmo/kjsuikit?label=kjsuikit&amp;style=flat-square" /></a></td>
+<td align="center"></td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/InsanusMokrassar/SauceNaoAPI"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/dev.inmo/saucenaoapi?label=saucenaoapi&amp;style=flat-square" /></a></td>
+<td align="center"></td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/InsanusMokrassar/navigation"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/dev.inmo/navigation.core?label=navigation&amp;style=flat-square" /></a></td>
+<td align="center"></td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="dependencies-graph">Dependencies graph:<a class="headerlink" href="#dependencies-graph" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart RL
+    KSLog[&lt;a href='https://github.com/InsanusMokrassar/kslog'&gt;KSLog&lt;/a&gt;]
+    MicroUtils[&lt;a href='https://github.com/InsanusMokrassar/MicroUtils'&gt;MicroUtils&lt;/a&gt;]
+    TelegramBotAPI[&lt;a href='https://github.com/InsanusMokrassar/ktgbotapi'&gt;TelegramBotAPI&lt;/a&gt;]
+    TelegramBotAPI-examples[&lt;a href='https://github.com/InsanusMokrassar/TelegramBotAPI-examples'&gt;TelegramBotAPI-examples &lt;/a&gt;]
+    PlaguBot[&lt;a href='https://github.com/InsanusMokrassar/PlaguBot'&gt;PlaguBot&lt;/a&gt;]
+    TelegramBotAPILibraries[&lt;a href='https://github.com/InsanusMokrassar/TelegramBotAPILibraries'&gt;TelegramBotAPILibraries&lt;/a&gt;]
+    PlaguBotPlugins[&lt;a href='https://github.com/InsanusMokrassar/PlaguBotPlugins'&gt;PlaguBotPlugins&lt;/a&gt;]
+    PlaguBotExample[&lt;a href='https://github.com/InsanusMokrassar/PlaguBotExample'&gt;PlaguBotExample&lt;/a&gt;]
+    BooruGrabberTelegramBot[&lt;a href='https://github.com/InsanusMokrassar/BooruGrabberTelegramBot'&gt;BooruGrabberTelegramBot&lt;/a&gt;]
+    SauceNaoTelegramBot[&lt;a href='https://github.com/InsanusMokrassar/SauceNaoTelegramBot'&gt;SauceNaoTelegramBot&lt;/a&gt;]
+    PlaguPoster[&lt;a href='https://github.com/InsanusMokrassar/PlaguPoster'&gt;PlaguPoster&lt;/a&gt;]
+    PlaguBotSuggestionsBot[&lt;a href='https://github.com/InsanusMokrassar/PlaguBotSuggestionsBot'&gt;PlaguBotSuggestionsBot&lt;/a&gt;]
+    TelegramBotTutorial[&lt;a href='https://github.com/InsanusMokrassar/TelegramBotTutorial'&gt;TelegramBotTutorial&lt;/a&gt;]
+    Krontab[&lt;a href='https://github.com/InsanusMokrassar/krontab'&gt;Krontab&lt;/a&gt;]
+    KJSUiKit[&lt;a href='https://github.com/InsanusMokrassar/JSUiKitKBindings'&gt;KJSUiKit&lt;/a&gt;]
+    SauceNaoAPI[&lt;a href='https://github.com/InsanusMokrassar/SauceNaoAPI'&gt;SauceNaoAPI&lt;/a&gt;]
+    Navigation[&lt;a href='https://github.com/InsanusMokrassar/navigation'&gt;Navigation&lt;/a&gt;]
 
+    TelegramBotAPI-bot_template[&lt;a href='https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template'&gt;TelegramBotAPI-bot_template&lt;/a&gt;]
+    PlaguBotPluginTemplate[&lt;a href='https://github.com/InsanusMokrassar/PlaguBotPluginTemplate'&gt;PlaguBotPluginTemplate&lt;/a&gt;]
+    PlaguBotBotTemplate[&lt;a href='https://github.com/InsanusMokrassar/PlaguBotBotTemplate'&gt;PlaguBotBotTemplate&lt;/a&gt;]
+
+    MicroUtils --&gt; KSLog
+    TelegramBotAPI --&gt; MicroUtils
+    TelegramBotAPI-examples --&gt; TelegramBotAPI
+    PlaguBot --&gt; TelegramBotAPI
+    TelegramBotAPILibraries --&gt; PlaguBot
+    PlaguBotPlugins --&gt; TelegramBotAPILibraries
+    PlaguBotExample --&gt; PlaguBotPlugins
+    BooruGrabberTelegramBot --&gt; TelegramBotAPI
+    BooruGrabberTelegramBot --&gt; Krontab
+    SauceNaoTelegramBot --&gt; TelegramBotAPI
+    SauceNaoTelegramBot --&gt; SauceNaoAPI
+    TelegramBotTutorial --&gt; PlaguBotPlugins
+    PlaguBotSuggestionsBot --&gt; PlaguBotPlugins
+    PlaguPoster --&gt; PlaguBotPlugins
+    PlaguPoster --&gt; Krontab
+    SauceNaoAPI --&gt; MicroUtils
+    Navigation --&gt; MicroUtils
+
+    TelegramBotAPI-bot_template -.- TelegramBotAPI
+    PlaguBotPluginTemplate -.- PlaguBot
+    PlaguBotBotTemplate -.- PlaguBot</code></pre>
+
+
+  
 
 
 
