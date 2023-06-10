@@ -1234,21 +1234,21 @@
 In tgbotapi there is no any additional handling of media groups by default and in case you will use simple <a href="https://insanusmokrassar.github.io/TelegramBotAPI/docs/dev.inmo.tgbotapi.extensions.api/get-updates.html">bot.getUpdates</a>, you will get the list of row updates and media groups will be included in this list as separated messages with <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.types.message.content/-media-group-part-content/index.html">MediaGroupPartContent</a>. In that case you may use <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.utils.updates/convert-with-media-group-updates.html">convertWithMediaGroupUpdates</a> to be able to work with media groups as will be described below</p>
 </div>
 <p>In case you are using standard <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.utils.updates.retrieving/long-polling.html">long polling</a> (one of alternatives is <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder/telegram-bot-with-behaviour-and-long-polling.html">telegramBotWithBehaviourAndLongPolling</a>) or <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.utils.updates.retrieving/set-webhook-info-and-start-listen-webhooks.html">webhooks</a> updates will be converted uner the hood and as a result, you will take media groups as a content in one message:</p>
-<pre><code class="language-kotlin">telegramBotWithBehaviourAndLongPolling(
-  &quot;token&quot;
-) {
-  onVisualGallery { // it: CommonMessage&lt;MediaGroupContent&lt;VisualMediaGroupPartContent&gt;&gt;
-    it.content // MediaGroupContent&lt;VisualMediaGroupPartContent&gt;
-    it.content.group // List&lt;MediaGroupCollectionContent.PartWrapper&lt;VisualMediaGroupPartContent&gt;&gt;
-    it.content.group.forEach { // it: MediaGroupCollectionContent.PartWrapper&lt;VisualMediaGroupPartContent&gt;
-      it.messageId // source message id for current media group part
-      it.sourceMessage // source message for current media group part
-      it.content // VisualMediaGroupPartContent
-      println(it.content) // will print current content part info
-    }
-  }
-}
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">telegramBotWithBehaviourAndLongPolling</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="s">&quot;token&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="n">onVisualGallery</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// it: CommonMessage&lt;MediaGroupContent&lt;VisualMediaGroupPartContent&gt;&gt;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">content</span><span class="w"> </span><span class="c1">// MediaGroupContent&lt;VisualMediaGroupPartContent&gt;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">content</span><span class="p">.</span><span class="na">group</span><span class="w"> </span><span class="c1">// List&lt;MediaGroupCollectionContent.PartWrapper&lt;VisualMediaGroupPartContent&gt;&gt;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">content</span><span class="p">.</span><span class="na">group</span><span class="p">.</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// it: MediaGroupCollectionContent.PartWrapper&lt;VisualMediaGroupPartContent&gt;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">      </span><span class="nb">it</span><span class="p">.</span><span class="na">messageId</span><span class="w"> </span><span class="c1">// source message id for current media group part</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">      </span><span class="nb">it</span><span class="p">.</span><span class="na">sourceMessage</span><span class="w"> </span><span class="c1">// source message for current media group part</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">      </span><span class="nb">it</span><span class="p">.</span><span class="na">content</span><span class="w"> </span><span class="c1">// VisualMediaGroupPartContent</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">      </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">.</span><span class="na">content</span><span class="p">)</span><span class="w"> </span><span class="c1">// will print current content part info</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">}</span>
+</span></code></pre></div>
 <p><strong>KDocs:</strong></p>
 <ul>
 <li><a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling/on-visual-gallery-messages.html">onVisualGallery</a></li>

@@ -1403,22 +1403,22 @@
 </tbody>
 </table>
 <p>Example with almost same description:</p>
-<pre><code>/-------------------- (0-59) ············ Seconds
-| /------------------ (0-59) ············ Minutes
-| | /---------------- (0-23) ············ Hours
-| | | /-------------- (0-30) ············ Days of months
-| | | | /------------ (0-11) ············ Months
-| | | | | /---------- (optional, any int) Year
-| | | | | | /-------- (optional) ········ Timezone offset
-| | | | | | |  /----- (optional, 0-6) ··· Week days
-| | | | | | |  |  /-- (optional, 0-999) · Milliseconds (0 by default)
-* * * * * * 0o *w 0ms
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>/-------------------- (0-59) ············ Seconds
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>| /------------------ (0-59) ············ Minutes
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>| | /---------------- (0-23) ············ Hours
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>| | | /-------------- (0-30) ············ Days of months
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>| | | | /------------ (0-11) ············ Months
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>| | | | | /---------- (optional, any int) Year
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>| | | | | | /-------- (optional) ········ Timezone offset
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>| | | | | | |  /----- (optional, 0-6) ··· Week days
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>| | | | | | |  |  /-- (optional, 0-999) · Milliseconds (0 by default)
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>* * * * * * 0o *w 0ms
+</span></code></pre></div>
 <p>Years, timezone, week days and milliseconds are optional settings. Next snippets are equal:</p>
-<pre><code>*/15 * * * *
-*/15 * * * * * // with year
-*/15 * * * * * 0ms // with year and milliseconds
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>*/15 * * * *
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>*/15 * * * * * // with year
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>*/15 * * * * * 0ms // with year and milliseconds
+</span></code></pre></div>
 <h3 id="supported-syntax">Supported syntax<a class="headerlink" href="#supported-syntax" title="Permanent link">&para;</a></h3>
 <p>Currently the library support next syntax for date/time elements:</p>
 <ul>
@@ -1432,31 +1432,31 @@
 </ul>
 <h4 id="ranges">Ranges<a class="headerlink" href="#ranges" title="Permanent link">&para;</a></h4>
 <p>Ranges are working like common <code>rangeTo</code> (or <code>..</code>) in kotlin:</p>
-<pre><code>0-5 * * * *
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>0-5 * * * *
+</span></code></pre></div>
 <p>In the example above scheduler will trigger every second from the beginning of the minute up to fifth second of minute.</p>
 <h4 id="startstep">Start/Step<a class="headerlink" href="#startstep" title="Permanent link">&para;</a></h4>
 <p>Start/step is a little bit more complicated syntax. It means <code>start from the first element, repeat triggering every second element</code>. Examples:</p>
-<pre><code>5/15 * * * *
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>5/15 * * * *
+</span></code></pre></div>
 <p>Means that each minute starting from fifth second it will repeat triggering every fifteenth second: <code>5, 20, 35, 50</code>.</p>
 <h4 id="every">Every<a class="headerlink" href="#every" title="Permanent link">&para;</a></h4>
 <p>Every is more simple syntax and could be explained as a shortcut for <code>0/{int}</code>. Example:</p>
-<pre><code>*/15 * * * *
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>*/15 * * * *
+</span></code></pre></div>
 <p>Means that each minute it will repeat triggering every fifteenth second: <code>0, 15, 30, 45</code>.</p>
 <h4 id="just-at-the-time">Just at the time<a class="headerlink" href="#just-at-the-time" title="Permanent link">&para;</a></h4>
 <p>The most simple syntax. It means, that scheduler will call triggering every time when element was reached:</p>
-<pre><code>15 * * * *
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>15 * * * *
+</span></code></pre></div>
 <p>Means that each minute scheduler will call triggering at the fifteenth second.</p>
 <h4 id="listing">Listing<a class="headerlink" href="#listing" title="Permanent link">&para;</a></h4>
 <p>All the previous elements can be combined with listing. Lets just see several examples:</p>
-<pre><code>0,10 * * * *
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>0,10 * * * *
+</span></code></pre></div>
 <p>Will trigger every minute at the <code>0</code> and <code>10</code> seconds (see <a href="#just-at-the-time">Just at the time</a>)</p>
-<pre><code>0-5,10 * * * *
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>0-5,10 * * * *
+</span></code></pre></div>
 <p>Will trigger every minute from <code>0</code> to <code>5</code> seconds and at the <code>10</code> seconds (see <a href="#ranges">Ranges</a>)</p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <ul>

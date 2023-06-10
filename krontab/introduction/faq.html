@@ -1249,8 +1249,8 @@
 <p>First of all, this library will be useful for long uptime applications which have some tasks to do from time to time.</p>
 <h4 id="how-to-use-crontab-like-syntax">How to use crontab-like syntax?<a class="headerlink" href="#how-to-use-crontab-like-syntax" title="Permanent link">&para;</a></h4>
 <p>In two words, you should call <code>buildSchedule</code> or <code>createSimpleScheduler</code>:</p>
-<pre><code class="language-kotlin">buildSchedule(&quot;5 * * * *&quot;).asFlow().collect { /* do something */ }
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">buildSchedule</span><span class="p">(</span><span class="s">&quot;5 * * * *&quot;</span><span class="p">).</span><span class="na">asFlow</span><span class="p">().</span><span class="na">collect</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* do something */</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
 <p>You can read more about syntax in <a href="../describing/string-format.html">String format</a> section.</p>
 
 

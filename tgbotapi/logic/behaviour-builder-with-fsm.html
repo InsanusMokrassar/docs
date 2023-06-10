@@ -1242,12 +1242,12 @@
 <li><code>startChain</code> which will add new state for handling</li>
 </ul>
 <p>The most based way to create <code>StatesMachine</code> and register <code>StateHandler</code>s looks like in the next snippet:</p>
-<pre><code class="language-kotlin">buildFSM&lt;TrafficLightState&gt; {
-    strictlyOn&lt;SomeState&gt; {
-        // state handling
-    }
-}.start(CoroutineScope(...)).join()
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">buildFSM</span><span class="o">&lt;</span><span class="n">TrafficLightState</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">strictlyOn</span><span class="o">&lt;</span><span class="n">SomeState</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="c1">// state handling</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}.</span><span class="na">start</span><span class="p">(</span><span class="n">CoroutineScope</span><span class="p">(...)).</span><span class="na">join</span><span class="p">()</span>
+</span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Full example</p>
 <p>
@@ -1273,11 +1273,11 @@ You may find full example of FSM usage in <a href="https://github.com/InsanusMok
 </li>
 </ul>
 <p>All of them will take as an callback some object with type <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder/index.html#-1892390839%2FClasslikes%2F-1982836883">CustomBehaviourContextReceiver</a> and will looks like in the next snippet:</p>
-<pre><code class="language-kotlin">telegramBotWithBehaviourAndFSMAndStartLongPolling&lt;YourStateType&gt;(&quot;BOT_TOKEN&quot;) {
-    // here you may use any operations from BehaviourBuilder
-    // here you may use any operations from BehaviourContextWithFSMBuilder like strictlyOn and others
-}
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">telegramBotWithBehaviourAndFSMAndStartLongPolling</span><span class="o">&lt;</span><span class="n">YourStateType</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;BOT_TOKEN&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="c1">// here you may use any operations from BehaviourBuilder</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="c1">// here you may use any operations from BehaviourContextWithFSMBuilder like strictlyOn and others</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">}</span>
+</span></code></pre></div>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://github.com/InsanusMokrassar/TelegramBotAPI-examples/blob/master/FSMBot/src/main/kotlin/SimpleFSMBot.kt">TelegramBotAPI-examples/FSMBot</a></li>

@@ -1394,30 +1394,30 @@
 <h2 id="dependency-installation">Dependency installation<a class="headerlink" href="#dependency-installation" title="Permanent link">&para;</a></h2>
 <p><a href="https://maven-badges.herokuapp.com/maven-central/dev.inmo/kslog"><img alt="Maven Central" src="https://maven-badges.herokuapp.com/maven-central/dev.inmo/kslog/badge.svg" /></a></p>
 <h3 id="gradle-groovy">Gradle (Groovy)<a class="headerlink" href="#gradle-groovy" title="Permanent link">&para;</a></h3>
-<pre><code class="language-groovy">implementation &quot;dev.inmo:kslog:$kslog_version&quot;
-</code></pre>
+<div class="language-groovy highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">implementation</span><span class="w"> </span><span class="s2">&quot;dev.inmo:kslog:$kslog_version&quot;</span>
+</span></code></pre></div>
 <h3 id="gradle-kotlin-script">Gradle (Kotlin Script)<a class="headerlink" href="#gradle-kotlin-script" title="Permanent link">&para;</a></h3>
-<pre><code class="language-kotlin">implementation(&quot;dev.inmo:kslog:$kslog_version&quot;)
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;dev.inmo:kslog:</span><span class="si">$</span><span class="n">kslog_version</span><span class="s">&quot;</span><span class="p">)</span>
+</span></code></pre></div>
 <h3 id="maven-pom">Maven (pom)<a class="headerlink" href="#maven-pom" title="Permanent link">&para;</a></h3>
-<pre><code class="language-xml">&lt;dependency&gt;
-  &lt;groupId&gt;dev.inmo&lt;/groupId&gt;
-  &lt;artifactId&gt;kslog&lt;/artifactId&gt;
-  &lt;version&gt;${kslog_version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">&lt;dependency&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&lt;groupId&gt;</span>dev.inmo<span class="nt">&lt;/groupId&gt;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&lt;artifactId&gt;</span>kslog<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">&lt;version&gt;</span>${kslog_version}<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nt">&lt;/dependency&gt;</span>
+</span></code></pre></div>
 <h2 id="setup-in-code">Setup in code<a class="headerlink" href="#setup-in-code" title="Permanent link">&para;</a></h2>
 <p>The main point in setup in your code is to setup default logger:</p>
-<pre><code class="language-kotlin">KSLog.default = KSLog(&quot;defaultTag&quot;)
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">KSLog</span><span class="p">.</span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KSLog</span><span class="p">(</span><span class="s">&quot;defaultTag&quot;</span><span class="p">)</span>
+</span></code></pre></div>
 <p>You may use custom <code>messageFormatter</code> in any of <code>KSLog</code> factory to customize output of <code>KSLog</code> logging. For example:</p>
-<pre><code class="language-kotlin">KSLog(
-  &quot;loggingWithCustomFormat&quot;,
-  messageFormatter = { level, tag, message, throwable -&gt;
-    println(&quot;[$level] $tag - $message: $throwable&quot;)
-  }
-)
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">KSLog</span><span class="p">(</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="s">&quot;loggingWithCustomFormat&quot;</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="n">messageFormatter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="n">tag</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">throwable</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">$</span><span class="n">level</span><span class="s">] </span><span class="si">$</span><span class="n">tag</span><span class="s"> - </span><span class="si">$</span><span class="n">message</span><span class="s">: </span><span class="si">$</span><span class="n">throwable</span><span class="s">&quot;</span><span class="p">)</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">)</span>
+</span></code></pre></div>
 <p>Additionally you may use one of several different settings:</p>
 <ul>
 <li><code>minLoggingLevel</code> - minimal logging level for the log which will be logged. The order of log level is next:</li>
@@ -1431,11 +1431,11 @@
 <li><code>firstLevel</code>,<code>secondLevel</code>,<code>otherLevels</code> - as <code>levels</code>, but <code>vararg</code> :)</li>
 </ul>
 <p>In case you are passing <code>minLoggingLevel</code>, the <strong>level and more important levels</strong> will be passed to logs. For example, when you are settings up your logger as in next snippet:</p>
-<pre><code class="language-kotlin">val logger = KSLog(
-    &quot;exampleTag&quot;,
-    minLoggingLevel = LogLevel.INFO
-)
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KSLog</span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="s">&quot;exampleTag&quot;</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="n">minLoggingLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LogLevel</span><span class="p">.</span><span class="na">INFO</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">)</span>
+</span></code></pre></div>
 <p>The next levels will be logged with <code>logger</code>:</p>
 <ul>
 <li><code>INFO</code></li>
@@ -1446,55 +1446,55 @@
 <h2 id="special-loggers">Special loggers<a class="headerlink" href="#special-loggers" title="Permanent link">&para;</a></h2>
 <h3 id="callbackkslog">CallbackKSLog<a class="headerlink" href="#callbackkslog" title="Permanent link">&para;</a></h3>
 <p>It is logger which will call incoming <code>performLogCallback</code> on each logging. This logger can be create simply with one callback:</p>
-<pre><code class="language-kotlin">KSLog { level, tag, message, throwable -&gt;
-  println(&quot;[$level] $tag - $message: $throwable&quot;)
-}
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">KSLog</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="n">tag</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">throwable</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">$</span><span class="n">level</span><span class="s">] </span><span class="si">$</span><span class="n">tag</span><span class="s"> - </span><span class="si">$</span><span class="n">message</span><span class="s">: </span><span class="si">$</span><span class="n">throwable</span><span class="s">&quot;</span><span class="p">)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">}</span>
+</span></code></pre></div>
 <h3 id="taglogger">TagLogger<a class="headerlink" href="#taglogger" title="Permanent link">&para;</a></h3>
 <p>It is simple value class which can be used for zero-cost usage of some tag and calling for <code>KSLog.default</code>. For example, if you will create tag logger with next code:</p>
-<pre><code class="language-kotlin">val logger = TagLogger(&quot;tagLoggerTag&quot;)
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TagLogger</span><span class="p">(</span><span class="s">&quot;tagLoggerTag&quot;</span><span class="p">)</span>
+</span></code></pre></div>
 <p>The <code>logger</code> will call <code>KSLog.default</code> with the tag <code>tagLoggerTag</code> on each calling of logging.</p>
 <h3 id="filterkslog">FilterKSLog<a class="headerlink" href="#filterkslog" title="Permanent link">&para;</a></h3>
 <p>This pretty simple logger will call its <code>fallbackLogger</code> only in cases when incoming <code>messageFilter</code> will return true for logging:</p>
-<pre><code class="language-kotlin">val baseLogger = KSLog(&quot;base&quot;) // log everything with the tag `base` if not set other
-val filtered = baseLogger.filtered { _, t, _ -&gt;
-    t == &quot;base&quot;
-}
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">baseLogger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KSLog</span><span class="p">(</span><span class="s">&quot;base&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// log everything with the tag `base` if not set other</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">filtered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">baseLogger</span><span class="p">.</span><span class="na">filtered</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">t</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;base&quot;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">}</span>
+</span></code></pre></div>
 <p>In the example above <code>baseLogger</code> will perform logs in two ways: when it has been called directly or when we call log performing with the tag <code>"base"</code> or <code>null</code>. Besides, you can see there extension <code>filtered</code> which allow to create <code>FilterKSLog</code> logger with simple lambda.</p>
 <h3 id="typedkslog">TypedKSLog<a class="headerlink" href="#typedkslog" title="Permanent link">&para;</a></h3>
 <p>This logger accepts map of types with the target loggers. You may build this logger with the special simple DSL:</p>
-<pre><code class="language-kotlin">val baseLogger = KSLog(&quot;base&quot;) // log everything with the tag `base` if not set other
-val typed = buildTypedLogger {
-  on&lt;Int&gt;(baseLogger) // log all ints to the baseLogger
-  on&lt;Float&gt; { _, _, message, _ -&gt;// log all floats to the passed logger
-    println(message.toString()) // just print all floats
-  }
-  default { level, tag, message, throwable -&gt;
-    KSLog.performLog(level, tag, message, throwable)
-  }
-}
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">baseLogger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KSLog</span><span class="p">(</span><span class="s">&quot;base&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// log everything with the tag `base` if not set other</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">typed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buildTypedLogger</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="n">on</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">baseLogger</span><span class="p">)</span><span class="w"> </span><span class="c1">// log all ints to the baseLogger</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="n">on</span><span class="o">&lt;</span><span class="kt">Float</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="c1">// log all floats to the passed logger</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="na">toString</span><span class="p">())</span><span class="w"> </span><span class="c1">// just print all floats</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="n">default</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="n">tag</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">throwable</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="n">KSLog</span><span class="p">.</span><span class="na">performLog</span><span class="p">(</span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="n">tag</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">throwable</span><span class="p">)</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="p">}</span>
+</span></code></pre></div>
 <h3 id="automatical-loggers">Automatical loggers<a class="headerlink" href="#automatical-loggers" title="Permanent link">&para;</a></h3>
 <p>There are two things which can be useful in your code: <code>logger</code> and <code>logTag</code> extensions. <code>logTag</code> is the autocalculated by your object classname tag. <code>logger</code> extension can be used with applying to any object like in the next snippet:</p>
-<pre><code class="language-kotlin">class SomeClass {
-  init {
-    logger.i(&quot;inited&quot;)
-  }
-}
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">SomeClass</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="k">init</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="n">logger</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="s">&quot;inited&quot;</span><span class="p">)</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="p">}</span>
+</span></code></pre></div>
 <p>The code above will trigger calling of logging in <code>KSLog.default</code> with level <code>LogLevel.INFO</code> using tag <code>SomeClass</code> and message <code>"inited"</code>. As you could have guessed, <code>logger</code> is using <code>TagLogger</code> with <code>logTag</code> underhood and the most expensive operation here is automatical calculation of <code>logTag</code>.</p>
 <ul>
 <li>Extension <code>logger</code></li>
 </ul>
 <h2 id="jvm-specific-setup">JVM specific setup<a class="headerlink" href="#jvm-specific-setup" title="Permanent link">&para;</a></h2>
 <p>For JVM you may setup additionally use java loggers as the second parameter of <code>KSLog</code> factory. For example:</p>
-<pre><code class="language-kotlin">KSLog(
-  &quot;yourTag&quot;
-  Logger.getLogger(&quot;YourJavaLoggerName&quot;)
-)
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">KSLog</span><span class="p">(</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="s">&quot;yourTag&quot;</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="n">Logger</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="s">&quot;YourJavaLoggerName&quot;</span><span class="p">)</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">)</span>
+</span></code></pre></div>
 
 
 

@@ -1252,29 +1252,29 @@
 <li>Provide updates to this filter with <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.updateshandlers/-updates-filter/as-update-receiver.html">filter#asUpdateReceiver</a> object</li>
 </ul>
 <p>Let&rsquo;s look how it works with the factory above:</p>
-<pre><code class="language-kotlin">// Step 1 - create filter
-val filter = flowsUpdatesFilter {
-  // Step 2 - set up handling. In this case we will print any message from group or user in console
-  messageFlow.onEach {
-    println(it)
-  }.launchIn(someCoroutineScope)
-}
-
-// Step 3 - passing updates to filter
-bot.getUpdates().forEach {
-  filter.asUpdatesReceiver(it)
-}
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Step 1 - create filter</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">filter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flowsUpdatesFilter</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="c1">// Step 2 - set up handling. In this case we will print any message from group or user in console</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="n">messageFlow</span><span class="p">.</span><span class="na">onEach</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="p">}.</span><span class="na">launchIn</span><span class="p">(</span><span class="n">someCoroutineScope</span><span class="p">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1">// Step 3 - passing updates to filter</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">bot</span><span class="p">.</span><span class="na">getUpdates</span><span class="p">().</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="n">filter</span><span class="p">.</span><span class="na">asUpdatesReceiver</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}</span>
+</span></code></pre></div>
 <h2 id="long-polling">Long polling<a class="headerlink" href="#long-polling" title="Permanent link">&para;</a></h2>
 <p>Some example with long polling has been described above. But it is more useful to use some factories for it. In this page we will look for simple variant with <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.utils.updates.retrieving/long-polling.html">TelegramBot#longPolling</a>. So, with this function, your handling of updates will looks like:</p>
-<pre><code class="language-kotlin">val bot = telegramBot(&quot;TOKEN&quot;)
-
-bot.longPolling {
-  messageFlow.onEach {
-    println(it)
-  }.launchIn(someCoroutineScope)
-}.join()
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">bot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">telegramBot</span><span class="p">(</span><span class="s">&quot;TOKEN&quot;</span><span class="p">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">bot</span><span class="p">.</span><span class="na">longPolling</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="n">messageFlow</span><span class="p">.</span><span class="na">onEach</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="p">}.</span><span class="na">launchIn</span><span class="p">(</span><span class="n">someCoroutineScope</span><span class="p">)</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}.</span><span class="na">join</span><span class="p">()</span>
+</span></code></pre></div>
 <p>This example looks like the example above with three steps, but there are several important things here:</p>
 <ul>
 <li>You <strong>do not</strong> manage retrieving of updates by hands</li>

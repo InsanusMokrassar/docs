@@ -1230,20 +1230,20 @@
 
 <h1 id="proxy-setup">Proxy setup<a class="headerlink" href="#proxy-setup" title="Permanent link">&para;</a></h1>
 <p>In some locations Telegram Bots API urls will be unavailable. In this case all examples will just throw exception like:</p>
-<pre><code class="language-bash">Exception in thread &quot;main&quot; java.net.ConnectException: Connection refused
-    at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
-    at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
-    at io.ktor.network.sockets.SocketImpl.connect$ktor_network(SocketImpl.kt:36)
-    at io.ktor.network.sockets.SocketImpl$connect$1.invokeSuspend(SocketImpl.kt)
-    at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
-    at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:56)
-    at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
-    at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:738)
-    at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
-    at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
-
-Process finished with exit code 1
-</code></pre>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Exception<span class="w"> </span><span class="k">in</span><span class="w"> </span>thread<span class="w"> </span><span class="s2">&quot;main&quot;</span><span class="w"> </span>java.net.ConnectException:<span class="w"> </span>Connection<span class="w"> </span>refused
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span>at<span class="w"> </span>sun.nio.ch.SocketChannelImpl.checkConnect<span class="o">(</span>Native<span class="w"> </span>Method<span class="o">)</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span>at<span class="w"> </span>sun.nio.ch.SocketChannelImpl.finishConnect<span class="o">(</span>SocketChannelImpl.java:717<span class="o">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span>at<span class="w"> </span>io.ktor.network.sockets.SocketImpl.connect<span class="nv">$ktor_network</span><span class="o">(</span>SocketImpl.kt:36<span class="o">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span>at<span class="w"> </span>io.ktor.network.sockets.SocketImpl<span class="nv">$connect$1</span>.invokeSuspend<span class="o">(</span>SocketImpl.kt<span class="o">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span>at<span class="w"> </span>kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith<span class="o">(</span>ContinuationImpl.kt:33<span class="o">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span>at<span class="w"> </span>kotlinx.coroutines.DispatchedTask.run<span class="o">(</span>DispatchedTask.kt:56<span class="o">)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span>at<span class="w"> </span>kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely<span class="o">(</span>CoroutineScheduler.kt:571<span class="o">)</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span>at<span class="w"> </span>kotlinx.coroutines.scheduling.CoroutineScheduler<span class="nv">$Worker</span>.executeTask<span class="o">(</span>CoroutineScheduler.kt:738<span class="o">)</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span>at<span class="w"> </span>kotlinx.coroutines.scheduling.CoroutineScheduler<span class="nv">$Worker</span>.runWorker<span class="o">(</span>CoroutineScheduler.kt:678<span class="o">)</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span>at<span class="w"> </span>kotlinx.coroutines.scheduling.CoroutineScheduler<span class="nv">$Worker</span>.run<span class="o">(</span>CoroutineScheduler.kt:665<span class="o">)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>Process<span class="w"> </span>finished<span class="w"> </span>with<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>code<span class="w"> </span><span class="m">1</span>
+</span></code></pre></div>
 <p>There are several ways to solve this problem:</p>
 <ul>
 <li>Built-in proxy config (will require some socks or http proxy server)</li>
@@ -1253,20 +1253,20 @@ Process finished with exit code 1
 <h3 id="using-ktor-client-built-in-proxy">Using Ktor Client built-in proxy<a class="headerlink" href="#using-ktor-client-built-in-proxy" title="Permanent link">&para;</a></h3>
 <p>First of all, you will need to use one more library:</p>
 <p><strong>build.gradle</strong>:</p>
-<pre><code class="language-groovy">implementation &quot;io.ktor:ktor-client-okhttp:2.0.1&quot;
-</code></pre>
+<div class="language-groovy highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">implementation</span><span class="w"> </span><span class="s2">&quot;io.ktor:ktor-client-okhttp:2.0.1&quot;</span>
+</span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Dependency note</p>
 <p>
 In the snippet above was used version <code>2.0.1</code> which is actual for <code>TelegramBotAPI</code> at the moment of filling this documentation (<code>May 22 2022</code>, <code>TelegramBotAPI</code> version <code>2.0.0</code>) and you can update version of this dependency in case if it is outdated.</p>
 </div>
 <p>For configuring proxy for your bot inside your program, you can use next snippet:</p>
-<pre><code class="language-kotlin">val botToken = &quot;HERE MUST BE YOUR TOKEN&quot;
-val bot = telegramBot(botToken) {
-  ktorClientEngineFactory = OkHttp
-  proxy = ProxyBuilder.socks(&quot;127.0.0.1&quot;, 1080)
-}
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">botToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;HERE MUST BE YOUR TOKEN&quot;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">bot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">telegramBot</span><span class="p">(</span><span class="n">botToken</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="n">ktorClientEngineFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OkHttp</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="n">proxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProxyBuilder</span><span class="p">.</span><span class="na">socks</span><span class="p">(</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1080</span><span class="p">)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">}</span>
+</span></code></pre></div>
 <p>Explanation line by line:</p>
 <ol>
 <li><code>val botToken = "HERE MUST BE YOUR TOKEN"</code> - here we are just creating variable <code>botToken</code></li>

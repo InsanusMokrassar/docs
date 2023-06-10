@@ -1268,49 +1268,45 @@
 <h2 id="handlelivelocation">handleLiveLocation<a class="headerlink" href="#handlelivelocation" title="Permanent link">&para;</a></h2>
 <p>This way of live locations handling is based on coroutines <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/">Flow</a> and allow you to pass some external <code>Flow</code> with <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.api/-edit-live-location-info/index.html">EditLiveLocationInfo</a>. So, workflow:</p>
 <ul>
-<li>Create your own flow of locations. For example:</li>
+<li>Create your own flow of locations. For example:
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">flow</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">isActive</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">newInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EditLiveLocationInfo</span><span class="p">(</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">      </span><span class="n">latitude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="na">toDouble</span><span class="p">(),</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">      </span><span class="n">longitude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="na">toDouble</span><span class="p">(),</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">      </span><span class="n">replyMarkup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flatInlineKeyboard</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="n">dataButton</span><span class="p">(</span><span class="s">&quot;Cancel&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;cancel&quot;</span><span class="p">)</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">      </span><span class="p">}</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="p">)</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="n">emit</span><span class="p">(</span><span class="n">newInfo</span><span class="p">)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="n">i</span><span class="o">++</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="m">10000L</span><span class="p">)</span><span class="w"> </span><span class="c1">// 10 seconds</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li>In case you needed, create your collector to store the message with live location:
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">currentMessageState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableStateFlow</span><span class="o">&lt;</span><span class="n">ContentMessage</span><span class="o">&lt;</span><span class="n">LocationContent</span><span class="o">&gt;?&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+</span></code></pre></div></li>
+<li>Start handle live location. <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.api/handle-live-location.html">handleLiveLocation</a> works synchronosly (in current coroutine) and will ends only when your flow will ends. Thats why there are two ways to call it:
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">handleLiveLocation</span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nb">it</span><span class="p">.</span><span class="na">chat</span><span class="p">.</span><span class="na">id</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="n">locationsFlow</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="n">sentMessageFlow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FlowCollector</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">currentMessageState</span><span class="p">.</span><span class="na">emit</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1">// this code will be called after `locationsFlow` will ends</span>
+</span></code></pre></div>
+OR
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">scope</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="n">handleLiveLocation</span><span class="p">(</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">chat</span><span class="p">.</span><span class="na">id</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">locationsFlow</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="n">sentMessageFlow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FlowCollector</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">currentMessageState</span><span class="p">.</span><span class="na">emit</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="p">)</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">}</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1">// this code will be called right after launch will be completed</span>
+</span></code></pre></div></li>
 </ul>
-<pre><code class="language-kotlin">flow {
-  var i = 0
-  while (isActive) {
-    val newInfo = EditLiveLocationInfo(
-      latitude = i.toDouble(),
-      longitude = i.toDouble(),
-      replyMarkup = flatInlineKeyboard {
-        dataButton(&quot;Cancel&quot;, &quot;cancel&quot;)
-      }
-    )
-    emit(newInfo)
-    i++
-    delay(10000L) // 10 seconds
-  }
-}
-</code></pre>
-<ul>
-<li>In case you needed, create your collector to store the message with live location:</li>
-</ul>
-<pre><code class="language-kotlin">val currentMessageState = MutableStateFlow&lt;ContentMessage&lt;LocationContent&gt;?&gt;(null)
-</code></pre>
-<ul>
-<li>Start handle live location. <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.api/handle-live-location.html">handleLiveLocation</a> works synchronosly (in current coroutine) and will ends only when your flow will ends. Thats why there are two ways to call it:</li>
-</ul>
-<pre><code class="language-kotlin">handleLiveLocation(
-  it.chat.id,
-  locationsFlow,
-  sentMessageFlow = FlowCollector { currentMessageState.emit(it) }
-)
-// this code will be called after `locationsFlow` will ends
-</code></pre>
-<p>OR</p>
-<pre><code class="language-kotlin">scope.launch {
-  handleLiveLocation(
-    it.chat.id,
-    locationsFlow,
-    sentMessageFlow = FlowCollector { currentMessageState.emit(it) }
-  )
-}
-// this code will be called right after launch will be completed
-</code></pre>
 <p>See our <a href="https://github.com/InsanusMokrassar/TelegramBotAPI-examples/blob/master/LiveLocationsBot/src/main/kotlin/LiveLocationsBot.kt">example</a> to get more detailed sample</p>
 
 

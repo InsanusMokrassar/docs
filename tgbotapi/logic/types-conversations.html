@@ -1247,23 +1247,23 @@
 <p>As you may see, it is a little bit complex and require several tools for types conversation.</p>
 <h2 id="as">As<a class="headerlink" href="#as" title="Permanent link">&para;</a></h2>
 <p><code>as</code> conversations will return new type in case if it is possible. For example, when you got <code>Message</code>, you may use <code>asContentMessage</code> conversation to get message with <code>content</code>:</p>
-<pre><code class="language-kotlin">val message: Message;
-println(message.asContentMessage() ?.content)
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">message</span><span class="p">:</span><span class="w"> </span><span class="n">Message</span><span class="p">;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">println</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="na">asContentMessage</span><span class="p">()</span><span class="w"> </span><span class="o">?.</span><span class="na">content</span><span class="p">)</span>
+</span></code></pre></div>
 <p>This code will print <code>null</code> in case when <code>message</code> is not <code>ContentMessage</code>, and <code>content</code> when is.</p>
 <h2 id="require">Require<a class="headerlink" href="#require" title="Permanent link">&para;</a></h2>
 <p><code>require</code> works like <code>as</code>, but instead of returning nullable type, it will always return object with required type OR throw <code>ClassCastException</code>:</p>
-<pre><code class="language-kotlin">val message: Message;
-println(message.requireContentMessage().content)
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">message</span><span class="p">:</span><span class="w"> </span><span class="n">Message</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">println</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="na">requireContentMessage</span><span class="p">().</span><span class="na">content</span><span class="p">)</span>
+</span></code></pre></div>
 <p>This code will throw exception when message is not <code>ContentMessage</code> and print <code>content</code> when is.</p>
 <h2 id="when">When<a class="headerlink" href="#when" title="Permanent link">&para;</a></h2>
 <p><code>when</code> extensions will call passed <code>block</code> when type is correct. For example:</p>
-<pre><code class="language-kotlin">val message: Message;
-message.whenContentMessage {
-    println(it.content)
-}
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">message</span><span class="p">:</span><span class="w"> </span><span class="n">Message</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">message</span><span class="p">.</span><span class="na">whenContentMessage</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">.</span><span class="na">content</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span>
+</span></code></pre></div>
 <p>Code placed above will print <code>content</code> when <code>message</code> is <code>ContentMessage</code> and do nothing when not</p>
 
 

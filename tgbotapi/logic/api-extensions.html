@@ -1260,18 +1260,18 @@
 <p><a href="https://github.com/InsanusMokrassar/TelegramBotAPI/tree/master/tgbotapi.api">API extensions</a> is a module which you may include in your project in addition to <a href="https://github.com/InsanusMokrassar/TelegramBotAPI/tree/master/tgbotapi.core">core part</a>. In most cases this module will allow just use syntax like <code>bot.getUpdates()</code> instead of <code>bot.execute(GetUpdates())</code>, but there are several other things you will achieve with that syntax.</p>
 <h2 id="bot-builder">Bot builder<a class="headerlink" href="#bot-builder" title="Permanent link">&para;</a></h2>
 <p>This functionality allow you to build bot in more unified and comfortable way than standard creating with <code>telegramBot</code> function</p>
-<pre><code class="language-kotlin">buildBot(
-    &quot;TOKEN&quot;
-) {
-  proxy = ProxyBuilder.socks(host = &quot;127.0.0.1&quot;, port = 4001) // just an example, more info on https://ktor.io/docs/proxy.html
-  ktorClientConfig = {
-    // configuring of ktor client
-  }
-  ktorClientEngineFactory = {
-   // configuring of ktor client engine 
-  }
-}
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">buildBot</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="s">&quot;TOKEN&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="n">proxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProxyBuilder</span><span class="p">.</span><span class="na">socks</span><span class="p">(</span><span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4001</span><span class="p">)</span><span class="w"> </span><span class="c1">// just an example, more info on https://ktor.io/docs/proxy.html</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="n">ktorClientConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="c1">// configuring of ktor client</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="n">ktorClientEngineFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">   </span><span class="c1">// configuring of ktor client engine </span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">}</span>
+</span></code></pre></div>
 <h2 id="downloading-of-files">Downloading of files<a class="headerlink" href="#downloading-of-files" title="Permanent link">&para;</a></h2>
 <p>In standard library requests there are no way to download some file retrieved in updates or after requests. You may use syntax like <code>bot.downloadFile(file)</code> where <code>file</code> is <code>TelegramMediaFile</code> from telegram, <code>FileId</code> or even <code>PathedFile</code> from <a href="https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/requests/get/GetFile.kt">GetFile</a> request (<a href="https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/tgbotapi.api/src/commonMain/kotlin/dev/inmo/tgbotapi/extensions/api/files/DownloadFile.kt">sources</a>).</p>
 <h2 id="live-location">Live location<a class="headerlink" href="#live-location" title="Permanent link">&para;</a></h2>

@@ -1319,90 +1319,86 @@
 <p>Anyway, this filter can&rsquo;t work with updates by itself. For retrieving updates you should pass this filter to some of getting updates functions (<a href="long-polling">long polling</a> or <a href="webhooks.html">webhooks</a>).</p>
 <h3 id="simpleupdatesfilter">SimpleUpdatesFilter<a class="headerlink" href="#simpleupdatesfilter" title="Permanent link">&para;</a></h3>
 <p><code>SimpleUpdatesFilter</code> is a simple variant of filters. It have a lot of <code>UpdateReceiver</code> properties which can be set up on creating of this object. For example, if you wish to get messages from chats (but not from channels), you can use next snippet:</p>
-<pre><code class="language-kotlin">SimpleUpdatesFilter {
-  println(it)
-}
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">SimpleUpdatesFilter</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">}</span>
+</span></code></pre></div>
 <h3 id="flowsupdatesfilter">FlowsUpdatesFilter<a class="headerlink" href="#flowsupdatesfilter" title="Permanent link">&para;</a></h3>
 <p>A little bit more modern way is to use <code>FlowsUpdatesFilter</code>. It is very powerfull API of Kotlin Coroutines Flows, built-in support of additional extensions for <code>FlowsUpdatesFilter</code> and <code>Flow&lt;...&gt;</code> receivers and opportunity to split one filter for as much receivers as you want. Filter creating example:</p>
-<pre><code class="language-kotlin">val scope = CoroutineScope(Dispatchers.Default)
-flowsUpdatesFilter {
-  messageFlow.onEach {
-    println(it)
-  }.launchIn(scope)
-}
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">scope</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CoroutineScope</span><span class="p">(</span><span class="n">Dispatchers</span><span class="p">.</span><span class="na">Default</span><span class="p">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">flowsUpdatesFilter</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="n">messageFlow</span><span class="p">.</span><span class="na">onEach</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="p">}.</span><span class="na">launchIn</span><span class="p">(</span><span class="n">scope</span><span class="p">)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">}</span>
+</span></code></pre></div>
 <h4 id="combining-of-flows">Combining of flows<a class="headerlink" href="#combining-of-flows" title="Permanent link">&para;</a></h4>
 <p>In cases you need not separate logic for handling of messages from channels and chats there are three ways to combine different flows into one:</p>
 <ul>
-<li>Standard <code>plus</code> operation and handling of different flows:</li>
+<li>Standard <code>plus</code> operation and handling of different flows:
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">flowsUpdatesFilter</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="p">(</span><span class="n">messageFlow</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">channelPostFlow</span><span class="p">).</span><span class="na">onEach</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="c1">// will be printed each message update from channels and chats both</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="p">}.</span><span class="na">launchIn</span><span class="p">(</span><span class="n">scope</span><span class="p">)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li>TelegramBotAPI library support function <code>aggregateFlows</code>:
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">flowsUpdatesFilter</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="n">aggregateFlows</span><span class="p">(</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">scope</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">messageFlow</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="n">channelPostFlow</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="p">).</span><span class="na">onEach</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="c1">// will be printed each message update from channels and chats both</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="p">}.</span><span class="na">launchIn</span><span class="p">(</span><span class="n">scope</span><span class="p">)</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li><code>FlowsUpdatesFilter</code> extensions:
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">flowsUpdatesFilter</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="n">allSentMessagesFlow</span><span class="p">.</span><span class="na">onEach</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="c1">// will be printed each message update from channels and chats both</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="p">}.</span><span class="na">launchIn</span><span class="p">(</span><span class="n">scope</span><span class="p">)</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">}</span>
+</span></code></pre></div></li>
 </ul>
-<pre><code class="language-kotlin">flowsUpdatesFilter {
-  (messageFlow + channelPostFlow).onEach {
-    println(it) // will be printed each message update from channels and chats both
-  }.launchIn(scope)
-}
-</code></pre>
-<ul>
-<li>TelegramBotAPI library support function <code>aggregateFlows</code>:</li>
-</ul>
-<pre><code class="language-kotlin">flowsUpdatesFilter {
-  aggregateFlows(
-    scope,
-    messageFlow,
-    channelPostFlow
-  ).onEach {
-    println(it) // will be printed each message update from channels and chats both
-  }.launchIn(scope)
-}
-</code></pre>
-<ul>
-<li><code>FlowsUpdatesFilter</code> extensions:</li>
-</ul>
-<pre><code class="language-kotlin">flowsUpdatesFilter {
-  allSentMessagesFlow.onEach {
-    println(it) // will be printed each message update from channels and chats both
-  }.launchIn(scope)
-}
-</code></pre>
 <h4 id="types-filtering">Types filtering<a class="headerlink" href="#types-filtering" title="Permanent link">&para;</a></h4>
 <p><code>FlowsUpdatesFilter</code> have a lot of extensions for messages types filtering:</p>
-<pre><code class="language-kotlin">flowsUpdatesFilter {
-  textMessages(scope).onEach {
-    println(it) // will be printed each message from channels and chats both with content only `TextContent`
-  }.launchIn(scope)
-}
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">flowsUpdatesFilter</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="n">textMessages</span><span class="p">(</span><span class="n">scope</span><span class="p">).</span><span class="na">onEach</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="c1">// will be printed each message from channels and chats both with content only `TextContent`</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="p">}.</span><span class="na">launchIn</span><span class="p">(</span><span class="n">scope</span><span class="p">)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">}</span>
+</span></code></pre></div>
 <p>The same things were created for media groups:</p>
-<pre><code class="language-kotlin">flowsUpdatesFilter {
-  mediaGroupMessages(scope).onEach {
-    println(it) // will be printed each media group messages list from both channels and chats without filtering of content
-  }.launchIn(scope)
-
-  mediaGroupPhotosMessages(scope).onEach {
-    println(it) // will be printed each media group messages list from both channels and chats with PhotoContent only
-  }.launchIn(scope)
-
-  mediaGroupVideosMessages(scope).onEach {
-    println(it) // will be printed each media group messages list from both channels and chats with VideoContent only
-  }.launchIn(scope)
-}
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">flowsUpdatesFilter</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="n">mediaGroupMessages</span><span class="p">(</span><span class="n">scope</span><span class="p">).</span><span class="na">onEach</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="c1">// will be printed each media group messages list from both channels and chats without filtering of content</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="p">}.</span><span class="na">launchIn</span><span class="p">(</span><span class="n">scope</span><span class="p">)</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="n">mediaGroupPhotosMessages</span><span class="p">(</span><span class="n">scope</span><span class="p">).</span><span class="na">onEach</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="c1">// will be printed each media group messages list from both channels and chats with PhotoContent only</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span><span class="p">}.</span><span class="na">launchIn</span><span class="p">(</span><span class="n">scope</span><span class="p">)</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">  </span><span class="n">mediaGroupVideosMessages</span><span class="p">(</span><span class="n">scope</span><span class="p">).</span><span class="na">onEach</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="c1">// will be printed each media group messages list from both channels and chats with VideoContent only</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">  </span><span class="p">}.</span><span class="na">launchIn</span><span class="p">(</span><span class="n">scope</span><span class="p">)</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="p">}</span>
+</span></code></pre></div>
 <p>Besides, there is an opportunity to avoid separation on media groups and common messages and receive photos and videos content in one flow:</p>
-<pre><code class="language-kotlin">flowsUpdatesFilter {
-  sentMessagesWithMediaGroups(scope).onEach {
-    println(it) // will be printed each message including each separated media group message from both channels and chats without filtering of content
-  }.launchIn(scope)
-
-  photoMessagesWithMediaGroups(scope).onEach {
-    println(it) // will be printed each message including each separated media group message from both channels and chats with PhotoContent only
-  }.launchIn(scope)
-
-  videoMessagesWithMediaGroups(scope).onEach {
-    println(it) // will be printed each message including each separated media group message from both channels and chats with VideoContent only
-  }.launchIn(scope)
-}
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">flowsUpdatesFilter</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="n">sentMessagesWithMediaGroups</span><span class="p">(</span><span class="n">scope</span><span class="p">).</span><span class="na">onEach</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="c1">// will be printed each message including each separated media group message from both channels and chats without filtering of content</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="p">}.</span><span class="na">launchIn</span><span class="p">(</span><span class="n">scope</span><span class="p">)</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">  </span><span class="n">photoMessagesWithMediaGroups</span><span class="p">(</span><span class="n">scope</span><span class="p">).</span><span class="na">onEach</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="c1">// will be printed each message including each separated media group message from both channels and chats with PhotoContent only</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">  </span><span class="p">}.</span><span class="na">launchIn</span><span class="p">(</span><span class="n">scope</span><span class="p">)</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">  </span><span class="n">videoMessagesWithMediaGroups</span><span class="p">(</span><span class="n">scope</span><span class="p">).</span><span class="na">onEach</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="c1">// will be printed each message including each separated media group message from both channels and chats with VideoContent only</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">  </span><span class="p">}.</span><span class="na">launchIn</span><span class="p">(</span><span class="n">scope</span><span class="p">)</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="p">}</span>
+</span></code></pre></div>
 <h2 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="long-polling.html">Long polling</a></li>

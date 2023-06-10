@@ -1516,38 +1516,34 @@
 <h3 id="notice-about-repository">Notice about repository<a class="headerlink" href="#notice-about-repository" title="Permanent link">&para;</a></h3>
 <p>To use this library, you will need to include <code>Maven Central</code> repository in your project</p>
 <h6 id="buildgradle">build.gradle<a class="headerlink" href="#buildgradle" title="Permanent link">&para;</a></h6>
-<pre><code class="language-groovy">mavenCentral()
-</code></pre>
+<div class="language-groovy highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">mavenCentral</span><span class="o">()</span>
+</span></code></pre></div>
 <h6 id="pomxml">pom.xml<a class="headerlink" href="#pomxml" title="Permanent link">&para;</a></h6>
-<pre><code class="language-xml">&lt;repository&gt;
-  &lt;id&gt;central&lt;/id&gt;
-  &lt;name&gt;mavenCentral&lt;/name&gt;
-  &lt;url&gt;https://repo1.maven.org/maven2&lt;/url&gt;
-&lt;/repository&gt;
-</code></pre>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&lt;repository&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&lt;id&gt;</span>central<span class="nt">&lt;/id&gt;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&lt;name&gt;</span>mavenCentral<span class="nt">&lt;/name&gt;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">&lt;url&gt;</span>https://repo1.maven.org/maven2<span class="nt">&lt;/url&gt;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nt">&lt;/repository&gt;</span>
+</span></code></pre></div>
 <h6 id="dev-channel">Dev channel<a class="headerlink" href="#dev-channel" title="Permanent link">&para;</a></h6>
 <p>Besides, there is <a href="https://git.inmo.dev/InsanusMokrassar/-/packages/maven/dev.inmo-tgbotapi">developer versions repo</a>. To use it in your project, add the repo in <code>repositories</code> section:</p>
 <details><summary>Gradle</summary>
 
-
-<pre><code class="language-groovy">maven {
-    url &quot;https://git.inmo.dev/api/packages/InsanusMokrassar/maven&quot;
-}
-</code></pre>
-
+<div class="language-groovy highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">maven</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">url</span><span class="w"> </span><span class="s2">&quot;https://git.inmo.dev/api/packages/InsanusMokrassar/maven&quot;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="o">}</span>
+</span></code></pre></div>
 
 </details>
 
 <details><summary>Maven</summary>
 
-
-<pre><code class="language-xml">&lt;repository&gt;
-  &lt;id&gt;dev.inmo&lt;/id&gt;
-  &lt;name&gt;InmoDev&lt;/name&gt;
-  &lt;url&gt;https://git.inmo.dev/api/packages/InsanusMokrassar/maven&lt;/url&gt;
-&lt;/repository&gt;
-</code></pre>
-
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">&lt;repository&gt;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">&lt;id&gt;</span>dev.inmo<span class="nt">&lt;/id&gt;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">&lt;name&gt;</span>InmoDev<span class="nt">&lt;/name&gt;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">&lt;url&gt;</span>https://git.inmo.dev/api/packages/InsanusMokrassar/maven<span class="nt">&lt;/url&gt;</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nt">&lt;/repository&gt;</span>
+</span></code></pre></div>
 
 </details>
 
@@ -1555,54 +1551,54 @@
 <p>As <code>tgbotapi_version</code> variable in next snippets will be used variable with next last published version:</p>
 <p><a href="https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi"><img alt="Maven Central" src="https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi/badge.svg" /></a></p>
 <h6 id="buildgradle_1">build.gradle<a class="headerlink" href="#buildgradle_1" title="Permanent link">&para;</a></h6>
-<pre><code class="language-groovy">implementation &quot;dev.inmo:tgbotapi:$tgbotapi_version&quot;
-</code></pre>
+<div class="language-groovy highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">implementation</span><span class="w"> </span><span class="s2">&quot;dev.inmo:tgbotapi:$tgbotapi_version&quot;</span>
+</span></code></pre></div>
 <h6 id="pomxml_1">pom.xml<a class="headerlink" href="#pomxml_1" title="Permanent link">&para;</a></h6>
-<pre><code class="language-xml">&lt;dependency&gt;
-    &lt;groupId&gt;dev.inmo&lt;/groupId&gt;
-    &lt;artifactId&gt;tgbotapi&lt;/artifactId&gt;
-    &lt;version&gt;${tgbotapi_version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">&lt;dependency&gt;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>dev.inmo<span class="nt">&lt;/groupId&gt;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>tgbotapi<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>${tgbotapi_version}<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nt">&lt;/dependency&gt;</span>
+</span></code></pre></div>
 <h3 id="telegrambotapi-core">TelegramBotAPI Core<a class="headerlink" href="#telegrambotapi-core" title="Permanent link">&para;</a></h3>
 <p>As <code>tgbotapi_version</code> variable in next snippets will be used variable with next last published version:</p>
 <p><a href="https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core"><img alt="Maven Central" src="https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core/badge.svg" /></a></p>
 <h6 id="buildgradle_2">build.gradle<a class="headerlink" href="#buildgradle_2" title="Permanent link">&para;</a></h6>
-<pre><code class="language-groovy">implementation &quot;dev.inmo:tgbotapi.core:$tgbotapi_version&quot;
-</code></pre>
+<div class="language-groovy highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">implementation</span><span class="w"> </span><span class="s2">&quot;dev.inmo:tgbotapi.core:$tgbotapi_version&quot;</span>
+</span></code></pre></div>
 <h6 id="pomxml_2">pom.xml<a class="headerlink" href="#pomxml_2" title="Permanent link">&para;</a></h6>
-<pre><code class="language-xml">&lt;dependency&gt;
-    &lt;groupId&gt;dev.inmo&lt;/groupId&gt;
-    &lt;artifactId&gt;tgbotapi.core&lt;/artifactId&gt;
-    &lt;version&gt;${tgbotapi_version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">&lt;dependency&gt;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>dev.inmo<span class="nt">&lt;/groupId&gt;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>tgbotapi.core<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>${tgbotapi_version}<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nt">&lt;/dependency&gt;</span>
+</span></code></pre></div>
 <h3 id="telegrambotapi-api-extensions">TelegramBotAPI API Extensions<a class="headerlink" href="#telegrambotapi-api-extensions" title="Permanent link">&para;</a></h3>
 <p>As <code>tgbotapi_version</code> variable in next snippets will be used variable with next last published version:</p>
 <p><a href="https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.api"><img alt="Maven Central" src="https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.api/badge.svg" /></a></p>
 <h6 id="buildgradle_3">build.gradle<a class="headerlink" href="#buildgradle_3" title="Permanent link">&para;</a></h6>
-<pre><code class="language-groovy">implementation &quot;dev.inmo:tgbotapi.api:$tgbotapi_version&quot;
-</code></pre>
+<div class="language-groovy highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">implementation</span><span class="w"> </span><span class="s2">&quot;dev.inmo:tgbotapi.api:$tgbotapi_version&quot;</span>
+</span></code></pre></div>
 <h6 id="pomxml_3">pom.xml<a class="headerlink" href="#pomxml_3" title="Permanent link">&para;</a></h6>
-<pre><code class="language-xml">&lt;dependency&gt;
-    &lt;groupId&gt;dev.inmo&lt;/groupId&gt;
-    &lt;artifactId&gt;tgbotapi.api&lt;/artifactId&gt;
-    &lt;version&gt;${tgbotapi_version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">&lt;dependency&gt;</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>dev.inmo<span class="nt">&lt;/groupId&gt;</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>tgbotapi.api<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>${tgbotapi_version}<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nt">&lt;/dependency&gt;</span>
+</span></code></pre></div>
 <h3 id="telegrambotapi-utils-extensions">TelegramBotAPI Utils Extensions<a class="headerlink" href="#telegrambotapi-utils-extensions" title="Permanent link">&para;</a></h3>
 <p>As <code>tgbotapi_version</code> variable in next snippets will be used variable with next last published version:</p>
 <p><a href="https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.utils"><img alt="Maven Central" src="https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.utils/badge.svg" /></a></p>
 <h6 id="buildgradle_4">build.gradle<a class="headerlink" href="#buildgradle_4" title="Permanent link">&para;</a></h6>
-<pre><code class="language-groovy">implementation &quot;dev.inmo:tgbotapi.utils:$tgbotapi_version&quot;
-</code></pre>
+<div class="language-groovy highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">implementation</span><span class="w"> </span><span class="s2">&quot;dev.inmo:tgbotapi.utils:$tgbotapi_version&quot;</span>
+</span></code></pre></div>
 <h6 id="pomxml_4">pom.xml<a class="headerlink" href="#pomxml_4" title="Permanent link">&para;</a></h6>
-<pre><code class="language-xml">&lt;dependency&gt;
-    &lt;groupId&gt;dev.inmo&lt;/groupId&gt;
-    &lt;artifactId&gt;tgbotapi.utils&lt;/artifactId&gt;
-    &lt;version&gt;${tgbotapi_version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nt">&lt;dependency&gt;</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>dev.inmo<span class="nt">&lt;/groupId&gt;</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>tgbotapi.utils<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>${tgbotapi_version}<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nt">&lt;/dependency&gt;</span>
+</span></code></pre></div>
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="proxy-setup.html">Proxy setup</a></li>

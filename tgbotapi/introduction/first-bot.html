@@ -1222,12 +1222,12 @@ A lot of examples with using of Telegram Bot API you can find in <a href="https:
 </div>
 <h3 id="the-most-simple-bot">The most simple bot<a class="headerlink" href="#the-most-simple-bot" title="Permanent link">&para;</a></h3>
 <p>The most simple bot will just print information about itself. All source code you can find <a href="https://github.com/InsanusMokrassar/TelegramBotAPI-examples/tree/master/GetMeBot">in this repository</a>. Our interest here will be concentrated on the next example part:</p>
-<pre><code class="language-kotlin">suspend fun main(vararg args: String) {
-  val botToken = args.first()
-  val bot = telegramBot(botToken)
-  println(bot.getMe())
-}
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="k">vararg</span><span class="w"> </span><span class="n">args</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nv">botToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">args</span><span class="p">.</span><span class="na">first</span><span class="p">()</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nv">bot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">telegramBot</span><span class="p">(</span><span class="n">botToken</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="n">println</span><span class="p">(</span><span class="n">bot</span><span class="p">.</span><span class="na">getMe</span><span class="p">())</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
+</span></code></pre></div>
 <p>So, let&rsquo;s get understanding, about what is going on:</p>
 <ol>
 <li><code>suspend fun main(vararg args: String)</code>:<ul>
@@ -1239,8 +1239,8 @@ A lot of examples with using of Telegram Bot API you can find in <a href="https:
 <li><code>println(bot.getMe())</code>: here happens calling of <a href="https://tgbotapi.inmo.dev/docs/com.github.insanusmokrassar.-telegram-bot-a-p-i.extensions.api.bot/get-me.html">getMe</a> extension</li>
 </ol>
 <p>As a result, we will see in the command line something like</p>
-<pre><code class="language-shell">ExtendedBot(id=ChatId(chatId=123456789), username=Username(username=@first_test_ee17e8_bot), firstName=Your bot name, lastName=, canJoinGroups=false, canReadAllGroupMessages=false, supportsInlineQueries=false)
-</code></pre>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ExtendedBot<span class="o">(</span><span class="nv">id</span><span class="o">=</span>ChatId<span class="o">(</span><span class="nv">chatId</span><span class="o">=</span><span class="m">123456789</span><span class="o">)</span>,<span class="w"> </span><span class="nv">username</span><span class="o">=</span>Username<span class="o">(</span><span class="nv">username</span><span class="o">=</span>@first_test_ee17e8_bot<span class="o">)</span>,<span class="w"> </span><span class="nv">firstName</span><span class="o">=</span>Your<span class="w"> </span>bot<span class="w"> </span>name,<span class="w"> </span><span class="nv">lastName</span><span class="o">=</span>,<span class="w"> </span><span class="nv">canJoinGroups</span><span class="o">=</span>false,<span class="w"> </span><span class="nv">canReadAllGroupMessages</span><span class="o">=</span>false,<span class="w"> </span><span class="nv">supportsInlineQueries</span><span class="o">=</span><span class="nb">false</span><span class="o">)</span>
+</span></code></pre></div>
 
 
 

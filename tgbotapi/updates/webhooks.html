@@ -1266,98 +1266,98 @@
 </ul>
 <h3 id="setwebhookinfoandstartlistenwebhooks"><code>setWebhookInfoAndStartListenWebhooks</code><a class="headerlink" href="#setwebhookinfoandstartlistenwebhooks" title="Permanent link">&para;</a></h3>
 <p>It is the most common way to set updates webhooks and start listening of them. Example:</p>
-<pre><code class="language-kotlin">val bot = telegramBot(TOKEN)
-
-val filter = flowsUpdatesFilter {
-  // ...
-}
-
-bot.setWebhookInfoAndStartListenWebhooks(
-  8080, // listening port. It is required for cases when your server hidden by some proxy or other system like Heroku
-  CIO, // default ktor server engine. It is recommended to replace it with something like `Netty`. More info about engines here: https://ktor.io/servers/configuration.html
-  SetWebhook(
-    &quot;address.com/webhook_route&quot;,
-    File(&quot;/path/to/certificate&quot;).toInputFile(), // certificate file. More info here: https://core.telegram.org/bots/webhooks#a-certificate-where-do-i-get-one-and-how
-    40, // max allowed updates, by default is null
-    filter.allowedUpdates
-  ),
-  {
-    it.printStackTrace() // optional handling of exceptions
-  },
-  &quot;0.0.0.0&quot;, // listening host which will be used to bind by server
-  &quot;subroute&quot;, // Optional subroute, if null - will listen root of address
-  WebhookPrivateKeyConfig( // optional config of private key. It will be installed in server to use TLS with custom certificate. More info here: https://core.telegram.org/bots/webhooks#a-certificate-where-do-i-get-one-and-how
-    &quot;/path/to/keystore.jks&quot;,
-    &quot;KeystorePassword&quot;,
-    &quot;Keystore key alias name&quot;,
-    &quot;KeystoreAliasPassword&quot;
-  ),
-  scope, // Kotlin coroutine scope for internal transforming of media groups
-  filter.asUpdateReceiver
-)
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">bot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">telegramBot</span><span class="p">(</span><span class="n">TOKEN</span><span class="p">)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">val</span><span class="w"> </span><span class="nv">filter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flowsUpdatesFilter</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="c1">// ...</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">bot</span><span class="p">.</span><span class="na">setWebhookInfoAndStartListenWebhooks</span><span class="p">(</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="m">8080</span><span class="p">,</span><span class="w"> </span><span class="c1">// listening port. It is required for cases when your server hidden by some proxy or other system like Heroku</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="n">CIO</span><span class="p">,</span><span class="w"> </span><span class="c1">// default ktor server engine. It is recommended to replace it with something like `Netty`. More info about engines here: https://ktor.io/servers/configuration.html</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="n">SetWebhook</span><span class="p">(</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="s">&quot;address.com/webhook_route&quot;</span><span class="p">,</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;/path/to/certificate&quot;</span><span class="p">).</span><span class="na">toInputFile</span><span class="p">(),</span><span class="w"> </span><span class="c1">// certificate file. More info here: https://core.telegram.org/bots/webhooks#a-certificate-where-do-i-get-one-and-how</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="c1">// max allowed updates, by default is null</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="n">filter</span><span class="p">.</span><span class="na">allowedUpdates</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="p">),</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">()</span><span class="w"> </span><span class="c1">// optional handling of exceptions</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="s">&quot;0.0.0.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// listening host which will be used to bind by server</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="s">&quot;subroute&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Optional subroute, if null - will listen root of address</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="n">WebhookPrivateKeyConfig</span><span class="p">(</span><span class="w"> </span><span class="c1">// optional config of private key. It will be installed in server to use TLS with custom certificate. More info here: https://core.telegram.org/bots/webhooks#a-certificate-where-do-i-get-one-and-how</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="s">&quot;/path/to/keystore.jks&quot;</span><span class="p">,</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="s">&quot;KeystorePassword&quot;</span><span class="p">,</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="s">&quot;Keystore key alias name&quot;</span><span class="p">,</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="s">&quot;KeystoreAliasPassword&quot;</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="p">),</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="n">scope</span><span class="p">,</span><span class="w"> </span><span class="c1">// Kotlin coroutine scope for internal transforming of media groups</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="n">filter</span><span class="p">.</span><span class="na">asUpdateReceiver</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="p">)</span>
+</span></code></pre></div>
 <p>If you will use previous example, ktor server will bind and listen url <code>0.0.0.0:8080/subroute</code> and telegram will send requests to address <code>address.com/webhook_route</code> with custom certificate. Alternative variant will use the other <code>SetWebhook</code> request variant:</p>
-<pre><code class="language-kotlin">SetWebhook(
-  &quot;address.com/webhook_route&quot;,
-  &quot;some_file_bot_id&quot;.toInputFile(),
-  40, // max allowed updates, by default is null
-  filter.allowedUpdates
-)
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">SetWebhook</span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="s">&quot;address.com/webhook_route&quot;</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="s">&quot;some_file_bot_id&quot;</span><span class="p">.</span><span class="na">toInputFile</span><span class="p">(),</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="c1">// max allowed updates, by default is null</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="n">filter</span><span class="p">.</span><span class="na">allowedUpdates</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">)</span>
+</span></code></pre></div>
 <p>As a result, request <code>SetWebhook</code> will be executed and after this server will start its working and handling of updates.</p>
 <h3 id="startlistenwebhooks"><code>startListenWebhooks</code><a class="headerlink" href="#startlistenwebhooks" title="Permanent link">&para;</a></h3>
 <p>This function is working almost exactly like previous example, but this one will not set up webhook info in telegram:</p>
-<pre><code class="language-kotlin">val filter = flowsUpdatesFilter {
-  // ...
-}
-
-startListenWebhooks(
-  8080, // listening port. It is required for cases when your server hidden by some proxy or other system like Heroku
-  CIO, // default ktor server engine. It is recommended to replace it with something like `Netty`. More info about engines here: https://ktor.io/servers/configuration.html
-  {
-    it.printStackTrace() // optional handling of exceptions
-  },
-  &quot;0.0.0.0&quot;, // listening host which will be used to bind by server
-  &quot;subroute&quot;, // Optional subroute, if null - will listen root of address
-  WebhookPrivateKeyConfig( // optional config of private key. It will be installed in server to use TLS with custom certificate. More info here: https://core.telegram.org/bots/webhooks#a-certificate-where-do-i-get-one-and-how
-    &quot;/path/to/keystore.jks&quot;,
-    &quot;KeystorePassword&quot;,
-    &quot;Keystore key alias name&quot;,
-    &quot;KeystoreAliasPassword&quot;
-  ),
-  scope, // Kotlin coroutine scope for internal transforming of media groups
-  filter.asUpdateReceiver
-)
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">filter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flowsUpdatesFilter</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="c1">// ...</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">}</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">startListenWebhooks</span><span class="p">(</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="m">8080</span><span class="p">,</span><span class="w"> </span><span class="c1">// listening port. It is required for cases when your server hidden by some proxy or other system like Heroku</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="n">CIO</span><span class="p">,</span><span class="w"> </span><span class="c1">// default ktor server engine. It is recommended to replace it with something like `Netty`. More info about engines here: https://ktor.io/servers/configuration.html</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">()</span><span class="w"> </span><span class="c1">// optional handling of exceptions</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">  </span><span class="s">&quot;0.0.0.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// listening host which will be used to bind by server</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span><span class="s">&quot;subroute&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Optional subroute, if null - will listen root of address</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span><span class="n">WebhookPrivateKeyConfig</span><span class="p">(</span><span class="w"> </span><span class="c1">// optional config of private key. It will be installed in server to use TLS with custom certificate. More info here: https://core.telegram.org/bots/webhooks#a-certificate-where-do-i-get-one-and-how</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="s">&quot;/path/to/keystore.jks&quot;</span><span class="p">,</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="s">&quot;KeystorePassword&quot;</span><span class="p">,</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="s">&quot;Keystore key alias name&quot;</span><span class="p">,</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="s">&quot;KeystoreAliasPassword&quot;</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span><span class="p">),</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">  </span><span class="n">scope</span><span class="p">,</span><span class="w"> </span><span class="c1">// Kotlin coroutine scope for internal transforming of media groups</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">  </span><span class="n">filter</span><span class="p">.</span><span class="na">asUpdateReceiver</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="p">)</span>
+</span></code></pre></div>
 <p>The result will be the same as in previous example: server will start its working and handling of updates on <code>0.0.0.0:8080/subroute</code>. The difference here is that in case if this bot must not answer or send some requiests - it will not be necessary to create bot for receiving of updates.</p>
 <h3 id="extensions-includewebhookhandlinginroute-and-includewebhookhandlinginroutewithflows">Extensions <code>includeWebhookHandlingInRoute</code> and <code>includeWebhookHandlingInRouteWithFlows</code><a class="headerlink" href="#extensions-includewebhookhandlinginroute-and-includewebhookhandlinginroutewithflows" title="Permanent link">&para;</a></h3>
 <p>For these extensions you will need to start your server manualy. In common case it will look like:</p>
-<pre><code class="language-kotlin">val scope = CoroutineScope(Dispatchers.Default)
-
-val filter = flowsUpdatesFilter {
-  // ...
-}
-
-val environment = applicationEngineEnvironment {
-  module {
-    routing {
-      includeWebhookHandlingInRoute(
-        scope,
-        {
-          it.printStackTrace()
-        },
-        filter.asUpdateReceiver
-      )
-    }
-  }
-  connector {
-    host = &quot;0.0.0.0&quot;
-    port = 8080
-  }
-}
-
-embeddedServer(CIO, environment).start(true) // will start server and wait its stoping
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">scope</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CoroutineScope</span><span class="p">(</span><span class="n">Dispatchers</span><span class="p">.</span><span class="na">Default</span><span class="p">)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">val</span><span class="w"> </span><span class="nv">filter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flowsUpdatesFilter</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="c1">// ...</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="kd">val</span><span class="w"> </span><span class="nv">environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">applicationEngineEnvironment</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="n">module</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="n">routing</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">      </span><span class="n">includeWebhookHandlingInRoute</span><span class="p">(</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="n">scope</span><span class="p">,</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">          </span><span class="nb">it</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">()</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="n">filter</span><span class="p">.</span><span class="na">asUpdateReceiver</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">      </span><span class="p">)</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">  </span><span class="n">connector</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">    </span><span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;0.0.0.0&quot;</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8080</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="p">}</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="n">embeddedServer</span><span class="p">(</span><span class="n">CIO</span><span class="p">,</span><span class="w"> </span><span class="n">environment</span><span class="p">).</span><span class="na">start</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="c1">// will start server and wait its stoping</span>
+</span></code></pre></div>
 <p>In the example above server will started and binded for listening on <code>0.0.0.0:8080</code>.</p>
 <h2 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
 <ul>

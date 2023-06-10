@@ -1183,10 +1183,10 @@
 </ul>
 <h3 id="where-to-get-file-id-or-url">Where to get File id or url?<a class="headerlink" href="#where-to-get-file-id-or-url" title="Permanent link">&para;</a></h3>
 <p>The most simple way to send some file is to get file id and send it. You may get file id from any message with media. For example, if you have received some <a href="https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/types/message/abstracts/Message.kt#L12">Message</a>, you may use <a href="https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/tgbotapi.utils/src/commonMain/kotlin/dev/inmo/tgbotapi/extensions/utils/ClassCasts.kt#L1094">asCommonMessage</a> conversation to be able to get its <code>content</code> and then convert it to some content with media. Full code here:</p>
-<pre><code class="language-kotlin">val message: Message;
-
-val fileId = message.asCommonMessage() ?.withContent&lt;MediaContent&gt;() ?.content ?.media ?.fileId;
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">message</span><span class="p">:</span><span class="w"> </span><span class="n">Message</span><span class="p">;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">val</span><span class="w"> </span><span class="nv">fileId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="na">asCommonMessage</span><span class="p">()</span><span class="w"> </span><span class="o">?.</span><span class="na">withContent</span><span class="o">&lt;</span><span class="n">MediaContent</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">?.</span><span class="na">content</span><span class="w"> </span><span class="o">?.</span><span class="na">media</span><span class="w"> </span><span class="o">?.</span><span class="na">fileId</span><span class="p">;</span>
+</span></code></pre></div>
 <p><strong>WAT? O.o</strong></p>
 <p>In the code above we get some message, safely converted it to <code>CommonMessage</code> with <code>asCommonMessage</code>, then safely took its content via <code>withContent&lt;MediaContent&gt;() ?.content</code> and then just get its media file id.</p>
 <h2 id="download-files">Download files<a class="headerlink" href="#download-files" title="Permanent link">&para;</a></h2>
@@ -1198,61 +1198,61 @@ val fileId = message.asCommonMessage() ?.withContent&lt;MediaContent&gt;() ?.con
 </ul>
 <h3 id="downloading-with-api-extensions">Downloading with <code>API</code> extensions<a class="headerlink" href="#downloading-with-api-extensions" title="Permanent link">&para;</a></h3>
 <h4 id="files-jvmandroid">Files (JVM/Android)<a class="headerlink" href="#files-jvmandroid" title="Permanent link">&para;</a></h4>
-<pre><code class="language-kotlin">val bot: TelegramBot;
-val fileId: FileId;
-val outputFile: File;
-
-bot.downloadFile(fileId, outputFile)
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">bot</span><span class="p">:</span><span class="w"> </span><span class="n">TelegramBot</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">fileId</span><span class="p">:</span><span class="w"> </span><span class="n">FileId</span><span class="p">;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">val</span><span class="w"> </span><span class="nv">outputFile</span><span class="p">:</span><span class="w"> </span><span class="n">File</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">bot</span><span class="p">.</span><span class="na">downloadFile</span><span class="p">(</span><span class="n">fileId</span><span class="p">,</span><span class="w"> </span><span class="n">outputFile</span><span class="p">)</span>
+</span></code></pre></div>
 <p>See <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.api.files/download-file.html">downloadFile</a> extension docs in the <strong>JVM tab</strong> to get more available options</p>
 <p>There is also way with saving of data into temporal file. That will allow you to do with data whatever you want without high requirements to memory or network connection:</p>
-<pre><code class="language-kotlin">val bot: TelegramBot;
-val fileId: FileId;
-
-val tempFile: File = bot.downloadFileToTemp(fileId)
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">bot</span><span class="p">:</span><span class="w"> </span><span class="n">TelegramBot</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">fileId</span><span class="p">:</span><span class="w"> </span><span class="n">FileId</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kd">val</span><span class="w"> </span><span class="nv">tempFile</span><span class="p">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bot</span><span class="p">.</span><span class="na">downloadFileToTemp</span><span class="p">(</span><span class="n">fileId</span><span class="p">)</span>
+</span></code></pre></div>
 <p>See <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.api.files/download-file-to-temp.html">downloadFileToTemp</a> extension docs to get more available options</p>
 <h4 id="byte-read-channel">Byte read channel<a class="headerlink" href="#byte-read-channel" title="Permanent link">&para;</a></h4>
-<pre><code class="language-kotlin">val bot: TelegramBot;
-val fileId: FileId;
-
-val bytes: ByteReadChannelAllocator = bot.downloadFileStream(fileId)
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">bot</span><span class="p">:</span><span class="w"> </span><span class="n">TelegramBot</span><span class="p">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">fileId</span><span class="p">:</span><span class="w"> </span><span class="n">FileId</span><span class="p">;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kd">val</span><span class="w"> </span><span class="nv">bytes</span><span class="p">:</span><span class="w"> </span><span class="n">ByteReadChannelAllocator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bot</span><span class="p">.</span><span class="na">downloadFileStream</span><span class="p">(</span><span class="n">fileId</span><span class="p">)</span>
+</span></code></pre></div>
 <p>See <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.api.files/download-file-stream.html">downloadFileStream</a> extension docs to get more available options</p>
 <h4 id="byte-read-channel-allocator">Byte read channel allocator<a class="headerlink" href="#byte-read-channel-allocator" title="Permanent link">&para;</a></h4>
-<pre><code class="language-kotlin">val bot: TelegramBot;
-val fileId: FileId;
-
-val bytes: ByteReadChannelAllocator = bot.downloadFileStreamAllocator(fileId)
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">bot</span><span class="p">:</span><span class="w"> </span><span class="n">TelegramBot</span><span class="p">;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">fileId</span><span class="p">:</span><span class="w"> </span><span class="n">FileId</span><span class="p">;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kd">val</span><span class="w"> </span><span class="nv">bytes</span><span class="p">:</span><span class="w"> </span><span class="n">ByteReadChannelAllocator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bot</span><span class="p">.</span><span class="na">downloadFileStreamAllocator</span><span class="p">(</span><span class="n">fileId</span><span class="p">)</span>
+</span></code></pre></div>
 <p>See <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.api.files/download-file-stream-allocator.html">downloadFileStreamAllocator</a> extension docs to get more available options</p>
 <h4 id="byte-arrays">Byte arrays<a class="headerlink" href="#byte-arrays" title="Permanent link">&para;</a></h4>
-<pre><code class="language-kotlin">val bot: TelegramBot;
-val fileId: FileId;
-
-val bytes: ByteArray = bot.downloadFile(fileId)
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">bot</span><span class="p">:</span><span class="w"> </span><span class="n">TelegramBot</span><span class="p">;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">fileId</span><span class="p">:</span><span class="w"> </span><span class="n">FileId</span><span class="p">;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kd">val</span><span class="w"> </span><span class="nv">bytes</span><span class="p">:</span><span class="w"> </span><span class="n">ByteArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bot</span><span class="p">.</span><span class="na">downloadFile</span><span class="p">(</span><span class="n">fileId</span><span class="p">)</span>
+</span></code></pre></div>
 <p>See <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.api.files/download-file.html">downloadFile</a> extension docs to get more available options</p>
 <h3 id="low-level-or-how-does-it-work">Low level or <code>how does it work?</code><a class="headerlink" href="#low-level-or-how-does-it-work" title="Permanent link">&para;</a></h3>
 <p>You may download file with streams or with downloading into the memory first. On low level you should do several things. They are presented in next snippet:</p>
-<pre><code class="language-kotlin">val bot: TelegramBot;
-val fileId: FileId;
-
-val pathedFile: PathedFile = bot.execute(GetFile(fileId))
-
-val downloadedBytes: ByteArray = bot.execute(DownloadFile(pathedFile.filePath))
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">bot</span><span class="p">:</span><span class="w"> </span><span class="n">TelegramBot</span><span class="p">;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">fileId</span><span class="p">:</span><span class="w"> </span><span class="n">FileId</span><span class="p">;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kd">val</span><span class="w"> </span><span class="nv">pathedFile</span><span class="p">:</span><span class="w"> </span><span class="n">PathedFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bot</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">GetFile</span><span class="p">(</span><span class="n">fileId</span><span class="p">))</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="kd">val</span><span class="w"> </span><span class="nv">downloadedBytes</span><span class="p">:</span><span class="w"> </span><span class="n">ByteArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bot</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">DownloadFile</span><span class="p">(</span><span class="n">pathedFile</span><span class="p">.</span><span class="na">filePath</span><span class="p">))</span>
+</span></code></pre></div>
 <p>In the snippet above we are getting file <code>PathedFile</code> by its <code>FileId</code> and use it to download file bytes into memory using <code>DownloadFile</code> request.</p>
 <p>You may use almost the same way but with byte read channel allocator:</p>
-<pre><code class="language-kotlin">val bot: TelegramBot;
-val fileId: FileId;
-
-val pathedFile: PathedFile = bot.execute(GetFile(fileId))
-
-val channelAllocator: ByteReadChannelAllocator = bot.execute(DownloadFileStream(pathedFile.filePath))
-
-val byteReadChannel: ByteReadChannel = channelAllocator()
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">bot</span><span class="p">:</span><span class="w"> </span><span class="n">TelegramBot</span><span class="p">;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">fileId</span><span class="p">:</span><span class="w"> </span><span class="n">FileId</span><span class="p">;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kd">val</span><span class="w"> </span><span class="nv">pathedFile</span><span class="p">:</span><span class="w"> </span><span class="n">PathedFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bot</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">GetFile</span><span class="p">(</span><span class="n">fileId</span><span class="p">))</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="kd">val</span><span class="w"> </span><span class="nv">channelAllocator</span><span class="p">:</span><span class="w"> </span><span class="n">ByteReadChannelAllocator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bot</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">DownloadFileStream</span><span class="p">(</span><span class="n">pathedFile</span><span class="p">.</span><span class="na">filePath</span><span class="p">))</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="kd">val</span><span class="w"> </span><span class="nv">byteReadChannel</span><span class="p">:</span><span class="w"> </span><span class="n">ByteReadChannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">channelAllocator</span><span class="p">()</span>
+</span></code></pre></div>
 <p>And then you may look into <a href="https://api.ktor.io/ktor-io/io.ktor.utils.io/-byte-read-channel/index.html">ByteReadChannel</a> docs to get more info about what you can do with that.</p>
 <div class="admonition note">
 <p class="admonition-title">Several useful links</p>
@@ -1283,10 +1283,10 @@ Sending via file is accessible from all supported platforms, but there is small 
 <li>Via <a href="https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.requests.abstracts/as-multipart-file.html">asMultiparFile</a> extension applicable to any <code>ByteArray</code>, <code>ByteReadChannel</code>, <code>ByteReadChannelAllocator</code> or <code>File</code> (on any platform)</li>
 </ul>
 <p>In most cases, sending via files looks like in the next snippet:</p>
-<pre><code class="language-kotlin">val file: File;
-
-bot.sendDocument(chatId, file.asMultipartFile())
-</code></pre>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">file</span><span class="p">:</span><span class="w"> </span><span class="n">File</span><span class="p">;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">bot</span><span class="p">.</span><span class="na">sendDocument</span><span class="p">(</span><span class="n">chatId</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">asMultipartFile</span><span class="p">())</span>
+</span></code></pre></div>
 
 
 
