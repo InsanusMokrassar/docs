@@ -9,6 +9,7 @@ repo_url: https://github.com/InsanusMokrassar/docs
 nav:
     - Home: 'index.md'
     - 'Telegram Bot API':
+        - 'tgbotapi/index.md'
         - Introduction:
             - 'tgbotapi/introduction/before-any-bot-project.md'
             - 'tgbotapi/introduction/including-in-your-project.md'
@@ -106,7 +107,7 @@ plugins:
     - search
     - autorefs
     - include_dir_to_nav
-    
+
 # Customization
 extra:
     analytics:
