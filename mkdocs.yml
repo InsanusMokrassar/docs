@@ -23,6 +23,7 @@ nav:
         - Logic handling: 'tgbotapi/logic/'
         - DSLs: 'tgbotapi/dsls/'
     - 'Krontab':
+        - 'krontab/index.md'
         - Introduction:
             - 'krontab/introduction/including-in-project.md'
             - 'krontab/introduction/how-to-use.md'
