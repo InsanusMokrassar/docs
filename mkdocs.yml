@@ -29,6 +29,10 @@ nav:
         - Describing:
             - 'krontab/describing/string-format.md'
             - 'krontab/describing/krontabscheduler.md'
+    - 'KSLog':
+        - 'kslog/index.md'
+        - 'kslog/setup.md'
+        - 'kslog/logging.md'
 
 use_directory_urls: false
 
