@@ -71,6 +71,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.inmo.dev/tgbotapi/guides/keyboards.html</loc>
+         <lastmod>2023-06-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.inmo.dev/tgbotapi/introduction/before-any-bot-project.html</loc>
          <lastmod>2023-06-11</lastmod>
          <changefreq>daily</changefreq>
