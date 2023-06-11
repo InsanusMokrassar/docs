@@ -10,6 +10,9 @@ The first thing you need to know is that there are two types of keyboards availa
 
 ![Keyboards comparison](keyboards/001.png "Keyboards comparison")
 
+> NOTE: **Resize option**
+> In the screenshots above (and in the most others) you may see usage of reply keyboards without `resize_keyboard`. In case you will use `resize_keyboard = true` the keyboard will be smaller.
+
 Note the differences in the way these keyboards are shown to a user.
 
 A reply keyboard is shown under the message input field.
@@ -27,9 +30,9 @@ It will stay highlighted until the bot acks the callback.
 
 ![Simple keyboard interactions](keyboards/002.png "Simple keyboard interactions")
 
-NOTE: It's a common mistake to forget to handle callback queries.
-It leads to the buttons being highlighted for long periods of time, which leads to a bad user experience.
-Don't forget to handle these callbacks!
+> NOTE: **It's a common mistake to forget to handle callback queries**
+> It leads to the buttons being highlighted for long periods of time, which leads to a bad user experience.
+> Don't forget to handle these callbacks!
 
 As new messages arrive, a reply keyboard will stay there, while the inline keyboard will stick to the message and move with it.
 
@@ -41,9 +44,10 @@ The reply keyboard is now far away from the message it was sent with.
 Actually, they are two different unrelated entities now: the original message and the reply keyboard.
 A reply keyboard persists until you explicitly [remove](https://core.telegram.org/bots/api#replykeyboardremove) it or replace it with a different one.
 
-NOTE: It's a common mistake to forget to remove or replace reply keyboards.
-It leads to the keyboards being shown forever.
-Don't forget to remove reply keyboards when you don't need them anymore!
+> NOTE: **It's a common mistake to forget to remove or replace reply keyboards**
+> It leads to the keyboards being shown forever. Don't forget to remove reply keyboards when you don't need them anymore!
+>
+> You also may use option `one_time_keyboard` and the keyboard will be automatically removed after user interaction
 
 An inline keyboard could also be removed or changed by editing the original message it was attached to.
 
@@ -72,7 +76,7 @@ More specifically, this parameter is available:
 * in the `editMessageXXX` methods, like [`editMessageText`](https://core.telegram.org/bots/api#editmessagetext), [`editMessageCaption`](https://core.telegram.org/bots/api#editmessagecaption), [`editMessageReplyMarkup`](https://core.telegram.org/bots/api#editmessagereplymarkup), etc.
 This also includes `stopXXX` methods like the [`stopMessageLiveLocation`](https://core.telegram.org/bots/api#stopmessagelivelocation) method.
 
-TIP: `editMessageReplyMarkup` is specifically designed to edit a message's inline keyboard.
+> TIP: `editMessageReplyMarkup` is specifically designed to edit a message's inline keyboard.
 
 Sending inline keyboards is also supported in inline mode through the `reply_markup` parameter of the [`InlineQueryResult`](https://core.telegram.org/bots/api#inlinequeryresult) type and its inheritors.
 However, this [inline mode](https://core.telegram.org/bots/inline) is unrelated to the inline keyboards.
@@ -85,9 +89,11 @@ It is not a keyboard either, but yet another dirty hack employed by the Telegram
 
 ![A force reply](keyboards/005.png "A force reply")
 
-Now, in the library, the [`WithReplyMarkup`](https://tgbotapi.inmo.dev/tgbotapi.core/dev.inmo.tgbotapi.abstracts.types/-with-reply-markup/index.html) is a [marker interface](https://en.wikipedia.org/wiki/Marker_interface_pattern) for all the interactions which could have a `reply_markup` parameter.
+Now, in the library, the [`WithReplyMarkup`](https://tgbotapi.inmo.dev/tgbotapi.core/dev.inmo.tgbotapi.abstracts.types/-with-reply-markup/index.html) is a [marker interface](https://en.wikipedia.org/wiki/Marker_interface_pattern) for all the interactions which could have a `replyMarkup` (represents `reply_markup`) parameter.
 It is extended by the [`ReplyingMarkupSendMessageRequest`](https://tgbotapi.inmo.dev/tgbotapi.core/dev.inmo.tgbotapi.requests.send.abstracts/-replying-markup-send-message-request/index.html), and then, finally, by classes like [`SendTextMessage`](https://tgbotapi.inmo.dev/tgbotapi.core/dev.inmo.tgbotapi.requests.send/-send-text-message/index.html).
 This, basically, corresponds to the Telegram Bot API.
+
+> NOTE: You may see all the inheritors of `WithReplyMarkup` interfaces in the corresponding [KDoc](https://tgbotapi.inmo.dev/tgbotapi.core/dev.inmo.tgbotapi.abstracts.types/-with-reply-markup/index.html)
 
 The other way to send a keyboard is through the `replyMarkup` parameter of the numerous extension methods, like [`sendMessage`](https://tgbotapi.inmo.dev/tgbotapi.api/dev.inmo.tgbotapi.extensions.api.send/send-message.html).
 Those are just convenient wrappers around general interaction classes, like the aforementioned `SendTextMessage`.
@@ -155,7 +161,7 @@ bot.sendMessage(
 )
 ```
 
-NOTE: Don't forget to remove the reply keyboards!
+> NOTE: Don't forget to remove the reply keyboards!
 
 ### Matrices
 
@@ -215,10 +221,9 @@ bot.sendMessage(
     )
 )
 ```
-NOTE: Those plus signs are mandatory.
+> NOTE: Those plus signs are mandatory.
 
-NOTE: There are two different `row` functions here.
-Can you spot the difference?
+> NOTE: There are two different `row` functions here. Can you spot the difference?
 
 A single-row matrix can be built with a [`flatMatrix`](https://tgbotapi.inmo.dev/tgbotapi.core/dev.inmo.tgbotapi.utils/flat-matrix.html):
 
@@ -235,6 +240,8 @@ flatMatrix {
 But the most convenient way to build a simple keyboard is to use the constructor-like methods: [`InlineKeyboardMarkup`](https://tgbotapi.inmo.dev/tgbotapi.utils/dev.inmo.tgbotapi.extensions.utils.types.buttons/-inline-keyboard-markup.html) and [`ReplyKeyboardMarkup`](https://tgbotapi.inmo.dev/tgbotapi.utils/dev.inmo.tgbotapi.extensions.utils.types.buttons/-reply-keyboard-markup.html).
 Note, that they are named just like the corresponding constructor, but take a vararg of buttons.
 They create flat matrices, i.e. single rows.
+
+### Keyboards DSL
 
 Finally, there are [`inlineKeyboard`](https://tgbotapi.inmo.dev/tgbotapi.utils/dev.inmo.tgbotapi.extensions.utils.types.buttons/inline-keyboard.html) and [`replyKeyboard`](https://tgbotapi.inmo.dev/tgbotapi.utils/dev.inmo.tgbotapi.extensions.utils.types.buttons/reply-keyboard.html)
 
@@ -326,7 +333,9 @@ bot.buildBehaviourWithLongPolling {
 }.join()
 ```
 
-It's big, I know, and I won't explain the `buildBehaviourWithLongPolling` DSL here, but I hope you get the idea: the bot acts like a cop and asks the user to rat out his friends via a reply keyboard (it's an imaginary situation, of course).
+> NOTE: Read more about `buildBehaviourWithLongPolling` [here](../logic/behaviour-builder.md)
+
+I hope you get the idea: the bot acts like a cop and asks the user to rat out his friends via a reply keyboard (it's an imaginary situation, of course).
 The user may refuse to cooperate, rat out a single friend or the whole imaginary group.
 The bot receives the user's choices as regular updates, the code above has explicit types (generally optional in Kotlin) and an assert to demonstrate this.
 
