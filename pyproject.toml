@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "docs"
+version = "1.0.0"
+description = "Documentation for InsanusMokrassar's projects"
+authors = ["InsanusMokrassar"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+mkdocs = "^1.4.3"
+markdown-callouts = "^0.3.0"
+mkdocs-autorefs = "^0.4.1"
+mkdocs-include-dir-to-nav = "^1.2.0"
+mkdocs-material = "^9.1.15"
+pymdown-extensions = "^10.0.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
