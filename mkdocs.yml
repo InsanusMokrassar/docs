@@ -15,6 +15,8 @@ nav:
             - 'tgbotapi/introduction/including-in-your-project.md'
             - 'tgbotapi/introduction/proxy-setup.md'
             - 'tgbotapi/introduction/first-bot.md'
+        - Guides:
+            - 'tgbotapi/guides/keyboards.md'
         - Updates retrieving:
             - 'tgbotapi/updates/updates-filters.md'
             - 'tgbotapi/updates/long-polling.md'
