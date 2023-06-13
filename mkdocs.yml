@@ -10,6 +10,7 @@ nav:
     - Home: 'index.md'
     - 'Telegram Bot API':
         - 'tgbotapi/index.md'
+        - KDocs: 'https://tgbotapi.inmo.dev'
         - Introduction:
             - 'tgbotapi/introduction/before-any-bot-project.md'
             - 'tgbotapi/introduction/including-in-your-project.md'
@@ -26,6 +27,7 @@ nav:
         - DSLs: 'tgbotapi/dsls/'
     - 'Krontab':
         - 'krontab/index.md'
+        - KDocs: 'https://krontab.inmo.dev/'
         - Introduction:
             - 'krontab/introduction/including-in-project.md'
             - 'krontab/introduction/how-to-use.md'
@@ -35,6 +37,7 @@ nav:
             - 'krontab/describing/krontabscheduler.md'
     - 'KSLog':
         - 'kslog/index.md'
+        - KDocs: 'https://kslog.inmo.dev/'
         - 'kslog/setup.md'
         - 'kslog/logging.md'
 
