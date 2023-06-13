@@ -5,7 +5,7 @@ description = "Documentation for InsanusMokrassar's projects"
 authors = ["InsanusMokrassar"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "3.8.10"
 mkdocs = "^1.4.3"
 markdown-callouts = "^0.3.0"
 mkdocs-autorefs = "^0.4.1"
