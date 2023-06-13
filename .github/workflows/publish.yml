@@ -21,6 +21,9 @@ jobs:
         with:
           poetry-version: '1.5.1'
 
+      - name: Install Poetry dependencies
+        run: poetry install
+
       - name: Build
         run: poetry run mkdocs build
 
