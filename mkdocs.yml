@@ -45,6 +45,8 @@ use_directory_urls: false
 
 theme:
     name: material
+    logo: resources/images/logo.png
+    favicon: resources/images/favicon.png
     palette:
         - scheme: default
           primary: teal
