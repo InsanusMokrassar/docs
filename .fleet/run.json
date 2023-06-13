@@ -3,15 +3,14 @@
         {
             "type": "command",
             "name": "Rebuild",
-            "program": "mkdocs",
-            "args": ["build"],
+            "program": "poetry",
+            "args": ["run", "mkdocs", "build"],
         },
         {
             "type": "command",
             "name": "Serve",
-            "program": "mkdocs",
-            "args": ["serve"],
+            "program": "poetry",
+            "args": ["run", "mkdocs", "serve"],
         },
-        
     ]
 }

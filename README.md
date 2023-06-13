@@ -1,25 +1,20 @@
 # docs
 
-It is documentation repository for the projects of [InsanusMokrassar](https://github.com/InsanusMokrassar). In case you wish to interact with that lib localy, you will need to install dependnecies and mkdocs:
+It is a documentation repository for the projects of [InsanusMokrassar](https://github.com/InsanusMokrassar).
+
+## Running locally
+
+For the ease of dependencies management, this repository uses [Poetry](https://python-poetry.org), a Python project & dependencies manager.
+In case you wish to interact with these docs locally, make sure to [install](https://python-poetry.org/docs/#installation) it first.
+
+In `Fleet` you may use [these configs](https://github.com/InsanusMokrassar/docs/blob/master/.fleet/run.json) to work with the repo.
+
+To build or run it in vanilla terminal, use the following commands:
 
 ```bash
-pip install mkdocs markdown-callouts mkdocs-autorefs mkdocs-include-dir-to-nav mkdocs-material pymdown-extensions
+poetry run mkdocs build # Just build the site
 ```
-
-**The snippet above can be outdated. See [publish workflow](https://github.com/InsanusMokrassar/docs/blob/master/.github/workflows/publish.yml) to be sure about building steps**
-
-## Running and build
-
-In `Fleet` you may use [these configs](https://github.com/InsanusMokrassar/docs/blob/master/.fleet/run.json). Localy there are several common options for build:
 
 ```bash
-mkdocs build
+poetry run mkdocs serve # Run a local server with the site
 ```
-
-^ Will build mkdocs
-
-```bash
-mkdocs serve
-```
-
-^ Will continuously build __until first failure in build__
