@@ -16,13 +16,13 @@ jobs:
         with:
           python-version: '3.8'
 
-      - name: Install Poetry
+      - name: Setup Poetry
         uses: abatilo/actions-poetry@v2
         with:
           poetry-version: '1.5.1'
 
       - name: Install Poetry dependencies
-        run: poetry install
+        run: poetry install --no-root
 
       - name: Build
         run: poetry run mkdocs build
