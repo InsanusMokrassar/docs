@@ -3,13 +3,14 @@
 ## How to filter updates in some part of `BehaviourBuilder`?
 
 You may create subcontext with
-`BehaviourBuilder.`[`createSubContext`](https://tgbotapi.inmo.dev/tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/create-sub-context.html)
+`BehaviourBuilder.`[`createSubContextAndDoWithUpdatesFilter`](https://tgbotapi.inmo.dev/tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/create-sub-context-and-do-with-updates-filter.html)
 and pass there `updatesUpstreamFlow` parameter with any operations over parent behaviour builder:
 
 ```kotlin
 buildBehaviourWithLongPolling {
-    createSubContext(
-        updatesUpstreamFlow = filter { /* some condition */ }
+    createSubContextAndDoWithUpdatesFilter(
+        updatesUpstreamFlow = filter { /* some condition */ },
+        stopOnCompletion = false // disable stopping of sub context after setup
     ) {
         onCommand() //...
     }
