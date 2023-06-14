@@ -56,6 +56,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.inmo.dev/tgbotapi/faq.html</loc>
+         <lastmod>2023-06-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.inmo.dev/tgbotapi/dsls/keyboards.html</loc>
          <lastmod>2023-06-14</lastmod>
          <changefreq>daily</changefreq>
@@ -67,11 +72,6 @@
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/dsls/text.html</loc>
-         <lastmod>2023-06-14</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://docs.inmo.dev/tgbotapi/guides/faq.html</loc>
          <lastmod>2023-06-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
