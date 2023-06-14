@@ -18,6 +18,7 @@ nav:
             - 'tgbotapi/introduction/first-bot.md'
         - Guides:
             - 'tgbotapi/guides/keyboards.md'
+            - 'tgbotapi/guides/faq.md'
         - Updates retrieving:
             - 'tgbotapi/updates/updates-filters.md'
             - 'tgbotapi/updates/long-polling.md'
