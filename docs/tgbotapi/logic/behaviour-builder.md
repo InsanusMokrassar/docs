@@ -6,9 +6,9 @@ In the previous pages about [updates handling](https://bookstack.inmo.dev/books/
 
 There are several things you should know for better understanding of behaviour builder:
 
-* [BehaviourContext](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/tgbotapi.behaviour_builder/src/commonMain/kotlin/dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext.kt#L33) - it is the thing which contains all necessary tools for working with bots
-* [Triggers](https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling/index.html) - `on*` extensions for `BehaviourContext` which allow you to create reaction on some update
-* [Expectations](https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder.expectations/index.html) (or waiters) - `wait*` extensions which you **may** use in [buildBehaviour](https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder/build-behaviour.html) function, but ***it is recommended*** to use it in bodies of triggers
+* [BehaviourContext](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/tgbotapi.behaviour_builder/src/commonMain/kotlin/dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext.kt#L34) - it is the thing which contains all necessary tools for working with bots
+* [Triggers](https://tgbotapi.inmo.dev/tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling/index.html) - `on*` extensions for `BehaviourContext` which allow you to create reaction on some update
+* [Expectations](https://tgbotapi.inmo.dev/tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder.expectations/index.html) (or waiters) - `wait*` extensions which you **may** use in [buildBehaviour](https://tgbotapi.inmo.dev/docs/dev.inmo.tgbotapi.extensions.behaviour_builder/build-behaviour.html) function, but ***it is recommended*** to use it in bodies of triggers
 
 ## Initialization
 
