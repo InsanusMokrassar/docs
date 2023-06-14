@@ -11,6 +11,7 @@ nav:
     - 'Telegram Bot API':
         - 'tgbotapi/index.md'
         - KDocs: 'https://tgbotapi.inmo.dev'
+        - 'tgbotapi/faq.md'
         - Introduction:
             - 'tgbotapi/introduction/before-any-bot-project.md'
             - 'tgbotapi/introduction/including-in-your-project.md'
@@ -18,7 +19,6 @@ nav:
             - 'tgbotapi/introduction/first-bot.md'
         - Guides:
             - 'tgbotapi/guides/keyboards.md'
-            - 'tgbotapi/guides/faq.md'
         - Updates retrieving:
             - 'tgbotapi/updates/updates-filters.md'
             - 'tgbotapi/updates/long-polling.md'

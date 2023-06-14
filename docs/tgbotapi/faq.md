@@ -20,7 +20,7 @@ buildBehaviourWithLongPolling {
 ### Additional info
 
 * [Flows docs](https://kotlinlang.org/docs/flow.html#intermediate-flow-operators)
-* [BehaviourBuilder](../logic/behaviour-builder.md)
+* [BehaviourBuilder](logic/behaviour-builder.md)
 
 ### Cases
 
