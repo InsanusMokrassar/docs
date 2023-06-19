@@ -5,14 +5,14 @@
 
 As has been said in the [setup](setup.md) section, this library contains next levels of logging with their default representations on each platform:
 
-| Weight (by order) | LogLevel name | JS | JVM Loggers | Android |
-| -: | :- | :- | :- | :- |
-| 0 | DEBUG   | console.log | Level.FINEST | Log.d |
-| 1 | VERBOSE | console.info | Level.FINE | Log.v |
-| 2 | INFO    | console.info | Level.INFO | Log.i |
-| 3 | WARNING | console.warn | Level.WARNING | Log.w |
-| 4 | ERROR   | console.error | Level.SEVERE | Log.e |
-| 5 | ASSERT  | console.error | Level.SEVERE | Log.wtf |
+| Weight (by order) | LogLevel name |      JS       |  JVM Loggers  | Android |
+| -: |:-------------:|:-------------:|:-------------:|:-------:|
+| 0 |     DEBUG     |  console.log  | Level.FINEST  |  Log.d  |
+| 1 |    VERBOSE    | console.info  |  Level.FINE   |  Log.v  |
+| 2 |     INFO      | console.info  |  Level.INFO   |  Log.i  |
+| 3 |    WARNING    | console.warn  | Level.WARNING |  Log.w  |
+| 4 |     ERROR     | console.error | Level.SEVERE  |  Log.e  |
+| 5 |    ASSERT     | console.error | Level.SEVERE  | Log.wtf |
 
 Each of these levels have fullname and shortname shortcat extensions:
 
