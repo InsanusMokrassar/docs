@@ -51,6 +51,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.inmo.dev/micro_utils/index.html</loc>
+         <lastmod>2023-06-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.inmo.dev/tgbotapi/index.html</loc>
          <lastmod>2023-06-19</lastmod>
          <changefreq>daily</changefreq>
