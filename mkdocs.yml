@@ -8,6 +8,8 @@ repo_url: https://github.com/InsanusMokrassar/docs
 
 nav:
     - Home: 'index.md'
+    - 'MicroUtils':
+          - 'micro_utils/index.md'
     - 'Telegram Bot API':
         - 'tgbotapi/index.md'
         - KDocs: 'https://tgbotapi.inmo.dev'
