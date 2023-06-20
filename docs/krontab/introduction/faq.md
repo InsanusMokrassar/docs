@@ -2,7 +2,7 @@
 
 #### How oftern new versions are releasing?
 
-Not very often. It depend on libraries (coroutines, korlibs/klock) updates and on some new awesome, but lightweight, features coming.
+Not very often. It depends on libraries (coroutines, korlibs/klock) updates and on some new awesome, but lightweight, features coming.
 
 #### Where this library could be useful?
 

@@ -7,7 +7,8 @@
 ## `buildSchedule`
 
 > NOTE: **Custom KronScheduler**
-> You always able to create your own scheduler. In this section will be presented different ways and examples around standard `CronDateTimeScheduler` builders `buildSchedule`. You can read about schedulers in [KrontabScheduler](../describing/krontabscheduler.md)
+> 
+> You are always may create your own scheduler. In this section will be presented different ways and examples around standard `CronDateTimeScheduler` builders `buildSchedule`. You can read about schedulers in [KrontabScheduler](../describing/krontabscheduler.md)
 
 Currently, `buildSchedule` is the recommended start point for every scheduler. Usually, it is look like:
 
@@ -45,12 +46,13 @@ Shortcuts are the constants that are initializing in a lazy way to provide prese
 
 * `AnyTimeScheduler` - will always return incoming `DateTime` as next
 * `Every*Scheduler` - return near * since the passed `relatively`:
-  * `EverySecondScheduler`
-  * `EveryMinuteScheduler`
-  * `EveryHourScheduler`
-  * `EveryDayOfMonthScheduler`
-  * `EveryMonthScheduler`
-  * `EveryYearScheduler`
+  * `EverySecondScheduler` / `KronScheduler.everyMillisecond`
+  * `EverySecondScheduler` / `KronScheduler.everySecond`
+  * `EveryMinuteScheduler` / `KronScheduler.everyMinute`
+  * `EveryHourScheduler` / `KronScheduler.hourly`
+  * `EveryDayOfMonthScheduler` / `KronScheduler.daily`
+  * `EveryMonthScheduler` / `KronScheduler.monthly`
+  * `EveryYearScheduler` / `KronScheduler.annually`
 
 ### Flows
 
