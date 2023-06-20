@@ -1527,8 +1527,7 @@
 <h2 id="buildschedule"><code>buildSchedule</code><a class="headerlink" href="#buildschedule" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Custom KronScheduler</p>
-<p>
-You always able to create your own scheduler. In this section will be presented different ways and examples around standard <code>CronDateTimeScheduler</code> builders <code>buildSchedule</code>. You can read about schedulers in <a href="../describing/krontabscheduler.html">KrontabScheduler</a></p>
+<p>You are always may create your own scheduler. In this section will be presented different ways and examples around standard <code>CronDateTimeScheduler</code> builders <code>buildSchedule</code>. You can read about schedulers in <a href="../describing/krontabscheduler.html">KrontabScheduler</a></p>
 </div>
 <p>Currently, <code>buildSchedule</code> is the recommended start point for every scheduler. Usually, it is look like:</p>
 <div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">scheduler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buildSchedule</span><span class="p">(</span><span class="s">&quot;5 * * * *&quot;</span><span class="p">)</span>
@@ -1558,12 +1557,13 @@ You always able to create your own scheduler. In this section will be presented 
 <ul>
 <li><code>AnyTimeScheduler</code> - will always return incoming <code>DateTime</code> as next</li>
 <li><code>Every*Scheduler</code> - return near * since the passed <code>relatively</code>:</li>
-<li><code>EverySecondScheduler</code></li>
-<li><code>EveryMinuteScheduler</code></li>
-<li><code>EveryHourScheduler</code></li>
-<li><code>EveryDayOfMonthScheduler</code></li>
-<li><code>EveryMonthScheduler</code></li>
-<li><code>EveryYearScheduler</code></li>
+<li><code>EverySecondScheduler</code> / <code>KronScheduler.everyMillisecond</code></li>
+<li><code>EverySecondScheduler</code> / <code>KronScheduler.everySecond</code></li>
+<li><code>EveryMinuteScheduler</code> / <code>KronScheduler.everyMinute</code></li>
+<li><code>EveryHourScheduler</code> / <code>KronScheduler.hourly</code></li>
+<li><code>EveryDayOfMonthScheduler</code> / <code>KronScheduler.daily</code></li>
+<li><code>EveryMonthScheduler</code> / <code>KronScheduler.monthly</code></li>
+<li><code>EveryYearScheduler</code> / <code>KronScheduler.annually</code></li>
 </ul>
 <h3 id="flows">Flows<a class="headerlink" href="#flows" title="Permanent link">&para;</a></h3>
 <p>Here currently there is only one extension for <code>KronScheduler</code>: <code>KronScheduler#asFlow</code>. As a result you will get <code>Flow&lt;DateTime&gt;</code> (in fact <code>SchedulerFlow</code>) which will trigger next <code>emit</code> on each not null <code>next</code> <code>DateTime</code></p>
