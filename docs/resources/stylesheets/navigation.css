@@ -1,0 +1,13 @@
+.navigation-part > rect {
+    stroke: black !important;
+}
+
+.navigation-paused > rect {
+    fill: #FFFF00AA !important;
+    color: black !important;
+}
+
+.navigation-resumed > rect {
+    fill: #00FF0022 !important;
+    color: white !important;
+}
