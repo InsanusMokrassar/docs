@@ -114,12 +114,16 @@ markdown_extensions:
         custom_fences:
           - name: mermaid
             class: mermaid
-            format: !!python/name:pymdownx.superfences.fence_code_format
+            format: !!python/name:mermaid2.fence_mermaid
 
 plugins:
     - search
     - autorefs
     - include_dir_to_nav
+    - mermaid2:
+        arguments:
+          theme: |
+            ^(JSON.parse(__md_get("__palette").index == 1)) ? 'dark' : 'light'
 
 # Customization
 extra:
@@ -139,4 +143,7 @@ extra:
 #        json: [.s2]
 extra_css:
     - resources/stylesheets/navigation.css
+extra_javascript:
+    - https://unpkg.com/mermaid/dist/mermaid.min.js
+    - resources/js/mermaid_dark_light_switcher.js
 

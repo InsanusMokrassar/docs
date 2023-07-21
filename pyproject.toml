@@ -12,6 +12,7 @@ mkdocs-autorefs = "^0.4.1"
 mkdocs-include-dir-to-nav = "^1.2.0"
 mkdocs-material = "^9.1.15"
 pymdown-extensions = "^10.0.1"
+mkdocs-mermaid2-plugin = "^1.0.1"
 
 [tool.poetry.dev-dependencies]
 
