@@ -3,11 +3,9 @@
 }
 
 .navigation-paused > rect {
-    fill: #b2b200 !important;
-    color: white !important;
+    fill: #9d9d54 !important;
 }
 
 .navigation-resumed > rect {
     fill: seagreen !important;
-    color: white !important;
 }
