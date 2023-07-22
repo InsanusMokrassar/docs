@@ -115,6 +115,8 @@ markdown_extensions:
           - name: mermaid
             class: mermaid
             format: !!python/name:mermaid2.fence_mermaid
+    - admonition
+    - pymdownx.details
 
 plugins:
     - search
@@ -144,6 +146,6 @@ extra:
 extra_css:
     - resources/stylesheets/navigation.css
 extra_javascript:
-    - https://unpkg.com/mermaid/dist/mermaid.min.js
+    - resources/js/mermaid.min.js
     - resources/js/mermaid_dark_light_switcher.js
 
