@@ -1,11 +1,19 @@
-.navigation-part > rect {
-    stroke: black !important;
-}
-
-.navigation-paused > rect {
+.navigation-started > rect {
     fill: #9d9d54 !important;
+    stroke: black !important;
 }
 
 .navigation-resumed > rect {
     fill: seagreen !important;
+    stroke: black !important;
+}
+
+.navigation-created > rect {
+    fill: indianred !important;
+    stroke: black !important;
+}
+
+.navigation-new > rect {
+    fill: darkgray !important;
+    stroke: black !important;
 }

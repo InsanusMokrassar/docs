@@ -538,9 +538,28 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#nodes-tree">
-    Nodes tree
+<a class="md-nav__link" href="#work-explanation">
+    Work explanation
   </a>
+<nav aria-label="Work explanation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nodes-behaviour">
+    Nodes behaviour
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#chains-behaviour">
+    Chains behaviour
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#large-tree-sample">
+    Large tree sample
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -562,59 +581,307 @@ important terms:</p>
 <li><code>Node</code> - is a core thing. Node itself contains current config and its state</li>
 <li><code>Chain</code> - some sequence of nodes. In one chain <strong>only the last one</strong> node can be active</li>
 </ul>
-<h2 id="nodes-tree">Nodes tree<a class="headerlink" href="#nodes-tree" title="Permanent link">¶</a></h2>
+<h2 id="work-explanation">Work explanation<a class="headerlink" href="#work-explanation" title="Permanent link">¶</a></h2>
+<ul>
+<li>Only the last (most deep) <code>node</code> can be <code>RESUMED</code></li>
+<li>All the <code>chain</code>s of resumed <code>node</code> will have status <code>RESUMED</code></li>
+<li>Only in the <code>chain</code> with status <code>RESUMED</code> there are <code>RESUMED</code> nodes</li>
+</ul>
+<details class="info statuses">
+<summary>Info</summary>
+<p>There are 3 statuses:</p>
+<ul>
+<li>New - Means that Node/Chain is just created (even before constructor) or has been fully destroyed (in context of navigation)</li>
+<li>Created - Means that Node/Chain is created or preparing for destroing</li>
+<li>Started - Means that Node/Chain is hidden and can be resumed/stopped at any time</li>
+<li>Resumed - Means that Node/Chain now active</li>
+</ul>
+<p>In fact node will retrieve 6 changes of statuses:</p>
+<div class="mermaid">flowchart TB
+    New -.-&gt; Create
+    Create -.-&gt; Created
+    Created -.-&gt; Start -.-&gt; Started
+    Started --&gt; Resume --&gt; Resumed
+    Resumed --&gt; Pause --&gt; Started
+    Started --&gt; Stop --&gt; Created
+    Created --&gt; Destroy
+    Destroy --&gt; New
+
+    DashedLineLegendTitle(Dashed line) -.-&gt; DashedLineLegend(Possible direction before `Created` state)
+    SolidLineLegendTitle(Solid line) --&gt; SolidLineLegend(Possible direction after `Created` state)
+
+    class New navigation-new;
+    class Destroyed navigation-new;
+    class Created navigation-created;
+    class Started navigation-started;
+    class Resumed navigation-resumed;
+</div>
+</details>
+<hr/>
+<h3 id="nodes-behaviour">Nodes behaviour<a class="headerlink" href="#nodes-behaviour" title="Permanent link">¶</a></h3>
 <p>Let’s see the next sample:</p>
+<div class="mermaid">flowchart LR
+    subgraph Nodes/Chains tree
+        NodeN1(N1)
+        NodeN2(N2)
+
+        class NodeN1 navigation-started;
+        class NodeN2 navigation-resumed;
+
+        subgraph RootChain
+            direction LR
+            NodeN1 --&gt; NodeN2
+        end
+
+        class RootChain navigation-resumed;
+    end
+</div>
+<p>we may say several things about the sample above:</p>
+<ul>
+<li>N2 is the latest node and it is <code>RESUMED</code></li>
+<li>N1 <code>PAUSED</code></li>
+<li>RootChain is <code>RESUMED</code></li>
+</ul>
+<p>So, we would like to add new node in the end of stack:</p>
+<div class="mermaid">flowchart LR
+    subgraph Nodes/Chains tree
+        NodeN1(N1)
+        NodeN2(N2)
+        NodeN3(N3)
+
+        class NodeN1 navigation-started;
+        class NodeN2 navigation-started;
+        class NodeN3 navigation-resumed;
+
+        subgraph RootChain
+            direction LR
+            NodeN1 --&gt; NodeN2
+            NodeN2 --&gt; NodeN3
+        end
+
+        class RootChain navigation-resumed;
+    end
+</div>
+<p>As we can see, N3 became <code>RESUMED</code> and N2 <code>PAUSED</code>. Let’s try to remove N3:</p>
+<div class="mermaid">flowchart LR
+    subgraph Nodes/Chains tree
+        NodeN1(N1)
+        NodeN2(N2)
+
+        class NodeN1 navigation-started;
+        class NodeN2 navigation-resumed;
+
+        subgraph RootChain
+            direction LR
+            NodeN1 --&gt; NodeN2
+        end
+
+        class RootChain navigation-resumed;
+    end
+</div>
+<h3 id="chains-behaviour">Chains behaviour<a class="headerlink" href="#chains-behaviour" title="Permanent link">¶</a></h3>
+<p>So, let’s continue with the sample above. Let’s imagine, we need to add new subchain for N2 node.
+Whole tree will look like:</p>
+<div class="mermaid">flowchart LR
+    subgraph Nodes/Chains tree
+        direction LR
+
+        NodeN1(N1)
+        NodeN2(N2)
+        NodeN3(N3)
+
+        class NodeN1 navigation-started;
+        class NodeN2 navigation-resumed;
+        class NodeN3 navigation-resumed;
+
+        subgraph RootChain
+            direction LR
+            NodeN1 --&gt; NodeN2
+            NodeN2
+        end
+
+        NodeN2 --&gt; N2Subchain
+
+        subgraph N2Subchain
+            direction LR
+            NodeN3
+        end
+
+        class RootChain navigation-resumed;
+        class N2Subchain navigation-resumed;
+    end
+</div>
+<p>Here has been created new N2Subchain with N3 node. Both them resumed because of:</p>
+<ul>
+<li>N2 is resumed. So, N2Subchain supposed to be resumed</li>
+<li>Due to N2Subhain is resumed and N3 is the latest node, it will be resumed too</li>
+</ul>
+<p>We may add new subchain to N1:</p>
+<div class="mermaid">flowchart LR
+    subgraph Nodes/Chains tree
+        direction LR
+        NodeN1(N1)
+        NodeN2(N2)
+        NodeN3(N3)
+        NodeN4(N4)
+
+        class NodeN1 navigation-started;
+        class NodeN2 navigation-resumed;
+        class NodeN3 navigation-resumed;
+        class NodeN4 navigation-started;
+
+        subgraph RootChain
+            direction LR
+            NodeN1 --&gt; NodeN2
+            NodeN2
+        end
+
+        NodeN1 --&gt; N1Subchain
+        NodeN2 --&gt; N2Subchain
+
+        subgraph N1Subchain
+            direction LR
+            NodeN4
+        end
+
+        subgraph N2Subchain
+            direction LR
+            NodeN3
+        end
+
+        class RootChain navigation-resumed;
+
+        class N1Subchain navigation-started;
+        class N2Subchain navigation-resumed;
+    end
+</div>
+<p>So, it has been added, but:</p>
+<ul>
+<li>Due to N1 paused state, N1Subchain have inherited it</li>
+<li>Due to N1Subhain is paused, all its nodes paused too</li>
+</ul>
+<p>And now we may remove N2 node. This action will trigger next changes:</p>
+<div class="mermaid">flowchart LR
+    subgraph Changes
+        subgraph OldNodesChainsTree [Old Nodes/Chains tree]
+            direction TB
+            OldNodeN1(N1)
+            OldNodeN2(N2)
+            OldNodeN3(N3)
+            OldNodeN4(N4)
+
+            class OldNodeN1 navigation-started;
+            class OldNodeN2 navigation-created;
+            class OldNodeN3 navigation-created;
+            class OldNodeN4 navigation-started;
+
+            subgraph OldRootChain [RootChain]
+                direction TB
+                OldNodeN1 --&gt; OldNodeN2
+                OldNodeN2
+            end
+
+            OldNodeN1 --&gt; OldN1Subchain
+            OldNodeN2 --&gt; OldN2Subchain
+
+            subgraph OldN1Subchain [N1Subchain]
+                direction TB
+                OldNodeN4
+            end
+
+            subgraph OldN2Subchain  [N2Subchain]
+                direction TB
+                OldNodeN3
+            end
+
+            class OldRootChain navigation-resumed;
+
+            class OldN1Subchain navigation-started;
+            class OldN2Subchain navigation-created;
+        end
+
+        subgraph NewNodesChainsTree [New Nodes/Chains tree]
+            direction TB
+            NewNodeN1(N1)
+            NewNodeN4(N4)
+
+            class NewNodeN1 navigation-resumed;
+            class NewNodeN4 navigation-resumed;
+
+            subgraph NewRootChain [RootChain]
+                direction TB
+                NewNodeN1
+            end
+
+            NewNodeN1 ---&gt; NewN1Subchain
+
+            subgraph NewN1Subchain [N1Subchain]
+                direction TB
+                NewNodeN4
+            end
+
+            class NewRootChain navigation-resumed;
+
+            class NewN1Subchain navigation-resumed;
+        end
+
+%%        OldNodesChainsTree -.-&gt; NewNodesChainsTree
+        OldNodeN1-.-&gt;|Become resumed| NewNodeN1
+        OldNodeN4-.-&gt;|Become resumed| NewNodeN4
+
+    end
+</div>
+<p>What has happened:</p>
+<ol>
+<li>We solved to remove N2 node. Status is changing to stopped</li>
+<li>N2Subchain must be stopped</li>
+<li>N3 must be stopped as well</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Stopping in context of navigation means destroying</p>
+</div>
+<h3 id="large-tree-sample">Large tree sample<a class="headerlink" href="#large-tree-sample" title="Permanent link">¶</a></h3>
 <div class="mermaid">flowchart TB
 
     NodeN1(N1)
     NodeN2(N2)
     NodeN3(N3)
 
-    class NodeN1 navigation-paused;
-    class NodeN1 navigation-part;
-    class NodeN2 navigation-paused;
-    class NodeN2 navigation-part;
+    class NodeN1 navigation-started;
+    class NodeN2 navigation-started;
     class NodeN3 navigation-resumed;
-    class NodeN3 navigation-part;
 
     subgraph RootChain
         direction TB
-        NodeN1 --&gt; NodeN2
-        NodeN2 --&gt; NodeN3
+        NodeN1--&gt;NodeN2
+        NodeN2--&gt;NodeN3
     end
 
     class RootChain navigation-resumed;
-    class RootChain navigation-part;
 
     NodeN4(N4)
     NodeN5(N5)
     NodeN6(N6)
 
-    class NodeN4 navigation-paused;
-    class NodeN4 navigation-part;
-    class NodeN5 navigation-paused;
-    class NodeN5 navigation-part;
-    class NodeN6 navigation-paused;
-    class NodeN6 navigation-part;
+    class NodeN4 navigation-started;
+    class NodeN5 navigation-started;
+    class NodeN6 navigation-started;
 
     subgraph N2Subchain
         direction TB
-        NodeN4 --&gt; NodeN5
-        NodeN5 --&gt; NodeN6
+        NodeN4--&gt;NodeN5
+        NodeN5--&gt;NodeN6
     end
 
-    class N2Subchain navigation-paused;
-    class N2Subchain navigation-part;
+    class N2Subchain navigation-started;
 
     NodeN2 --&gt; N2Subchain
 
     NodeN7(N7)
     NodeN8(N8)
 
-    class NodeN7 navigation-paused;
-    class NodeN7 navigation-part;
+    class NodeN7 navigation-started;
     class NodeN8 navigation-resumed;
-    class NodeN8 navigation-part;
 
     subgraph N3Subchain
         direction TB
@@ -622,17 +889,14 @@ important terms:</p>
     end
 
     class N3Subchain navigation-resumed;
-    class N3Subchain navigation-part;
 
     NodeN3 --&gt; N3Subchain
 
     NodeN9(N9)
     NodeN10(N10)
 
-    class NodeN9 navigation-paused;
-    class NodeN9 navigation-part;
+    class NodeN9 navigation-started;
     class NodeN10 navigation-resumed;
-    class NodeN10 navigation-part;
 
     subgraph N3Subchain2
         direction TB
@@ -640,11 +904,9 @@ important terms:</p>
     end
 
     class N3Subchain2 navigation-resumed;
-    class N3Subchain2 navigation-part;
 
     NodeN3 --&gt; N3Subchain2
 </div>
-<p>Any hierarchy starts with some root chain.</p>
 </article>
 </div>
 </div>
@@ -702,7 +964,7 @@ important terms:</p>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
-<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+<script src="../resources/js/mermaid.min.js"></script>
 <script src="../resources/js/mermaid_dark_light_switcher.js"></script>
 <script>mermaid.initialize({
     theme: (JSON.parse(__md_get("__palette").index == 1)) ? 'dark' : 'light'
