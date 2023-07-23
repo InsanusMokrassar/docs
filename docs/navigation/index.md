@@ -12,8 +12,8 @@ important terms:
 * All the `chain`s of resumed `node` will have status `RESUMED`
 * Only in the `chain` with status `RESUMED` there are `RESUMED` nodes
 
-??? info Statuses
-    There are 3 statuses:
+??? info "Statuses"
+    There are 4 real statuses:
     
     * New - Means that Node/Chain is just created (even before constructor) or has been fully destroyed (in context of navigation)
     * Created - Means that Node/Chain is created or preparing for destroing
