@@ -2,177 +2,177 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.inmo.dev/index.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/krontab/index.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/krontab/describing/krontabscheduler.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/krontab/describing/string-format.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/krontab/introduction/faq.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/krontab/introduction/how-to-use.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/krontab/introduction/including-in-project.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/kslog/index.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/kslog/logging.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/kslog/setup.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/micro_utils/index.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/navigation/index.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/index.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/faq.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/dsls/keyboards.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/dsls/live-location.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/dsls/text.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/guides/keyboards.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/introduction/before-any-bot-project.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/introduction/first-bot.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/introduction/including-in-your-project.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/introduction/proxy-setup.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/logic/api-extensions.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/logic/behaviour-builder-with-fsm.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/logic/behaviour-builder.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/logic/exceptions-handling.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/logic/files-handling.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/logic/low-level-work-with-bots.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/logic/media-groups.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/logic/types-conversations.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/logic/updates-with-flows.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/updates/heroku.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/updates/long-polling.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/updates/updates-filters.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.inmo.dev/tgbotapi/updates/webhooks.html</loc>
-         <lastmod>2023-07-22</lastmod>
+         <lastmod>2023-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
