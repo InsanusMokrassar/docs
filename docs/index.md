@@ -16,7 +16,8 @@ Hello :) It is my libraries docs place and I glad to welcome you here. I hope, t
 ## Dependencies graph:
 
 ```mermaid
-flowchart BT
+%%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
+flowchart TB
     KSLog[<a href='https://github.com/InsanusMokrassar/kslog'>KSLog</a>]
     MicroUtils[<a href='https://github.com/InsanusMokrassar/MicroUtils'>MicroUtils</a>]
     TelegramBotAPI[<a href='https://github.com/InsanusMokrassar/ktgbotapi'>TelegramBotAPI</a>]
