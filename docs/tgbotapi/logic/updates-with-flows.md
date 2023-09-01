@@ -53,5 +53,5 @@ This example looks like the example above with three steps, but there are severa
 
 As a result you can start listen updates and react on it. Next recommended articles:
 
-* [Behaviour Builder](https://bookstack.inmo.dev/books/telegrambotapi/page/behaviour-builder) as a variant of asynchronous handling of your bot logic
-* [FSM variant of Behaviour Builder](https://bookstack.inmo.dev/books/telegrambotapi/page/behaviour-builder-with-fsm)
+* [Behaviour Builder](https://docs.inmo.dev/tgbotapi/logic/behaviour-builder.html) as a variant of asynchronous handling of your bot logic
+* [FSM variant of Behaviour Builder](https://docs.inmo.dev/tgbotapi/logic/behaviour-builder-with-fsm.html)
