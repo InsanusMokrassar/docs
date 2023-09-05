@@ -50,8 +50,8 @@ use_directory_urls: false
 
 theme:
     name: material
-    logo: resources/images/logo.png
-    favicon: resources/images/favicon.png
+    logo: /resources/images/logo.png
+    favicon: /resources/images/favicon.png
     palette:
         - scheme: default
           primary: teal
@@ -144,8 +144,9 @@ extra:
 #    annotate:
 #        json: [.s2]
 extra_css:
-    - resources/stylesheets/navigation.css
-extra_javascript:
-    - resources/js/mermaid.min.js
-    - resources/js/mermaid_dark_light_switcher.js
+    - /resources/stylesheets/navigation.css
 
+mermaid:
+    javascript:
+        - /resources/js/mermaid.min.js
+        - /resources/js/mermaid_dark_light_switcher.js
