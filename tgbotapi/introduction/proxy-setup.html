@@ -720,6 +720,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#more-complex-and-flexible-variant" class="md-nav__link">
+    More complex and flexible variant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#next-steps" class="md-nav__link">
     Next steps
   </a>
@@ -1823,6 +1830,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#more-complex-and-flexible-variant" class="md-nav__link">
+    More complex and flexible variant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#next-steps" class="md-nav__link">
     Next steps
   </a>
@@ -1906,6 +1920,42 @@ In the snippet above was used version <code>2.0.1</code> which is actual for <co
 <li><code>ktorClientEngineFactory = OkHttp</code> - setting up engine factory of our bot. On the time of documentation filling, <code>OkHttp</code> is one of the engines in <code>Ktor</code> system which supports socks proxy. More you can read on <a href="https://ktor.io">Ktor</a> site in subparts about <a href="https://ktor.io/clients/http-client/engines.html#okhttp">engines</a> and <a href="https://ktor.io/clients/http-client/features/proxy.html">proxy</a></li>
 <li><code>proxy = ProxyBuilder.socks("127.0.0.1", 1080)</code> - here we are setting up our proxy. Here was used local server which (as assumed) will connect to server like <code>shadowsocks</code></li>
 </ol>
+<h2 id="more-complex-and-flexible-variant">More complex and flexible variant<a class="headerlink" href="#more-complex-and-flexible-variant" title="Permanent link">&para;</a></h2>
+<p>You may try to use <a href="https://ktor.io/docs/http-client-engines.html">custom engine for ktor</a>. For example:</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// JVM</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1">// OkHttp engine</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1">// Socks5 proxy</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kd">val</span><span class="w"> </span><span class="nv">bot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">telegramBot</span><span class="p">(</span><span class="n">botToken</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">proxyPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1080</span><span class="w"> </span><span class="c1">//your proxy port</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">proxyHost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;your proxy host&quot;</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proxy username&quot;</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proxy password&quot;</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">proxyAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InetSocketAddress</span><span class="p">(</span><span class="n">proxyHost</span><span class="p">,</span><span class="w"> </span><span class="n">proxyPort</span><span class="p">)</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">proxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Proxy</span><span class="p">(</span><span class="n">Proxy</span><span class="p">.</span><span class="na">Type</span><span class="p">.</span><span class="na">SOCKS</span><span class="p">,</span><span class="w"> </span><span class="n">proxyAddr</span><span class="p">)</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="n">Authenticator</span><span class="p">.</span><span class="na">setDefault</span><span class="p">(</span><span class="k">object</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nc">Authenticator</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="kd">protected</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">passwordAuthentication</span><span class="p">:</span><span class="w"> </span><span class="n">PasswordAuthentication?</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">            </span><span class="n">protected</span><span class="w"> </span><span class="k">get</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">requestingHost</span><span class="p">.</span><span class="na">lowercase</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">proxyHost</span><span class="p">.</span><span class="na">lowercase</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">proxyPort</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">requestingPort</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="n">PasswordAuthentication</span><span class="p">(</span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">.</span><span class="na">toCharArray</span><span class="p">())</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">                    </span><span class="p">}</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">                </span><span class="p">}</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">    </span><span class="p">})</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpClient</span><span class="p">(</span><span class="n">OkHttp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">        </span><span class="n">engine</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">            </span><span class="n">config</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">                </span><span class="n">proxy</span><span class="p">(</span><span class="n">proxy</span><span class="p">)</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="p">}</span>
+</span></code></pre></div>
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="first-bot.html">First bot</a></li>
