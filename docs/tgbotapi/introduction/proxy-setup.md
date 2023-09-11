@@ -54,6 +54,46 @@ Explanation line by line:
 3. `ktorClientEngineFactory = OkHttp` - setting up engine factory of our bot. On the time of documentation filling, `OkHttp` is one of the engines in `Ktor` system which supports socks proxy. More you can read on [Ktor](https://ktor.io) site in subparts about [engines](https://ktor.io/clients/http-client/engines.html#okhttp) and [proxy](https://ktor.io/clients/http-client/features/proxy.html)
 4. `proxy = ProxyBuilder.socks("127.0.0.1", 1080)` - here we are setting up our proxy. Here was used local server which (as assumed) will connect to server like `shadowsocks`
 
+## More complex and flexible variant
+
+You may try to use [custom engine for ktor](https://ktor.io/docs/http-client-engines.html). For example:
+
+```kotlin
+// JVM
+// OkHttp engine
+// Socks5 proxy
+
+val bot = telegramBot(botToken) {
+    val proxyPort = 1080 //your proxy port
+
+    val proxyHost = "your proxy host"
+    val username = "proxy username"
+    val password = "proxy password"
+
+    val proxyAddr = InetSocketAddress(proxyHost, proxyPort)
+    val proxy = Proxy(Proxy.Type.SOCKS, proxyAddr)
+
+    Authenticator.setDefault(object : Authenticator() {
+        protected val passwordAuthentication: PasswordAuthentication?
+            protected get() {
+                if (requestingHost.lowercase() == proxyHost.lowercase()) {
+                    if (proxyPort == requestingPort) {
+                        return PasswordAuthentication(username, password.toCharArray())
+                    }
+                }
+                return null
+            }
+    })
+    this.client = HttpClient(OkHttp) {
+        engine {
+            config {
+                proxy(proxy)
+            }
+        }
+    }
+}
+```
+
 ## Next steps
 
 * [First bot](first-bot.md)
