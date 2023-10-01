@@ -161,6 +161,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.inmo.dev/tgbotapi/plagubot/opportunities_out_of_the_box.html</loc>
+         <lastmod>2023-10-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.inmo.dev/tgbotapi/updates/heroku.html</loc>
          <lastmod>2023-10-01</lastmod>
          <changefreq>daily</changefreq>
