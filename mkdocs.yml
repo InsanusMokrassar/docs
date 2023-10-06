@@ -28,8 +28,8 @@ nav:
             - 'tgbotapi/updates/heroku.md'
         - Logic handling: 'tgbotapi/logic/'
         - DSLs: 'tgbotapi/dsls/'
-        - PlaguBot (TBD):
-              - 'tgbotapi/plagubot/'
+    - PlaguBot (TBD):
+        - 'plagubot/'
     - 'Krontab':
         - 'krontab/index.md'
         - KDocs: 'https://krontab.inmo.dev/'
