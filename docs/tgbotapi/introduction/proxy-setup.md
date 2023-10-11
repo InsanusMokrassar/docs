@@ -31,28 +31,41 @@ First of all, you will need to use one more library:
 **build.gradle**:
 
 ```groovy
-implementation "io.ktor:ktor-client-okhttp:2.0.1"
+implementation "io.ktor:ktor-client-okhttp:2.3.5"
 ```
 
 > NOTE: **Dependency note**
-> In the snippet above was used version `2.0.1` which is actual for `TelegramBotAPI` at the moment of filling this documentation (`May 22 2022`, `TelegramBotAPI` version `2.0.0`) and you can update version of this dependency in case if it is outdated.
+> In the snippet above was used version `2.3.5` which is actual for `TelegramBotAPI` at the moment of filling this documentation (`october 11 2023`, `TelegramBotAPI` version `9.2.2`) and you can update version of this dependency in case if it is outdated.
 
 For configuring proxy for your bot inside your program, you can use next snippet:
 
 ```kotlin
-val botToken = "HERE MUST BE YOUR TOKEN"
-val bot = telegramBot(botToken) {
-  ktorClientEngineFactory = OkHttp
-  proxy = ProxyBuilder.socks("127.0.0.1", 1080)
+val botToken = "HERE MUST BE YOUR TOKEN" // (1)
+val bot = telegramBot(botToken) { // (2)
+    client = HttpClient(OkHttp) { // (3)
+        engine { // (4)
+            config { // (5)
+                proxy( // (6)
+                    Proxy( // (7)
+                        Proxy.Type.SOCKS, // (8)
+                        InetSocketAddress("127.0.0.1", 1080) // (9)
+                    )
+                )
+            }
+        }
+    }
 }
 ```
 
-Explanation line by line:
-
-1. `val botToken = "HERE MUST BE YOUR TOKEN"` - here we are just creating variable `botToken`
-2. `val bot = telegramBot(botToken) {` - start creating bot
-3. `ktorClientEngineFactory = OkHttp` - setting up engine factory of our bot. On the time of documentation filling, `OkHttp` is one of the engines in `Ktor` system which supports socks proxy. More you can read on [Ktor](https://ktor.io) site in subparts about [engines](https://ktor.io/clients/http-client/engines.html#okhttp) and [proxy](https://ktor.io/clients/http-client/features/proxy.html)
-4. `proxy = ProxyBuilder.socks("127.0.0.1", 1080)` - here we are setting up our proxy. Here was used local server which (as assumed) will connect to server like `shadowsocks`
+1. Here we are just creating variable `botToken`
+2. Start creating bot
+3. Setting `HttpClient` of our bot. On the time of documentation filling, `OkHttp` is one of the engines in `Ktor` system which supports socks proxy. More you can read on [Ktor](https://ktor.io) site in subparts about [engines](https://ktor.io/docs/http-client-engines.html#okhttp) and [proxy](https://ktor.io/docs/proxy.html#socks_proxy)
+4. Start setting up of `HttpClient` engine
+5. Start setting up of `HttpClient` engine configuration
+6. Start setting up of proxy
+7. Creating proxy info object
+8. Saying that it is `Socks` proxy
+9. Creating address. Note that `"127.0.0.1"` and `1080` are configurable parameters
 
 ## More complex and flexible variant
 
@@ -64,9 +77,8 @@ You may try to use [custom engine for ktor](https://ktor.io/docs/http-client-eng
 // Socks5 proxy
 
 val bot = telegramBot(botToken) {
-    val proxyPort = 1080 //your proxy port
-
     val proxyHost = "your proxy host"
+    val proxyPort = 1080 //your proxy port
     val username = "proxy username"
     val password = "proxy password"
 
