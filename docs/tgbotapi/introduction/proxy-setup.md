@@ -76,35 +76,53 @@ You may try to use [custom engine for ktor](https://ktor.io/docs/http-client-eng
 // OkHttp engine
 // Socks5 proxy
 
-val bot = telegramBot(botToken) {
-    val proxyHost = "your proxy host"
-    val proxyPort = 1080 //your proxy port
-    val username = "proxy username"
-    val password = "proxy password"
+val bot = telegramBot(botToken) { // (1)
+    val proxyHost = "your proxy host" // (2)
+    val proxyPort = 1080 //your proxy port // (3)
+    val username = "proxy username" // (4)
+    val password = "proxy password" // (5)
 
-    val proxyAddr = InetSocketAddress(proxyHost, proxyPort)
-    val proxy = Proxy(Proxy.Type.SOCKS, proxyAddr)
+    val proxyAddr = InetSocketAddress(proxyHost, proxyPort) // (6)
+    val proxy = Proxy(Proxy.Type.SOCKS, proxyAddr) // (7)
 
-    Authenticator.setDefault(object : Authenticator() {
-        protected val passwordAuthentication: PasswordAuthentication?
-            protected get() {
-                if (requestingHost.lowercase() == proxyHost.lowercase()) {
-                    if (proxyPort == requestingPort) {
-                        return PasswordAuthentication(username, password.toCharArray())
-                    }
-                }
-                return null
+    val passwordAuthentication = PasswordAuthentication(
+        username,
+        password.toCharArray()
+    ) // (8)
+    Authenticator.setDefault(object : Authenticator() { // (9)
+        override fun getPasswordAuthentication(): PasswordAuthentication? { // (10)
+            return if (requestingHost.lowercase() == proxyHost.lowercase()) { // (11)
+                passwordAuthentication
+            } else {
+                null
             }
+        }
     })
-    this.client = HttpClient(OkHttp) {
-        engine {
-            config {
-                proxy(proxy)
+    this.client = HttpClient(OkHttp) { // (12)
+        engine { // (13)
+            config { // (14)
+                proxy(proxy) // (15)
             }
         }
     }
 }
 ```
+
+1. Start creating telegram bot
+2. Proxy host
+3. Proxy port
+4. Username for authentication. It is optional in case your proxy do not need auth
+5. Password for authentication. It is optional in case your proxy do not need auth
+6. Creating of proxy address for `Proxy`
+7. Proxy address and type information
+8. Proxy authentication info. It is optional in case your proxy do not need auth
+9. Setting up of authenticator. It is optional in case your proxy do not need auth
+10. Overriding of method that will return authentication info
+11. In case when request has been sent to the proxy (common request) - using authentication
+12. Creating of HttpClient and start configure it
+13. Start setup engine
+14. Start setup engine config
+15. Setting up of proxy information
 
 ## Next steps
 
