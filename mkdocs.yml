@@ -47,6 +47,7 @@ nav:
         - 'kslog/logging.md'
     - 'Navigation':
           - 'navigation/index.md'
+          - 'navigation/getting-started.md'
 
 use_directory_urls: false
 

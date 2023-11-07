@@ -1,5 +1,7 @@
 # Navigation
 
+**This library uses koin as preferred DI in MVVM part**
+
 Navigation is a library for simple management for your app views (or some other logics). In this library there are several
 important terms:
 

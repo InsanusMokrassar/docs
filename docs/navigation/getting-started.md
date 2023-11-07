@@ -1,4 +1,4 @@
-# Getting started
+# Getting started (TBD)
 
 [![Maven Central](https://img.shields.io/maven-central/v/dev.inmo/navigation.core?label=navigation&style=flat-square)](https://github.com/InsanusMokrassar/navigation)
 
@@ -12,11 +12,9 @@ Traditionally, you need to add dependency to your project. Currently, there are 
 |  `Core`  | Only necessary tools for your projects                      | `implementation "dev.inmo:navigation.core:$navigation_version"` |
 |  `MVVM`  | Model-View-ViewModel architecture tools + `Core` components | `implementation "dev.inmo:navigation.mvvm:$navigation_version"` |
 
-# Initialization
+# Get started
 
-After you have added your dependency, you should initialize navigation.
-
-There are several important things:
+After you have added your dependency, you should initialize navigation. There are several important things:
 
 1. `Config` - it is an instance of any class which extending the `NavigationNodeDefaultConfig` in common case
 2. `Factory` - usually object which may create a node or some required part for node
@@ -30,6 +28,17 @@ data class MainConfig(
     // and Fragment by tag in Android
     override val id: String = "main"
 ) : NavigationNodeDefaultConfig
+```
+
+Both `JS` and `Android` platforms require `ViewModel` for their `MVVM` node variants, but it can be common as well as
+`MainConfig`:
+
+```kotlin
+class MainViewModel(
+    node: NavigationNode<MainConfig, NavigationNodeDefaultConfig>
+) : ViewModel(
+    node
+)
 ```
 
 ### JS part
@@ -50,7 +59,7 @@ class MainNode(
 class MainNodeView(
     config: MainConfig,
     chain: NavigationChain<NavigationNodeDefaultConfig>,
-) : View<MainConfig, NavigationNodeDefaultConfig>(
+) : View<MainConfig, MainViewModel>(
     config,
     chain
 ) {
@@ -75,6 +84,10 @@ object MainNodeFactory : NavigationNodeFactory<NavigationNodeDefaultConfig> {
 }
 ```
 
+---
+
+Data below is under TBD
+
 ### Android
 
 In Android there is one important note: you will not directly work with nodes. In fact it will be required to create
@@ -86,7 +99,14 @@ class MainFragment : NodeFragment<MainConfig, NavigationNodeDefaultConfig>() {
     // Your code
     // Here will be available: node with type `AndroidFragmentNode`, config: `MainConfig`
 }
+// MVVM Variant
+class MainViewFragment : ViewFragment<MainViewModel, MainConfig>() {
+    // Will be available also `viewModel` via koin `lazyInject`
+    override val viewModelClass
+        get() = MainViewModel::class
+}
 ```
+
 
 Initialization is different on the platforms, so, lets take a look at each one.
 
