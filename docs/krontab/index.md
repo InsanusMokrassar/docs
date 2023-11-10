@@ -16,6 +16,8 @@ runtime of applications.
 
 ## How to use
 
+__[Here](https://insanusmokrassar.github.io/KrontabPredictor) you may find the builder for `Krontab` templates creation.__
+
 There are several ways to configure and use this library:
 
 * From some string
