@@ -2227,13 +2227,16 @@
 </span></code></pre></div>
 <p>Additionally you may use one of several different settings:</p>
 <ul>
-<li><code>minLoggingLevel</code> - minimal logging level for the log which will be logged. The order of log level is next:</li>
+<li><code>minLoggingLevel</code> - minimal logging level for the log which will be logged. The order of log level is next:<ul>
+<li>TRACE</li>
 <li>DEBUG</li>
 <li>VERBOSE</li>
 <li>INFO</li>
 <li>WARNING</li>
 <li>ERROR</li>
 <li>ASSERT</li>
+</ul>
+</li>
 <li><code>levels</code> - and iterable with the levels which should be logged</li>
 <li><code>firstLevel</code>,<code>secondLevel</code>,<code>otherLevels</code> - as <code>levels</code>, but <code>vararg</code> :)</li>
 </ul>
