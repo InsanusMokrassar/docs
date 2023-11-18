@@ -48,12 +48,13 @@ KSLog(
 Additionally you may use one of several different settings:
 
 * `minLoggingLevel` - minimal logging level for the log which will be logged. The order of log level is next:
-  * DEBUG
-  * VERBOSE
-  * INFO
-  * WARNING
-  * ERROR
-  * ASSERT
+    * TRACE
+    * DEBUG
+    * VERBOSE
+    * INFO
+    * WARNING
+    * ERROR
+    * ASSERT
 * `levels` - and iterable with the levels which should be logged
 * `firstLevel`,`secondLevel`,`otherLevels` - as `levels`, but `vararg` :)
 
