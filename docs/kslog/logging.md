@@ -7,15 +7,17 @@ As has been said in the [setup](setup.md) section, this library contains next le
 
 | Weight (by order) | LogLevel name |      JS       |  JVM Loggers  | Android |
 | -: |:-------------:|:-------------:|:-------------:|:-------:|
-| 0 |     DEBUG     |  console.log  | Level.FINEST  |  Log.d  |
-| 1 |    VERBOSE    | console.info  |  Level.FINE   |  Log.v  |
-| 2 |     INFO      | console.info  |  Level.INFO   |  Log.i  |
-| 3 |    WARNING    | console.warn  | Level.WARNING |  Log.w  |
-| 4 |     ERROR     | console.error | Level.SEVERE  |  Log.e  |
-| 5 |    ASSERT     | console.error | Level.SEVERE  | Log.wtf |
+| 0 |     TRACE     |  console.trace + console.debug  | Level.FINEST  |  Log.d  |
+| 1 |     DEBUG     |  console.debug  | Level.FINER  |  Log.d  |
+| 2 |    VERBOSE    | console.info  |  Level.FINE   |  Log.v  |
+| 3 |     INFO      | console.info  |  Level.INFO   |  Log.i  |
+| 4 |    WARNING    | console.warn  | Level.WARNING |  Log.w  |
+| 5 |     ERROR     | console.error | Level.SEVERE  |  Log.e  |
+| 6 |    ASSERT     | console.error | Level.SEVERE  | Log.wtf |
 
 Each of these levels have fullname and shortname shortcat extensions:
 
+* `KSLog.trace`/`KSLog.t`/`KSLog.tS`
 * `KSLog.debug`/`KSLog.d`/`KSLog.dS`
 * `KSLog.verbose`/`KSLog.v`/`KSLog.vS`
 * `KSLog.info`/`KSLog.i`/`KSLog.iS`
