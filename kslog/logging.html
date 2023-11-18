@@ -1987,41 +1987,48 @@ On this page all the messages will be just simple <code>String</code>, but you m
 <tbody>
 <tr>
 <td style="text-align: right;">0</td>
-<td style="text-align: center;">DEBUG</td>
-<td style="text-align: center;">console.log</td>
+<td style="text-align: center;">TRACE</td>
+<td style="text-align: center;">console.trace + console.debug</td>
 <td style="text-align: center;">Level.FINEST</td>
 <td style="text-align: center;">Log.d</td>
 </tr>
 <tr>
 <td style="text-align: right;">1</td>
+<td style="text-align: center;">DEBUG</td>
+<td style="text-align: center;">console.debug</td>
+<td style="text-align: center;">Level.FINER</td>
+<td style="text-align: center;">Log.d</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
 <td style="text-align: center;">VERBOSE</td>
 <td style="text-align: center;">console.info</td>
 <td style="text-align: center;">Level.FINE</td>
 <td style="text-align: center;">Log.v</td>
 </tr>
 <tr>
-<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
 <td style="text-align: center;">INFO</td>
 <td style="text-align: center;">console.info</td>
 <td style="text-align: center;">Level.INFO</td>
 <td style="text-align: center;">Log.i</td>
 </tr>
 <tr>
-<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
 <td style="text-align: center;">WARNING</td>
 <td style="text-align: center;">console.warn</td>
 <td style="text-align: center;">Level.WARNING</td>
 <td style="text-align: center;">Log.w</td>
 </tr>
 <tr>
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
 <td style="text-align: center;">ERROR</td>
 <td style="text-align: center;">console.error</td>
 <td style="text-align: center;">Level.SEVERE</td>
 <td style="text-align: center;">Log.e</td>
 </tr>
 <tr>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
 <td style="text-align: center;">ASSERT</td>
 <td style="text-align: center;">console.error</td>
 <td style="text-align: center;">Level.SEVERE</td>
@@ -2031,6 +2038,7 @@ On this page all the messages will be just simple <code>String</code>, but you m
 </table>
 <p>Each of these levels have fullname and shortname shortcat extensions:</p>
 <ul>
+<li><code>KSLog.trace</code>/<code>KSLog.t</code>/<code>KSLog.tS</code></li>
 <li><code>KSLog.debug</code>/<code>KSLog.d</code>/<code>KSLog.dS</code></li>
 <li><code>KSLog.verbose</code>/<code>KSLog.v</code>/<code>KSLog.vS</code></li>
 <li><code>KSLog.info</code>/<code>KSLog.i</code>/<code>KSLog.iS</code></li>
