@@ -33,6 +33,7 @@ nav:
     - 'Krontab':
         - 'krontab/index.md'
         - KDocs: 'https://krontab.inmo.dev/'
+        - Predictor: 'https://insanusmokrassar.github.io/KrontabPredictor'
         - Introduction:
             - 'krontab/introduction/including-in-project.md'
             - 'krontab/introduction/how-to-use.md'
