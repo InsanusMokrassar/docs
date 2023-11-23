@@ -14,6 +14,7 @@ nav:
         - 'tgbotapi/index.md'
         - KDocs: 'https://tgbotapi.inmo.dev'
         - 'tgbotapi/faq.md'
+        - 'tgbotapi/logs.md'
         - Introduction:
             - 'tgbotapi/introduction/before-any-bot-project.md'
             - 'tgbotapi/introduction/including-in-your-project.md'
