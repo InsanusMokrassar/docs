@@ -50,6 +50,8 @@ nav:
     - 'Navigation':
           - 'navigation/index.md'
           - 'navigation/getting-started.md'
+    - 'Services':
+          - 'services/index.md'
 
 use_directory_urls: false
 
