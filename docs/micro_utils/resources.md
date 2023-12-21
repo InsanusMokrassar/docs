@@ -10,7 +10,7 @@ object Translations {
     val someVariable = buildStringResource(
         "Sample default string"
     ) {
-        IetfLanguageCode.German variant lazy "Beispiel für eine Standardzeichenkette"
+        IetfLang.German variant lazy "Beispiel für eine Standardzeichenkette"
     }
 }
 ```
@@ -18,9 +18,9 @@ object Translations {
 In this case, you will be able to use it with next logic:
 
 ```kotlin
-Translation.someVariable.translation(IetfLanguageCode.French) // "Sample default string" as default one
-Translation.someVariable.translation(IetfLanguageCode.German) // "Beispiel für eine Standardzeichenkette" as available variant
-Translation.someVariable.translation(IetfLanguageCode.German.DE) // "Beispiel für eine Standardzeichenkette" as available parent variant
+Translation.someVariable.translation(IetfLang.French) // "Sample default string" as default one
+Translation.someVariable.translation(IetfLang.German) // "Beispiel für eine Standardzeichenkette" as available variant
+Translation.someVariable.translation(IetfLang.German.DE) // "Beispiel für eine Standardzeichenkette" as available parent variant
 ```
 
 ## Additional opportunities on Android platform
