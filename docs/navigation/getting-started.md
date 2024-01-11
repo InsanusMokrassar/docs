@@ -74,9 +74,9 @@ class MainNodeView(
 
 object MainNodeFactory : NavigationNodeFactory<NavigationNodeDefaultConfig> {
     override fun createNode(
-        navigationChain: NavigationChain<Base>,
-        config: Base
-    ): NavigationNode<out Base, Base>? = if (config is MainConfig) {
+        navigationChain: NavigationChain<NavigationNodeDefaultConfig>,
+        config: NavigationNodeDefaultConfig
+    ): NavigationNode<out NavigationNodeDefaultConfig, NavigationNodeDefaultConfig>? = if (config is MainConfig) {
         MainNode(config, navigationChain) // Or `MainNodeView(config, chain)` for MVVM
     } else {
         null
