@@ -77,7 +77,7 @@ object MainNodeFactory : NavigationNodeFactory<NavigationNodeDefaultConfig> {
         navigationChain: NavigationChain<Base>,
         config: Base
     ): NavigationNode<out Base, Base>? = if (config is MainConfig) {
-        MainNode(config, chain) // Or `MainNodeView(config, chain)` for MVVM
+        MainNode(config, navigationChain) // Or `MainNodeView(config, chain)` for MVVM
     } else {
         null
     }
