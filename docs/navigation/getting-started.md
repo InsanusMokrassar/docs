@@ -115,7 +115,40 @@ Initialization is different on the platforms, so, lets take a look at each one.
 In `JavaScript` it looks like:
 
 ```kotlin
-initNavigation(
-    
+initNavigation<NavigationNodeDefaultConfig>(
+    ConfigHolder.Chain( // (1)
+        ConfigHolder.Node( // (2)
+            MainConfig(), // (3)
+            null, // (4)
+            listOf() // (5)
+        ),
+    ),
+    configsRepo = CookiesNavigationConfigsRepo( // (6)
+        Json {
+            ignoreUnknownKeys = true
+            serializersModule = SerializersModule {
+                polymorphic(NavigationNodeDefaultConfig::class, MainConfig::class, MainConfig.serializer()) // (7)
+            }
+        },
+        ConfigHolder.serializer(NavigationNodeDefaultConfig::class.serializer())
+    ),
+    dropRedundantChainsOnRestore = true, // (8)
+    nodesFactory = MainNodeFactory, // (9)
 )
+```
+
+1. Creating of default root chain config holder. It must be root chain because of the chain work with statuses changes
+2. Creating of default root node config holder. This type contains config of the first node, its subnode and subchains lists
+3. Default root config
+4. Subnode of root node. In this case it is `null`, but can be any `ConfigHolder.Node`
+5. Subchains of default root node
+6. Configurations changes repo saver. By default it is `cookies` (`localStorage`) store
+7. Register config for serialization to let configs repo serializer to know how to serialize `MainConfig`
+8. Flag that the chains without any node will be dropped automatically
+9. In fact here can be factory aggregator, for example:
+```kotlin
+val factories: List<NavigationNodeFactory<NavigationNodeDefaultConfig>>
+NavigationNodeFactory<NavigationNodeDefaultConfig> { chainHolder, config ->
+    factories.firstNotNullOfOrNull { it.createNode(chainHolder, config) }
+}
 ```
