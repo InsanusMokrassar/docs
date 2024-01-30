@@ -2277,10 +2277,43 @@ special <code>NodeFragment</code>:</p>
 <p>Initialization is different on the platforms, so, lets take a look at each one.</p>
 <h2 id="js">JS<a class="headerlink" href="#js" title="Permanent link">&para;</a></h2>
 <p>In <code>JavaScript</code> it looks like:</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">initNavigation</span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">initNavigation</span><span class="o">&lt;</span><span class="n">NavigationNodeDefaultConfig</span><span class="o">&gt;</span><span class="p">(</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">ConfigHolder</span><span class="p">.</span><span class="na">Chain</span><span class="p">(</span><span class="w"> </span><span class="c1">// (1)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="n">ConfigHolder</span><span class="p">.</span><span class="na">Node</span><span class="p">(</span><span class="w"> </span><span class="c1">// (2)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">            </span><span class="n">MainConfig</span><span class="p">(),</span><span class="w"> </span><span class="c1">// (3)</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">            </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="c1">// (4)</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">            </span><span class="n">listOf</span><span class="p">()</span><span class="w"> </span><span class="c1">// (5)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="p">),</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="p">),</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="n">configsRepo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CookiesNavigationConfigsRepo</span><span class="p">(</span><span class="w"> </span><span class="c1">// (6)</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="n">Json</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">            </span><span class="n">ignoreUnknownKeys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">            </span><span class="n">serializersModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SerializersModule</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">                </span><span class="n">polymorphic</span><span class="p">(</span><span class="n">NavigationNodeDefaultConfig</span><span class="o">::</span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">MainConfig</span><span class="o">::</span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">MainConfig</span><span class="p">.</span><span class="na">serializer</span><span class="p">())</span><span class="w"> </span><span class="c1">// (7)</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">        </span><span class="n">ConfigHolder</span><span class="p">.</span><span class="na">serializer</span><span class="p">(</span><span class="n">NavigationNodeDefaultConfig</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">serializer</span><span class="p">())</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">    </span><span class="p">),</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="n">dropRedundantChainsOnRestore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// (8)</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="n">nodesFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MainNodeFactory</span><span class="p">,</span><span class="w"> </span><span class="c1">// (9)</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="p">)</span>
 </span></code></pre></div>
+<ol>
+<li>Creating of default root chain config holder. It must be root chain because of the chain work with statuses changes</li>
+<li>Creating of default root node config holder. This type contains config of the first node, its subnode and subchains lists</li>
+<li>Default root config</li>
+<li>Subnode of root node. In this case it is <code>null</code>, but can be any <code>ConfigHolder.Node</code></li>
+<li>Subchains of default root node</li>
+<li>Configurations changes repo saver. By default it is <code>cookies</code> (<code>localStorage</code>) store</li>
+<li>Register config for serialization to let configs repo serializer to know how to serialize <code>MainConfig</code></li>
+<li>Flag that the chains without any node will be dropped automatically</li>
+<li>In fact here can be factory aggregator, for example:
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">factories</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">NavigationNodeFactory</span><span class="o">&lt;</span><span class="n">NavigationNodeDefaultConfig</span><span class="o">&gt;&gt;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">NavigationNodeFactory</span><span class="o">&lt;</span><span class="n">NavigationNodeDefaultConfig</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">chainHolder</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="n">factories</span><span class="p">.</span><span class="na">firstNotNullOfOrNull</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">createNode</span><span class="p">(</span><span class="n">chainHolder</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">}</span>
+</span></code></pre></div></li>
+</ol>
 
 
 
