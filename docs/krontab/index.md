@@ -11,7 +11,7 @@
 
 [![KDocs](https://img.shields.io/badge/KDocs-323330?style=for-the-badge&logo=Kotlin&logoColor=7F52FF)](https://insanusmokrassar.github.io/krontab/)
 
-Library was created to give oppotunity to launch some things from time to time according to some schedule in
+Library was created to give opportunity to launch some things from time to time according to some schedule in
 runtime of applications.
 
 ## How to use
@@ -77,7 +77,7 @@ doWhile("/5 * * * *") {
 }
 ```
 
-An other version:
+Another version:
 
 ```kotlin
 doInfinity("/5 * * * *") {
@@ -166,7 +166,7 @@ coroutine is alive` and in fact executing will be stopped when coroutine became 
 
 ### KronScheduler as a Flow
 
-Any `KronScheduler`can e converted to a `Flow<DateTime` using extension `asFlow`:
+Any `KronScheduler` can be converted to a `Flow<DateTime>` using extension `asFlow`:
 
 ```kotlin
 val kronScheduler = buildSchedule {
@@ -178,7 +178,7 @@ val kronScheduler = buildSchedule {
 val flow = kronScheduler.asFlow()
 ```
 
-So, in this case any operations related to flow are available and it is expected that they will work correctly. For
+So, in this case any operations related to flow are available, and it is expected that they will work correctly. For
 example, it is possible to use this flow with `takeWhile`:
 
 ```kotlin
@@ -191,7 +191,7 @@ flow.takeWhile {
 
 ### Offsets
 
-Offsets in this library works via passing parameter ending with `o` in any place after `month` config. Currently
+Offsets in this library works via passing parameter ending with `o` in any place after `month` config. Currently,
 there is only one format supported for offsets: minutes of offsets. To use time zones you will need to call `next`
 method with `DateTimeTz` argument or `nextTimeZoned` method with any `KronScheduler` instance, but in case if this
 scheduler is not instance of `KronSchedulerTz` it will work like you passed just `DateTime`.
@@ -211,4 +211,4 @@ Unlike original CRON, here week days:
 * Works as `AND`: cron date time will search first day which will pass requirement according all parameters including
   week days
 * You may use any related to numbers syntax with week days: `0-3w`, `0,1,2,3w`, etc.
-* Week days (like years and offsets) are optional and can be placed anywhere after `month`
+* Week days (as well as years and offsets) are optional and can be placed anywhere after `month`
