@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "command",
+            "name": "Install",
+            "program": "poetry",
+            "args": ["install", "--no-root"],
+        },
+        {
+            "type": "command",
             "name": "Rebuild",
             "program": "poetry",
             "args": ["run", "mkdocs", "build"],
