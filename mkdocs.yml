@@ -12,7 +12,9 @@ nav:
           - 'micro_utils/index.md'
           - 'micro_utils/resources.md'
           - 'micro_utils/startup.md'
-          - 'micro_utils/repos/'
+          - 'Repos':
+                - 'micro_utils/repos/index.md'
+                - 'micro_utils/repos/inmemory.md'
     - 'Telegram Bot API':
         - 'tgbotapi/index.md'
         - KDocs: 'https://tgbotapi.inmo.dev'
