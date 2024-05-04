@@ -48,12 +48,10 @@ Contains write-only operations, such as [create](https://microutils.inmo.dev/mic
 > By default, all mutating operations consumes `List`s of data (`List<New>` for `create`, `List<Pair<Id, New>>` for `update` and `List<Id>` for delete),
 > but all they have their extension function-variations with one/two args (like `create` with `New` arg)
 
-`create` operation consumes list of `New` variants of object and produces `Registered`s list. In most cases, `Registered` variant of object should have
+* `create` operation consumes list of `New` variants of object and produces `Registered`s list. In most cases, `Registered` variant of object should have
 `Id` of registered object, but it is not required for repo.
-
-`update` operation consumes list of pairs with `Id` and `New` objects and produces list of `Registered` objects.
-
-`deleteById` operation consumes list of `Id`s and do not consume anything except of notifying via `deletedObjectsIdsFlow`.
+* `update` operation consumes list of pairs with `Id` and `New` objects and produces list of `Registered` objects.
+* `deleteById` operation consumes list of `Id`s and do not consume anything except of notifying via `deletedObjectsIdsFlow`.
 
 ## KeyValue
 
@@ -82,8 +80,40 @@ Contains write-only operations. This interface can be observed via its flows:
 >
 > All the methods on `WriteKeyValueRepo` have their variances with `pairs` (for set) or plain `vararg`s.
 
-`set` operation consumes map of `Key`s and their `Value`s, set them and produces updates via `onNewValue`
+* `set` operation consumes map of `Key`s and their `Value`s, set them and produces updates via `onNewValue`
+* `unset` operation consumes list of `Key`s, removing `Value` by `Key` and produces updates via `onValueRemoved`
+* `unsetWithValues` consumes list of `Value`s, removing all `Key`s with the `Value`s equal to one of the input `Value`s, and then produces updates via `onValueRemoved`
 
-`unset` operation consumes list of `Key`s, removing `Value` by `Key` and produces updates via `onValueRemoved`
+## KeyValues
 
-`unsetWithValues` consumes list of `Value`s, removing all `Key`s with the `Value`s equal to one of the input `Value`s, and then produces updates via `onValueRemoved`
+This type of repos contains muliple `Value`s by their unique `Key`. It is not guaranteed, that `Value`s list by any `Key` will contains only unique values,
+but in most cases `Value`s list will not contains copies/same objects.
+
+### [ReadKeyValuesRepo](https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-read-key-values-repo/index.html)
+
+Contains operations for work with value/values getting and checking. For example:
+[count](https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-read-key-values-repo/count.html) for checking of amount of all values in repo
+or values by key; [get](https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-read-key-values-repo/get.html) for getting of values by
+`pagination`.
+
+### [WriteKeyValuesRepo](https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-write-key-values-repo/index.html)
+
+Contains write-only operations. This interface can be observed via its flows:
+
+* [onNewValue](https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-write-key-values-repo/on-new-value.html) will pass `Key` and `Value` when `Value` has been added to the `Key`
+* [onValueRemoved](https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-write-key-values-repo/on-value-removed.html) will pass `Key` and `Value` when `Value` has been removed for the `Key`
+* [onDataCleared](https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-write-key-values-repo/on-data-cleared.html) will pass `Key` when **all** its values has been
+removed by the `clear` operation
+
+> INFO:
+>
+> In difference with other repos, not all the methods of write key values repo require collections.
+>
+> All the methods on `WriteKeyValuesRepo` have their variances with `pairs` (for set) or plain `vararg`s.
+
+* `add` will add `Value`s to their `Key`s without any removing of data
+* `clear` removes all `Value`s by `Key` and `Key` itself from repo
+* `clearWithValue` removes all `Value` with full clear of all data by `Key`s with incoming `Value`
+* `remove` consumes `Map` of `Key`s and the `Value`s which should be removed for each `Key`
+* `removeWithValue` will remove only `Value` from all `Key`s collections without their full wipe
+* `set` consumes `Map` of `Key`s and the `Value`s and will **rewrite** currently exists list of `Value`s and set the `Value`s for their `Key`
