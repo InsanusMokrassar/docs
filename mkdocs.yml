@@ -10,8 +10,10 @@ nav:
     - Home: 'index.md'
     - 'MicroUtils':
           - 'micro_utils/index.md'
+          - KDocs: 'https://microutils.inmo.dev/index.html'
           - 'micro_utils/resources.md'
           - 'micro_utils/startup.md'
+          - 'micro_utils/colors.md'
           - 'Repos':
                 - 'micro_utils/repos/index.md'
                 - 'micro_utils/repos/inmemory.md'
@@ -89,7 +91,7 @@ theme:
         - content.action.view
         - content.code.annotate
         - content.code.copy
-        # - content.tabs.link
+        - content.tabs.link
         - content.tooltips
         # - header.autohide
         # - navigation.expand

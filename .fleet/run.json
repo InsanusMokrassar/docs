@@ -18,5 +18,12 @@
             "program": "poetry",
             "args": ["run", "mkdocs", "serve"],
         },
+        {
+            "type": "command",
+            "name": "Generate MicroUtils",
+            "program": "kotlin",
+            "args": ["../../generate_from_template.kts"],
+            "workingDir": "./docs/micro_utils/",
+        },
     ]
 }
