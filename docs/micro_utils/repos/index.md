@@ -54,3 +54,36 @@ Contains write-only operations, such as [create](https://microutils.inmo.dev/mic
 `update` operation consumes list of pairs with `Id` and `New` objects and produces list of `Registered` objects.
 
 `deleteById` operation consumes list of `Id`s and do not consume anything except of notifying via `deletedObjectsIdsFlow`.
+
+## KeyValue
+
+Key-value repos has been created to support work with classic key-value stores, where keys are unique across all the repo when values are not unique.
+As well as all the others types of repos, this one have two basic types:
+[ReadKeyValueRepo](https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-read-key-value-repo/index.html) and
+[WriteKeyValueRepo](https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-write-key-value-repo/index.html)
+
+### ReadKeyValueRepo
+
+Read repo provides functions like: [contains](https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-read-key-value-repo/contains.html),
+[get](https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-read-key-value-repo/get.html) or
+[values](https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-read-key-value-repo/values.html).
+
+### WritekeyValueRepo
+
+Contains write-only operations. This interface can be observed via its flows:
+
+* [onNewValue](https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-write-key-value-repo/on-new-value.html) to retrieve newely set values and keys
+* [onValueRemoved](https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-write-key-value-repo/on-value-removed.html) for the values removed from repo
+
+> INFO:
+>
+> By default, all mutating operations consumes some collections. For example, [set](https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-write-key-value-repo/set.html)
+> require `Map` with `Key`s and `Value`s and do not returns anything. Instead, it will throw notification via `onNewValue` flow
+>
+> All the methods on `WriteKeyValueRepo` have their variances with `pairs` (for set) or plain `vararg`s.
+
+`set` operation consumes map of `Key`s and their `Value`s, set them and produces updates via `onNewValue`
+
+`unset` operation consumes list of `Key`s, removing `Value` by `Key` and produces updates via `onValueRemoved`
+
+`unsetWithValues` consumes list of `Value`s, removing all `Key`s with the `Value`s equal to one of the input `Value`s, and then produces updates via `onValueRemoved`
