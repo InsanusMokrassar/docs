@@ -71,6 +71,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.inmo.dev/micro_utils/repos/inmemory.html</loc>
+         <lastmod>2024-05-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.inmo.dev/navigation/index.html</loc>
          <lastmod>2024-05-04</lastmod>
          <changefreq>daily</changefreq>
