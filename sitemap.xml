@@ -56,6 +56,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.inmo.dev/micro_utils/colors.html</loc>
+         <lastmod>2024-05-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.inmo.dev/micro_utils/colors.template.html</loc>
+         <lastmod>2024-05-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.inmo.dev/micro_utils/resources.html</loc>
          <lastmod>2024-05-04</lastmod>
          <changefreq>daily</changefreq>
