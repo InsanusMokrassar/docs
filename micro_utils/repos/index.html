@@ -333,6 +333,31 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#keyvalues">
+<span class="md-ellipsis">
+      KeyValues
+    </span>
+</a>
+<nav aria-label="KeyValues" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#readkeyvaluesrepo">
+<span class="md-ellipsis">
+      ReadKeyValuesRepo
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#writekeyvaluesrepo">
+<span class="md-ellipsis">
+      WriteKeyValuesRepo
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
 </ul>
 </nav>
 </li>
@@ -897,6 +922,31 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#keyvalues">
+<span class="md-ellipsis">
+      KeyValues
+    </span>
+</a>
+<nav aria-label="KeyValues" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#readkeyvaluesrepo">
+<span class="md-ellipsis">
+      ReadKeyValuesRepo
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#writekeyvaluesrepo">
+<span class="md-ellipsis">
+      WriteKeyValuesRepo
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
 </ul>
 </nav>
 </div>
@@ -952,10 +1002,12 @@ any mutable operation.</p>
 By default, all mutating operations consumes <code>List</code>s of data (<code>List&lt;New&gt;</code> for <code>create</code>, <code>List&lt;Pair&lt;Id, New&gt;&gt;</code> for <code>update</code> and <code>List&lt;Id&gt;</code> for delete),
 but all they have their extension function-variations with one/two args (like <code>create</code> with <code>New</code> arg)</p>
 </div>
-<p><code>create</code> operation consumes list of <code>New</code> variants of object and produces <code>Registered</code>s list. In most cases, <code>Registered</code> variant of object should have
-<code>Id</code> of registered object, but it is not required for repo.</p>
-<p><code>update</code> operation consumes list of pairs with <code>Id</code> and <code>New</code> objects and produces list of <code>Registered</code> objects.</p>
-<p><code>deleteById</code> operation consumes list of <code>Id</code>s and do not consume anything except of notifying via <code>deletedObjectsIdsFlow</code>.</p>
+<ul>
+<li><code>create</code> operation consumes list of <code>New</code> variants of object and produces <code>Registered</code>s list. In most cases, <code>Registered</code> variant of object should have
+<code>Id</code> of registered object, but it is not required for repo.</li>
+<li><code>update</code> operation consumes list of pairs with <code>Id</code> and <code>New</code> objects and produces list of <code>Registered</code> objects.</li>
+<li><code>deleteById</code> operation consumes list of <code>Id</code>s and do not consume anything except of notifying via <code>deletedObjectsIdsFlow</code>.</li>
+</ul>
 <h2 id="keyvalue">KeyValue<a class="headerlink" href="#keyvalue" title="Permanent link">¶</a></h2>
 <p>Key-value repos has been created to support work with classic key-value stores, where keys are unique across all the repo when values are not unique.
 As well as all the others types of repos, this one have two basic types:
@@ -978,9 +1030,41 @@ By default, all mutating operations consumes some collections. For example, <a h
 require <code>Map</code> with <code>Key</code>s and <code>Value</code>s and do not returns anything. Instead, it will throw notification via <code>onNewValue</code> flow</p>
 <p>All the methods on <code>WriteKeyValueRepo</code> have their variances with <code>pairs</code> (for set) or plain <code>vararg</code>s.</p>
 </div>
-<p><code>set</code> operation consumes map of <code>Key</code>s and their <code>Value</code>s, set them and produces updates via <code>onNewValue</code></p>
-<p><code>unset</code> operation consumes list of <code>Key</code>s, removing <code>Value</code> by <code>Key</code> and produces updates via <code>onValueRemoved</code></p>
-<p><code>unsetWithValues</code> consumes list of <code>Value</code>s, removing all <code>Key</code>s with the <code>Value</code>s equal to one of the input <code>Value</code>s, and then produces updates via <code>onValueRemoved</code></p>
+<ul>
+<li><code>set</code> operation consumes map of <code>Key</code>s and their <code>Value</code>s, set them and produces updates via <code>onNewValue</code></li>
+<li><code>unset</code> operation consumes list of <code>Key</code>s, removing <code>Value</code> by <code>Key</code> and produces updates via <code>onValueRemoved</code></li>
+<li><code>unsetWithValues</code> consumes list of <code>Value</code>s, removing all <code>Key</code>s with the <code>Value</code>s equal to one of the input <code>Value</code>s, and then produces updates via <code>onValueRemoved</code></li>
+</ul>
+<h2 id="keyvalues">KeyValues<a class="headerlink" href="#keyvalues" title="Permanent link">¶</a></h2>
+<p>This type of repos contains muliple <code>Value</code>s by their unique <code>Key</code>. It is not guaranteed, that <code>Value</code>s list by any <code>Key</code> will contains only unique values,
+but in most cases <code>Value</code>s list will not contains copies/same objects.</p>
+<h3 id="readkeyvaluesrepo"><a href="https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-read-key-values-repo/index.html">ReadKeyValuesRepo</a><a class="headerlink" href="#readkeyvaluesrepo" title="Permanent link">¶</a></h3>
+<p>Contains operations for work with value/values getting and checking. For example:
+<a href="https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-read-key-values-repo/count.html">count</a> for checking of amount of all values in repo
+or values by key; <a href="https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-read-key-values-repo/get.html">get</a> for getting of values by
+<code>pagination</code>.</p>
+<h3 id="writekeyvaluesrepo"><a href="https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-write-key-values-repo/index.html">WriteKeyValuesRepo</a><a class="headerlink" href="#writekeyvaluesrepo" title="Permanent link">¶</a></h3>
+<p>Contains write-only operations. This interface can be observed via its flows:</p>
+<ul>
+<li><a href="https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-write-key-values-repo/on-new-value.html">onNewValue</a> will pass <code>Key</code> and <code>Value</code> when <code>Value</code> has been added to the <code>Key</code></li>
+<li><a href="https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-write-key-values-repo/on-value-removed.html">onValueRemoved</a> will pass <code>Key</code> and <code>Value</code> when <code>Value</code> has been removed for the <code>Key</code></li>
+<li><a href="https://microutils.inmo.dev/micro_utils.dokka/dev.inmo.micro_utils.repos/-write-key-values-repo/on-data-cleared.html">onDataCleared</a> will pass <code>Key</code> when <strong>all</strong> its values has been
+removed by the <code>clear</code> operation</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>
+In difference with other repos, not all the methods of write key values repo require collections.</p>
+<p>All the methods on <code>WriteKeyValuesRepo</code> have their variances with <code>pairs</code> (for set) or plain <code>vararg</code>s.</p>
+</div>
+<ul>
+<li><code>add</code> will add <code>Value</code>s to their <code>Key</code>s without any removing of data</li>
+<li><code>clear</code> removes all <code>Value</code>s by <code>Key</code> and <code>Key</code> itself from repo</li>
+<li><code>clearWithValue</code> removes all <code>Value</code> with full clear of all data by <code>Key</code>s with incoming <code>Value</code></li>
+<li><code>remove</code> consumes <code>Map</code> of <code>Key</code>s and the <code>Value</code>s which should be removed for each <code>Key</code></li>
+<li><code>removeWithValue</code> will remove only <code>Value</code> from all <code>Key</code>s collections without their full wipe</li>
+<li><code>set</code> consumes <code>Map</code> of <code>Key</code>s and the <code>Value</code>s and will <strong>rewrite</strong> currently exists list of <code>Value</code>s and set the <code>Value</code>s for their <code>Key</code></li>
+</ul>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
