@@ -1,12 +1,12 @@
-# Colors [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/colors.common/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/colors.common)
+# Colors [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/micro_utils.colors.common/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/micro_utils.colors.common)
 
 * `Group`: `dev.inmo`
-* `ArtifactId`: `colors.common`
+* `ArtifactId`: `micro_utils.colors.common`
 
 Adding dependency:
 
 ```groovy
-implementation "dev.inmo:colors.common:latest"
+implementation "dev.inmo:micro_utils.colors.common:latest"
 ```
 
 > INFO:

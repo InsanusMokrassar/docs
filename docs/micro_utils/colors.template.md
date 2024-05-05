@@ -1,5 +1,5 @@
 group=dev.inmo
-artifact=colors.common
+artifact=micro_utils.colors.common
 package=$group.$artifact
 central_package=$group/$artifact
 
