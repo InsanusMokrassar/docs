@@ -1,10 +1,63 @@
+import kotlin.collections.LinkedHashSet
 import java.io.File
 
-val templateEnding = ".template.md"
+val templateEnding = Regex("\\.ktstemplate(\\.[^\\.]*)*$")
+val templateOnlyEnding = Regex("\\.ktstemplate")
 val singleArgumentRegex = Regex("^[\\w\\d]+$")
 val splitterRegex = Regex("[ ]*=[ ]*")
 
-val folder = File("./")
+sealed interface Mode {
+    fun filesList(folder: File): Sequence<File>
+
+    data object Recursive : Mode {
+        override fun filesList(folder: File): Sequence<File> {
+            return sequence {
+                val folders = mutableListOf<File>()
+                folders.add(folder)
+                while (folders.isNotEmpty()) {
+                    val currentFolder = folders.removeAt(0)
+                    currentFolder.listFiles().toList().forEach {
+                        when {
+                            it.isFile -> yield(it)
+                            it.isDirectory -> folders.add(it)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    data object Plain : Mode {
+        override fun filesList(folder: File): Sequence<File> {
+            return sequence {
+                folder.listFiles().forEach {
+                    yield(it)
+                }
+            }
+        }
+    }
+}
+var mode: Mode = Mode.Recursive
+
+val folders = args.mapNotNull {
+    if (it.startsWith("-")) { // assume some arg
+        when (it) {
+            "--plain" -> mode = Mode.Plain
+            "--recursive" -> mode = Mode.Recursive
+            "--help" -> {
+                println("[...pathnames] [--recursive] [--plain]")
+                println("...pathnames - Pass any count of folder or files paths")
+                println("--recursive - (default) Use recursive visiting of folders for each path in pathnames")
+                println("--plain - (default) Use plain (non-recursive) visiting of folders for each path in pathnames")
+            }
+        }
+        null
+    } else {
+        File(it)
+    }
+}.ifEmpty {
+    listOf(File("./"))
+}
 
 fun String.replaceVariables(variables: Map<String, String>): String {
     var currentLine = this
@@ -17,13 +70,13 @@ fun String.replaceVariables(variables: Map<String, String>): String {
     return currentLine
 }
 
-fun generateFromTemplate(file: File) {
-    val targetFile = File(folder, file.name.replace(templateEnding, ".md"))
+fun generateFromTemplate(folder: File, file: File) {
+    val targetFile = File(folder, file.name.replace(templateOnlyEnding, ""))
 
     val variables = mutableMapOf<String, String>()
     var writeVariables = true
     var text = ""
-    
+
     file.readLines().forEach { line ->
         when {
             writeVariables && line.startsWith("#") -> {
@@ -44,11 +97,15 @@ fun generateFromTemplate(file: File) {
         }
     }
     targetFile.writeText(text)
-    println("${targetFile.name} has been recreated")
+    println("${targetFile.absolutePath} has been recreated")
 }
 
-folder.listFiles().forEach { file ->
-    if (file.name.endsWith(templateEnding)) {
-        generateFromTemplate(file)
+if (args.none { it == "--help" }) {
+    folders.forEach { folder ->
+        mode.filesList(folder).forEach { file ->
+            if (file.name.contains(templateEnding)) {
+                generateFromTemplate(file.parentFile, file)
+            }
+        }
     }
 }
