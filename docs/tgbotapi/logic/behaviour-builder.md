@@ -66,3 +66,62 @@ bot.buildBehaviour {
   }
 }
 ```
+
+## Long polling
+
+In case you wish to start long polling, you have two options:
+
+* Start long polling with `buildBehaviour` additional functions
+* Start long polling from using the result of `buildBehaviour`
+
+> NOTE: **More info**
+>
+> More info about updates retrieving you may read at the [Long Polling](../updates/long-polling.md) and [Webhooks](../updates/webhooks.md)
+> articles
+
+
+### Long polling from `buildBehaviour`
+
+With prepared bot:
+
+```kotlin
+val bot = telegramBot("TOKEN")
+
+bot.buildBehaviourWithLongPolling {
+    onCommand(
+        "start",
+        requireOnlyCommandInMessage = true // it is default, but you can overwrite it with `requireOnlyCommandInMessage = false`
+    ) {
+        // ...
+    }
+}
+```
+
+Without prepared bot:
+
+```kotlin
+telegramBotWithBehaviourAndLongPolling("TOKEN") {
+    onCommand(
+        "start",
+        requireOnlyCommandInMessage = true // it is default, but you can overwrite it with `requireOnlyCommandInMessage = false`
+    ) {
+        // ...
+    }
+}
+```
+
+### Long polling from the result of behaviour building
+
+```kotlin
+val bot = telegramBot("TOKEN")
+val rootContext = bot.buildBehaviour {
+    onCommand(
+        "start",
+        requireOnlyCommandInMessage = true // it is default, but you can overwrite it with `requireOnlyCommandInMessage = false`
+    ) {
+        // ...
+    }
+}
+
+bot.longPolling(rootContext) // start listening updates
+```
