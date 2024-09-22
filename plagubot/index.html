@@ -267,14 +267,14 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../micro_utils/startup.html">
 <span class="md-ellipsis">
-    Startup Maven Central
+    Startup
   </span>
 </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../micro_utils/colors.html">
 <span class="md-ellipsis">
-    Colors Maven Central
+    Colors
   </span>
 </a>
 </li>
@@ -853,13 +853,17 @@
 <h2 id="plugin">Plugin<a class="headerlink" href="#plugin" title="Permanent link">¶</a></h2>
 <p>Plugin is a partially independent part of bot. Plugin have several parts:</p>
 <ul>
-<li><code>setupDI</code> - this method should be used to configure DI part of module</li>
-<li><code>setupBotPlugin</code> - method to start/configure your bot actions</li>
+<li><code>setupBotClient</code> - method to configure telegram bot in case you need it. Called synchronously when <code>TelegramBot</code>
+initializing in <code>single</code> in <code>setupDI</code> of <code>PlaguBot</code></li>
+<li><code>setupBotPlugin</code> - method to start/configure your <strong>bot</strong> actions. Called asynchronously in <code>buildBehaviourWithFSM</code>
+in <code>startPlugin</code> of <code>PlaguBot</code></li>
 </ul>
 <p>Plugin realization should be an <code>object</code> or <code>class</code> with empty constructor.</p>
 <h2 id="bot">Bot<a class="headerlink" href="#bot" title="Permanent link">¶</a></h2>
 <p>Most important of bot is <code>main</code> function (full reference: <code>dev.inmo.plagubot.AppKt</code>). It consumes one argument - path to config.</p>
 <p>Bot is initializing with the next algorithm:</p>
+<hr/>
+<p><strong>OLD</strong></p>
 <div class="mermaid">flowchart TB
     main["Main"]
     Join["Endless join bot work"]
