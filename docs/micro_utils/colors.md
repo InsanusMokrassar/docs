@@ -1,4 +1,6 @@
-# Colors [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/micro_utils.colors.common/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/micro_utils.colors.common)
+# Colors
+
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/micro_utils.colors.common/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/micro_utils.colors.common)
 
 * `Group`: `dev.inmo`
 * `ArtifactId`: `micro_utils.colors.common`

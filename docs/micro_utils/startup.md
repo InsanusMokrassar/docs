@@ -1,9 +1,39 @@
-# Startup [![Maven Central](https://img.shields.io/maven-central/v/dev.inmo/micro_utils.common?label=latest_version&style=flat-square)](https://github.com/InsanusMokrassar/MicroUtils)
+# Startup
+
+[![Maven Central](https://img.shields.io/maven-central/v/dev.inmo/micro_utils.common?label=latest_version&style=flat-square)](https://github.com/InsanusMokrassar/MicroUtils)
 
 * **Plugins Package**: `dev.inmo:micro_utils.startup.plugin`
 * **Launcher Package**: `dev.inmo:micro_utils.startup.launcher`
 
 This package contains unified simple `Plugin`/`Launcher` tools for separating of your apps parts
+
+Launching logic:
+
+
+```mermaid
+flowchart TB
+    StartLauncherPlugin.startAsync
+    StartLauncherPlugin.startAsync --> KoinInit["Koin.init"]
+    KoinInit --> StartLauncherPlugin.setupDI
+
+
+    subgraph StartLauncherPlugin.setupDI
+        direction LR
+        AddDefaultDependencies["Default dependencies: config as JsonObject, config as object, CoroutineScope, Json"]
+        SubPluginsSetupDI["Calling setupDI in subplugins"]
+        AddDefaultDependencies --> SubPluginsSetupDI
+    end
+
+    StartLauncherPlugin.setupDI --> startKoin
+    startKoin --> StartLauncherPlugin.startPlugin
+
+    subgraph StartLauncherPlugin.startPlugin
+        direction LR
+        LaunchSubplugins["Asynchronously (in CoroutineScope from Koin) start subplugins"]
+    end
+
+    StartLauncherPlugin.startPlugin --> ReturnKoinAppAndLaunchJob["Return koinApp and laucnhing job"]
+```
 
 ## Plugin
 

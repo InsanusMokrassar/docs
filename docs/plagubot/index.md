@@ -9,8 +9,10 @@
 
 Plugin is a partially independent part of bot. Plugin have several parts:
 
-* `setupDI` - this method should be used to configure DI part of module
-* `setupBotPlugin` - method to start/configure your bot actions
+* `setupBotClient` - method to configure telegram bot in case you need it. Called synchronously when `TelegramBot`
+initializing in `single` in `setupDI` of `PlaguBot`
+* `setupBotPlugin` - method to start/configure your **bot** actions. Called asynchronously in `buildBehaviourWithFSM`
+in `startPlugin` of `PlaguBot`
 
 Plugin realization should be an `object` or `class` with empty constructor.
 
@@ -19,6 +21,11 @@ Plugin realization should be an `object` or `class` with empty constructor.
 Most important of bot is `main` function (full reference: `dev.inmo.plagubot.AppKt`). It consumes one argument - path to config.
 
 Bot is initializing with the next algorithm:
+
+
+---
+
+**OLD**
 
 ```mermaid
 flowchart TB
