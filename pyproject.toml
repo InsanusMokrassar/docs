@@ -8,11 +8,11 @@ authors = ["InsanusMokrassar"]
 python = "^3.8"
 mkdocs = "^1.6.1"
 markdown-callouts = "^0.4.0"
-mkdocs-autorefs = "^1.0.0"
+mkdocs-autorefs = "^1.2.0"
 mkdocs-include-dir-to-nav = "^1.2.0"
-mkdocs-material = "^9.5.36"
-pymdown-extensions = "^10.10"
-mkdocs-mermaid2-plugin = "^1.1.1"
+mkdocs-material = "^9.6.17"
+pymdown-extensions = "^10.6.1"
+mkdocs-mermaid2-plugin = "^1.2.1"
 
 [tool.poetry.dev-dependencies]
 
