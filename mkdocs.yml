@@ -55,9 +55,9 @@ nav:
         - 'kslog/setup.md'
         - 'kslog/logging.md'
     - 'Navigation':
-          - Sample: 'https://insanusmokrassar.github.io/navigation/'
           - 'navigation/index.md'
           - 'navigation/getting-started.md'
+          - Sample: 'https://insanusmokrassar.github.io/navigation/'
     - 'Services':
           - 'services/index.md'
 
