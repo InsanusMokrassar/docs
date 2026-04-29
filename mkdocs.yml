@@ -30,6 +30,7 @@ nav:
         - Guides:
             - 'tgbotapi/guides/keyboards.md'
         - Updates retrieving:
+            - 'tgbotapi/updates/index.md'
             - 'tgbotapi/updates/updates-filters.md'
             - 'tgbotapi/updates/long-polling.md'
             - 'tgbotapi/updates/webhooks.md'
