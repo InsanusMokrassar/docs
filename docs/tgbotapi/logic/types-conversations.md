@@ -5,478 +5,103 @@ One of the most important topics in context of tgbotapi is types conversations. 
 ```mermaid
 %%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
 classDiagram
-Message <|-- AccessibleMessage
-AccessibleMessage <|-- ChatEventMessage
-ChatEventMessage <|-- ChannelEventMessage
-ChatEventMessage <|-- GroupEventMessage
-GroupEventMessage <|-- ChannelDirectMessagesEventMessage
-ChannelDirectMessagesEventMessage <|-- CommonChannelDirectMessagesEventMessage
-GroupEventMessage <|-- CommonGroupEventMessage
-GroupEventMessage <|-- SupergroupEventMessage
-SupergroupEventMessage <|-- CommonSupergroupEventMessage
-ChatEventMessage <|-- PrivateEventMessage
-ChatEventMessage <|-- PrivateForumEventMessage
-AccessibleMessage <|-- CommonMessage
-CommonMessage <|-- PossiblySentViaBotCommonMessage
-PossiblySentViaBotCommonMessage <|-- BusinessContentMessage
-BusinessContentMessage <|-- BusinessContentMessageImpl
-PossiblySentViaBotCommonMessage <|-- ChannelContentMessage
-ChannelContentMessage <|-- ChannelContentMessageImpl
-ChannelContentMessage <|-- ChannelPaidPost
-ChannelPaidPost <|-- ChannelPaidPostImpl
-PossiblySentViaBotCommonMessage <|-- PrivateContentMessage
-PrivateContentMessage <|-- PrivateContentMessageImpl
-PrivateContentMessage <|-- PrivateForumContentMessage
-PrivateForumContentMessage <|-- PrivateForumContentMessageImpl
-PossiblySentViaBotCommonMessage <|-- PublicContentMessage
-PublicContentMessage <|-- GroupContentMessage
-GroupContentMessage <|-- AnonymousGroupContentMessage
-AnonymousGroupContentMessage <|-- AnonymousGroupContentMessageImpl
-GroupContentMessage <|-- ChannelDirectMessagesContentMessage
-ChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessage
-CommonChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessageImpl
-ChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessage
-FromChannelChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessageImpl
-ChannelDirectMessagesContentMessage <|-- SuggestedChannelDirectMessagesContentMessage
-SuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
-CommonSuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessageImpl
-SuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessage
-FromChannelSuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessageImpl
-GroupContentMessage <|-- CommonGroupContentMessage
-CommonGroupContentMessage <|-- CommonGroupContentMessageImpl
-GroupContentMessage <|-- ForumContentMessage
-ForumContentMessage <|-- AnonymousForumContentMessage
-AnonymousForumContentMessage <|-- AnonymousForumContentMessageImpl
-ForumContentMessage <|-- CommonForumContentMessage
-CommonForumContentMessage <|-- CommonForumContentMessageImpl
-ForumContentMessage <|-- FromChannelForumContentMessage
-FromChannelForumContentMessage <|-- FromChannelForumContentMessageImpl
-GroupContentMessage <|-- FromChannelGroupContentMessage
-FromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessage
-ConnectedFromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelChannelDirectMessagesContentMessage
-FromChannelChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelForumContentMessage
-FromChannelForumContentMessage <|-- FromChannelForumContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessage
-FromChannelSuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessageImpl
-FromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessage
-UnconnectedFromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessageImpl
-GroupContentMessage <|-- PotentiallyFromUserGroupContentMessage
-PotentiallyFromUserGroupContentMessage <|-- CommonChannelDirectMessagesContentMessage
-CommonChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonForumContentMessage
-CommonForumContentMessage <|-- CommonForumContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonGroupContentMessage
-CommonGroupContentMessage <|-- CommonGroupContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
-CommonSuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessageImpl
-AccessibleMessage <|-- ContentMessage
-ContentMessage <|-- CommonMessage
-CommonMessage <|-- PossiblySentViaBotCommonMessage
-PossiblySentViaBotCommonMessage <|-- BusinessContentMessage
-BusinessContentMessage <|-- BusinessContentMessageImpl
-PossiblySentViaBotCommonMessage <|-- ChannelContentMessage
-ChannelContentMessage <|-- ChannelContentMessageImpl
-ChannelContentMessage <|-- ChannelPaidPost
-ChannelPaidPost <|-- ChannelPaidPostImpl
-PossiblySentViaBotCommonMessage <|-- PrivateContentMessage
-PrivateContentMessage <|-- PrivateContentMessageImpl
-PrivateContentMessage <|-- PrivateForumContentMessage
-PrivateForumContentMessage <|-- PrivateForumContentMessageImpl
-PossiblySentViaBotCommonMessage <|-- PublicContentMessage
-PublicContentMessage <|-- GroupContentMessage
-GroupContentMessage <|-- AnonymousGroupContentMessage
-AnonymousGroupContentMessage <|-- AnonymousGroupContentMessageImpl
-GroupContentMessage <|-- ChannelDirectMessagesContentMessage
-ChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessage
-CommonChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessageImpl
-ChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessage
-FromChannelChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessageImpl
-ChannelDirectMessagesContentMessage <|-- SuggestedChannelDirectMessagesContentMessage
-SuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
-CommonSuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessageImpl
-SuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessage
-FromChannelSuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessageImpl
-GroupContentMessage <|-- CommonGroupContentMessage
-CommonGroupContentMessage <|-- CommonGroupContentMessageImpl
-GroupContentMessage <|-- ForumContentMessage
-ForumContentMessage <|-- AnonymousForumContentMessage
-AnonymousForumContentMessage <|-- AnonymousForumContentMessageImpl
-ForumContentMessage <|-- CommonForumContentMessage
-CommonForumContentMessage <|-- CommonForumContentMessageImpl
-ForumContentMessage <|-- FromChannelForumContentMessage
-FromChannelForumContentMessage <|-- FromChannelForumContentMessageImpl
-GroupContentMessage <|-- FromChannelGroupContentMessage
-FromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessage
-ConnectedFromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelChannelDirectMessagesContentMessage
-FromChannelChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelForumContentMessage
-FromChannelForumContentMessage <|-- FromChannelForumContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessage
-FromChannelSuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessageImpl
-FromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessage
-UnconnectedFromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessageImpl
-GroupContentMessage <|-- PotentiallyFromUserGroupContentMessage
-PotentiallyFromUserGroupContentMessage <|-- CommonChannelDirectMessagesContentMessage
-CommonChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonForumContentMessage
-CommonForumContentMessage <|-- CommonForumContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonGroupContentMessage
-CommonGroupContentMessage <|-- CommonGroupContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
-CommonSuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessageImpl
-ContentMessage <|-- PossiblyMediaGroupMessage
-PossiblyMediaGroupMessage <|-- CommonMessage
-CommonMessage <|-- PossiblySentViaBotCommonMessage
-PossiblySentViaBotCommonMessage <|-- BusinessContentMessage
-BusinessContentMessage <|-- BusinessContentMessageImpl
-PossiblySentViaBotCommonMessage <|-- ChannelContentMessage
-ChannelContentMessage <|-- ChannelContentMessageImpl
-ChannelContentMessage <|-- ChannelPaidPost
-ChannelPaidPost <|-- ChannelPaidPostImpl
-PossiblySentViaBotCommonMessage <|-- PrivateContentMessage
-PrivateContentMessage <|-- PrivateContentMessageImpl
-PrivateContentMessage <|-- PrivateForumContentMessage
-PrivateForumContentMessage <|-- PrivateForumContentMessageImpl
-PossiblySentViaBotCommonMessage <|-- PublicContentMessage
-PublicContentMessage <|-- GroupContentMessage
-GroupContentMessage <|-- AnonymousGroupContentMessage
-AnonymousGroupContentMessage <|-- AnonymousGroupContentMessageImpl
-GroupContentMessage <|-- ChannelDirectMessagesContentMessage
-ChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessage
-CommonChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessageImpl
-ChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessage
-FromChannelChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessageImpl
-ChannelDirectMessagesContentMessage <|-- SuggestedChannelDirectMessagesContentMessage
-SuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
-CommonSuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessageImpl
-SuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessage
-FromChannelSuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessageImpl
-GroupContentMessage <|-- CommonGroupContentMessage
-CommonGroupContentMessage <|-- CommonGroupContentMessageImpl
-GroupContentMessage <|-- ForumContentMessage
-ForumContentMessage <|-- AnonymousForumContentMessage
-AnonymousForumContentMessage <|-- AnonymousForumContentMessageImpl
-ForumContentMessage <|-- CommonForumContentMessage
-CommonForumContentMessage <|-- CommonForumContentMessageImpl
-ForumContentMessage <|-- FromChannelForumContentMessage
-FromChannelForumContentMessage <|-- FromChannelForumContentMessageImpl
-GroupContentMessage <|-- FromChannelGroupContentMessage
-FromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessage
-ConnectedFromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelChannelDirectMessagesContentMessage
-FromChannelChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelForumContentMessage
-FromChannelForumContentMessage <|-- FromChannelForumContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessage
-FromChannelSuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessageImpl
-FromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessage
-UnconnectedFromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessageImpl
-GroupContentMessage <|-- PotentiallyFromUserGroupContentMessage
-PotentiallyFromUserGroupContentMessage <|-- CommonChannelDirectMessagesContentMessage
-CommonChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonForumContentMessage
-CommonForumContentMessage <|-- CommonForumContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonGroupContentMessage
-CommonGroupContentMessage <|-- CommonGroupContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
-CommonSuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessageImpl
-AccessibleMessage <|-- OptionallyFromUserMessage
-OptionallyFromUserMessage <|-- ChannelContentMessage
-ChannelContentMessage <|-- ChannelContentMessageImpl
-ChannelContentMessage <|-- ChannelPaidPost
-ChannelPaidPost <|-- ChannelPaidPostImpl
-OptionallyFromUserMessage <|-- FromUserMessage
-FromUserMessage <|-- BusinessContentMessage
-BusinessContentMessage <|-- BusinessContentMessageImpl
-FromUserMessage <|-- CommonChannelDirectMessagesContentMessage
-CommonChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessageImpl
-FromUserMessage <|-- CommonForumContentMessage
-CommonForumContentMessage <|-- CommonForumContentMessageImpl
-FromUserMessage <|-- CommonGroupContentMessage
-CommonGroupContentMessage <|-- CommonGroupContentMessageImpl
-FromUserMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
-CommonSuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessageImpl
-FromUserMessage <|-- GroupEventMessage
-GroupEventMessage <|-- ChannelDirectMessagesEventMessage
-ChannelDirectMessagesEventMessage <|-- CommonChannelDirectMessagesEventMessage
-GroupEventMessage <|-- CommonGroupEventMessage
-GroupEventMessage <|-- SupergroupEventMessage
-SupergroupEventMessage <|-- CommonSupergroupEventMessage
-FromUserMessage <|-- PassportMessage
-FromUserMessage <|-- PrivateContentMessage
-PrivateContentMessage <|-- PrivateContentMessageImpl
-PrivateContentMessage <|-- PrivateForumContentMessage
-PrivateForumContentMessage <|-- PrivateForumContentMessageImpl
-AccessibleMessage <|-- PassportMessage
-AccessibleMessage <|-- PossiblyEditedMessage
-PossiblyEditedMessage <|-- CommonMessage
-CommonMessage <|-- PossiblySentViaBotCommonMessage
-PossiblySentViaBotCommonMessage <|-- BusinessContentMessage
-BusinessContentMessage <|-- BusinessContentMessageImpl
-PossiblySentViaBotCommonMessage <|-- ChannelContentMessage
-ChannelContentMessage <|-- ChannelContentMessageImpl
-ChannelContentMessage <|-- ChannelPaidPost
-ChannelPaidPost <|-- ChannelPaidPostImpl
-PossiblySentViaBotCommonMessage <|-- PrivateContentMessage
-PrivateContentMessage <|-- PrivateContentMessageImpl
-PrivateContentMessage <|-- PrivateForumContentMessage
-PrivateForumContentMessage <|-- PrivateForumContentMessageImpl
-PossiblySentViaBotCommonMessage <|-- PublicContentMessage
-PublicContentMessage <|-- GroupContentMessage
-GroupContentMessage <|-- AnonymousGroupContentMessage
-AnonymousGroupContentMessage <|-- AnonymousGroupContentMessageImpl
-GroupContentMessage <|-- ChannelDirectMessagesContentMessage
-ChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessage
-CommonChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessageImpl
-ChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessage
-FromChannelChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessageImpl
-ChannelDirectMessagesContentMessage <|-- SuggestedChannelDirectMessagesContentMessage
-SuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
-CommonSuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessageImpl
-SuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessage
-FromChannelSuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessageImpl
-GroupContentMessage <|-- CommonGroupContentMessage
-CommonGroupContentMessage <|-- CommonGroupContentMessageImpl
-GroupContentMessage <|-- ForumContentMessage
-ForumContentMessage <|-- AnonymousForumContentMessage
-AnonymousForumContentMessage <|-- AnonymousForumContentMessageImpl
-ForumContentMessage <|-- CommonForumContentMessage
-CommonForumContentMessage <|-- CommonForumContentMessageImpl
-ForumContentMessage <|-- FromChannelForumContentMessage
-FromChannelForumContentMessage <|-- FromChannelForumContentMessageImpl
-GroupContentMessage <|-- FromChannelGroupContentMessage
-FromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessage
-ConnectedFromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelChannelDirectMessagesContentMessage
-FromChannelChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelForumContentMessage
-FromChannelForumContentMessage <|-- FromChannelForumContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessage
-FromChannelSuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessageImpl
-FromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessage
-UnconnectedFromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessageImpl
-GroupContentMessage <|-- PotentiallyFromUserGroupContentMessage
-PotentiallyFromUserGroupContentMessage <|-- CommonChannelDirectMessagesContentMessage
-CommonChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonForumContentMessage
-CommonForumContentMessage <|-- CommonForumContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonGroupContentMessage
-CommonGroupContentMessage <|-- CommonGroupContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
-CommonSuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessageImpl
-AccessibleMessage <|-- PossiblyForwardedMessage
-PossiblyForwardedMessage <|-- CommonMessage
-CommonMessage <|-- PossiblySentViaBotCommonMessage
-PossiblySentViaBotCommonMessage <|-- BusinessContentMessage
-BusinessContentMessage <|-- BusinessContentMessageImpl
-PossiblySentViaBotCommonMessage <|-- ChannelContentMessage
-ChannelContentMessage <|-- ChannelContentMessageImpl
-ChannelContentMessage <|-- ChannelPaidPost
-ChannelPaidPost <|-- ChannelPaidPostImpl
-PossiblySentViaBotCommonMessage <|-- PrivateContentMessage
-PrivateContentMessage <|-- PrivateContentMessageImpl
-PrivateContentMessage <|-- PrivateForumContentMessage
-PrivateForumContentMessage <|-- PrivateForumContentMessageImpl
-PossiblySentViaBotCommonMessage <|-- PublicContentMessage
-PublicContentMessage <|-- GroupContentMessage
-GroupContentMessage <|-- AnonymousGroupContentMessage
-AnonymousGroupContentMessage <|-- AnonymousGroupContentMessageImpl
-GroupContentMessage <|-- ChannelDirectMessagesContentMessage
-ChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessage
-CommonChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessageImpl
-ChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessage
-FromChannelChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessageImpl
-ChannelDirectMessagesContentMessage <|-- SuggestedChannelDirectMessagesContentMessage
-SuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
-CommonSuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessageImpl
-SuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessage
-FromChannelSuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessageImpl
-GroupContentMessage <|-- CommonGroupContentMessage
-CommonGroupContentMessage <|-- CommonGroupContentMessageImpl
-GroupContentMessage <|-- ForumContentMessage
-ForumContentMessage <|-- AnonymousForumContentMessage
-AnonymousForumContentMessage <|-- AnonymousForumContentMessageImpl
-ForumContentMessage <|-- CommonForumContentMessage
-CommonForumContentMessage <|-- CommonForumContentMessageImpl
-ForumContentMessage <|-- FromChannelForumContentMessage
-FromChannelForumContentMessage <|-- FromChannelForumContentMessageImpl
-GroupContentMessage <|-- FromChannelGroupContentMessage
-FromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessage
-ConnectedFromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelChannelDirectMessagesContentMessage
-FromChannelChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelForumContentMessage
-FromChannelForumContentMessage <|-- FromChannelForumContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessage
-FromChannelSuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessageImpl
-FromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessage
-UnconnectedFromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessageImpl
-GroupContentMessage <|-- PotentiallyFromUserGroupContentMessage
-PotentiallyFromUserGroupContentMessage <|-- CommonChannelDirectMessagesContentMessage
-CommonChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonForumContentMessage
-CommonForumContentMessage <|-- CommonForumContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonGroupContentMessage
-CommonGroupContentMessage <|-- CommonGroupContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
-CommonSuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessageImpl
-AccessibleMessage <|-- PossiblyPaymentMessage
-AccessibleMessage <|-- PossiblyTopicMessage
-PossiblyTopicMessage <|-- ForumContentMessage
-ForumContentMessage <|-- AnonymousForumContentMessage
-AnonymousForumContentMessage <|-- AnonymousForumContentMessageImpl
-ForumContentMessage <|-- CommonForumContentMessage
-CommonForumContentMessage <|-- CommonForumContentMessageImpl
-ForumContentMessage <|-- FromChannelForumContentMessage
-FromChannelForumContentMessage <|-- FromChannelForumContentMessageImpl
-PossiblyTopicMessage <|-- PrivateForumContentMessage
-PrivateForumContentMessage <|-- PrivateForumContentMessageImpl
-AccessibleMessage <|-- SignedMessage
-SignedMessage <|-- AnonymousForumContentMessage
-AnonymousForumContentMessage <|-- AnonymousForumContentMessageImpl
-SignedMessage <|-- AnonymousGroupContentMessage
-AnonymousGroupContentMessage <|-- AnonymousGroupContentMessageImpl
-SignedMessage <|-- ChannelContentMessage
-ChannelContentMessage <|-- ChannelContentMessageImpl
-ChannelContentMessage <|-- ChannelPaidPost
-ChannelPaidPost <|-- ChannelPaidPostImpl
-SignedMessage <|-- FromChannelGroupContentMessage
-FromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessage
-ConnectedFromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelChannelDirectMessagesContentMessage
-FromChannelChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelForumContentMessage
-FromChannelForumContentMessage <|-- FromChannelForumContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessage
-FromChannelSuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessageImpl
-FromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessage
-UnconnectedFromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessageImpl
-AccessibleMessage <|-- UnknownMessageType
-Message <|-- InaccessibleMessage
-Message <|-- PossiblyOfflineMessage
-PossiblyOfflineMessage <|-- CommonMessage
-CommonMessage <|-- PossiblySentViaBotCommonMessage
-PossiblySentViaBotCommonMessage <|-- BusinessContentMessage
-BusinessContentMessage <|-- BusinessContentMessageImpl
-PossiblySentViaBotCommonMessage <|-- ChannelContentMessage
-ChannelContentMessage <|-- ChannelContentMessageImpl
-ChannelContentMessage <|-- ChannelPaidPost
-ChannelPaidPost <|-- ChannelPaidPostImpl
-PossiblySentViaBotCommonMessage <|-- PrivateContentMessage
-PrivateContentMessage <|-- PrivateContentMessageImpl
-PrivateContentMessage <|-- PrivateForumContentMessage
-PrivateForumContentMessage <|-- PrivateForumContentMessageImpl
-PossiblySentViaBotCommonMessage <|-- PublicContentMessage
-PublicContentMessage <|-- GroupContentMessage
-GroupContentMessage <|-- AnonymousGroupContentMessage
-AnonymousGroupContentMessage <|-- AnonymousGroupContentMessageImpl
-GroupContentMessage <|-- ChannelDirectMessagesContentMessage
-ChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessage
-CommonChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessageImpl
-ChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessage
-FromChannelChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessageImpl
-ChannelDirectMessagesContentMessage <|-- SuggestedChannelDirectMessagesContentMessage
-SuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
-CommonSuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessageImpl
-SuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessage
-FromChannelSuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessageImpl
-GroupContentMessage <|-- CommonGroupContentMessage
-CommonGroupContentMessage <|-- CommonGroupContentMessageImpl
-GroupContentMessage <|-- ForumContentMessage
-ForumContentMessage <|-- AnonymousForumContentMessage
-AnonymousForumContentMessage <|-- AnonymousForumContentMessageImpl
-ForumContentMessage <|-- CommonForumContentMessage
-CommonForumContentMessage <|-- CommonForumContentMessageImpl
-ForumContentMessage <|-- FromChannelForumContentMessage
-FromChannelForumContentMessage <|-- FromChannelForumContentMessageImpl
-GroupContentMessage <|-- FromChannelGroupContentMessage
-FromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessage
-ConnectedFromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelChannelDirectMessagesContentMessage
-FromChannelChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelForumContentMessage
-FromChannelForumContentMessage <|-- FromChannelForumContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessage
-FromChannelSuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessageImpl
-FromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessage
-UnconnectedFromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessageImpl
-GroupContentMessage <|-- PotentiallyFromUserGroupContentMessage
-PotentiallyFromUserGroupContentMessage <|-- CommonChannelDirectMessagesContentMessage
-CommonChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonForumContentMessage
-CommonForumContentMessage <|-- CommonForumContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonGroupContentMessage
-CommonGroupContentMessage <|-- CommonGroupContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
-CommonSuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessageImpl
-PossiblyOfflineMessage <|-- PrivateContentMessage
-PrivateContentMessage <|-- PrivateContentMessageImpl
-PrivateContentMessage <|-- PrivateForumContentMessage
-PrivateForumContentMessage <|-- PrivateForumContentMessageImpl
-Message <|-- PossiblyPaidMessage
-PossiblyPaidMessage <|-- CommonMessage
-CommonMessage <|-- PossiblySentViaBotCommonMessage
-PossiblySentViaBotCommonMessage <|-- BusinessContentMessage
-BusinessContentMessage <|-- BusinessContentMessageImpl
-PossiblySentViaBotCommonMessage <|-- ChannelContentMessage
-ChannelContentMessage <|-- ChannelContentMessageImpl
-ChannelContentMessage <|-- ChannelPaidPost
-ChannelPaidPost <|-- ChannelPaidPostImpl
-PossiblySentViaBotCommonMessage <|-- PrivateContentMessage
-PrivateContentMessage <|-- PrivateContentMessageImpl
-PrivateContentMessage <|-- PrivateForumContentMessage
-PrivateForumContentMessage <|-- PrivateForumContentMessageImpl
-PossiblySentViaBotCommonMessage <|-- PublicContentMessage
-PublicContentMessage <|-- GroupContentMessage
-GroupContentMessage <|-- AnonymousGroupContentMessage
-AnonymousGroupContentMessage <|-- AnonymousGroupContentMessageImpl
-GroupContentMessage <|-- ChannelDirectMessagesContentMessage
-ChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessage
-CommonChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessageImpl
-ChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessage
-FromChannelChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessageImpl
-ChannelDirectMessagesContentMessage <|-- SuggestedChannelDirectMessagesContentMessage
-SuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
-CommonSuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessageImpl
-SuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessage
-FromChannelSuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessageImpl
-GroupContentMessage <|-- CommonGroupContentMessage
-CommonGroupContentMessage <|-- CommonGroupContentMessageImpl
-GroupContentMessage <|-- ForumContentMessage
-ForumContentMessage <|-- AnonymousForumContentMessage
-AnonymousForumContentMessage <|-- AnonymousForumContentMessageImpl
-ForumContentMessage <|-- CommonForumContentMessage
-CommonForumContentMessage <|-- CommonForumContentMessageImpl
-ForumContentMessage <|-- FromChannelForumContentMessage
-FromChannelForumContentMessage <|-- FromChannelForumContentMessageImpl
-GroupContentMessage <|-- FromChannelGroupContentMessage
-FromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessage
-ConnectedFromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelChannelDirectMessagesContentMessage
-FromChannelChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelForumContentMessage
-FromChannelForumContentMessage <|-- FromChannelForumContentMessageImpl
-FromChannelGroupContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessage
-FromChannelSuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessageImpl
-FromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessage
-UnconnectedFromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessageImpl
-GroupContentMessage <|-- PotentiallyFromUserGroupContentMessage
-PotentiallyFromUserGroupContentMessage <|-- CommonChannelDirectMessagesContentMessage
-CommonChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonForumContentMessage
-CommonForumContentMessage <|-- CommonForumContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonGroupContentMessage
-CommonGroupContentMessage <|-- CommonGroupContentMessageImpl
-PotentiallyFromUserGroupContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
-CommonSuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessageImpl
-Message <|-- PossiblyWithEffectMessage
-PossiblyWithEffectMessage <|-- PrivateContentMessage
-PrivateContentMessage <|-- PrivateContentMessageImpl
-PrivateContentMessage <|-- PrivateForumContentMessage
-PrivateForumContentMessage <|-- PrivateForumContentMessageImpl
+    Message <|-- AccessibleMessage
+    AccessibleMessage <|-- ChatEventMessage
+    ChatEventMessage <|-- ChannelEventMessage
+    ChatEventMessage <|-- GroupEventMessage
+    GroupEventMessage <|-- ChannelDirectMessagesEventMessage
+    ChannelDirectMessagesEventMessage <|-- CommonChannelDirectMessagesEventMessage
+    GroupEventMessage <|-- CommonGroupEventMessage
+    GroupEventMessage <|-- SupergroupEventMessage
+    SupergroupEventMessage <|-- CommonSupergroupEventMessage
+    ChatEventMessage <|-- PrivateEventMessage
+    ChatEventMessage <|-- PrivateForumEventMessage
+    AccessibleMessage <|-- CommonMessage
+    CommonMessage <|-- PossiblySentViaBotCommonMessage
+    PossiblySentViaBotCommonMessage <|-- BusinessContentMessage
+    BusinessContentMessage <|-- BusinessContentMessageImpl
+    PossiblySentViaBotCommonMessage <|-- ChannelContentMessage
+    ChannelContentMessage <|-- ChannelContentMessageImpl
+    ChannelContentMessage <|-- ChannelPaidPost
+    ChannelPaidPost <|-- ChannelPaidPostImpl
+    PossiblySentViaBotCommonMessage <|-- PrivateContentMessage
+    PrivateContentMessage <|-- PrivateContentMessageImpl
+    PrivateContentMessage <|-- PrivateForumContentMessage
+    PrivateForumContentMessage <|-- PrivateForumContentMessageImpl
+    PossiblySentViaBotCommonMessage <|-- PublicContentMessage
+    PublicContentMessage <|-- GroupContentMessage
+    GroupContentMessage <|-- AnonymousGroupContentMessage
+    AnonymousGroupContentMessage <|-- AnonymousGroupContentMessageImpl
+    GroupContentMessage <|-- ChannelDirectMessagesContentMessage
+    ChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessage
+    CommonChannelDirectMessagesContentMessage <|-- CommonChannelDirectMessagesContentMessageImpl
+    ChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessage
+    FromChannelChannelDirectMessagesContentMessage <|-- FromChannelChannelDirectMessagesContentMessageImpl
+    ChannelDirectMessagesContentMessage <|-- SuggestedChannelDirectMessagesContentMessage
+    SuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
+    CommonSuggestedChannelDirectMessagesContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessageImpl
+    SuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessage
+    FromChannelSuggestedChannelDirectMessagesContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessageImpl
+    GroupContentMessage <|-- CommonGroupContentMessage
+    CommonGroupContentMessage <|-- CommonGroupContentMessageImpl
+    GroupContentMessage <|-- ForumContentMessage
+    ForumContentMessage <|-- AnonymousForumContentMessage
+    AnonymousForumContentMessage <|-- AnonymousForumContentMessageImpl
+    ForumContentMessage <|-- CommonForumContentMessage
+    CommonForumContentMessage <|-- CommonForumContentMessageImpl
+    ForumContentMessage <|-- FromChannelForumContentMessage
+    FromChannelForumContentMessage <|-- FromChannelForumContentMessageImpl
+    GroupContentMessage <|-- FromChannelGroupContentMessage
+    FromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessage
+    ConnectedFromChannelGroupContentMessage <|-- ConnectedFromChannelGroupContentMessageImpl
+    FromChannelGroupContentMessage <|-- FromChannelChannelDirectMessagesContentMessage
+    FromChannelGroupContentMessage <|-- FromChannelForumContentMessage
+    FromChannelGroupContentMessage <|-- FromChannelSuggestedChannelDirectMessagesContentMessage
+    FromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessage
+    UnconnectedFromChannelGroupContentMessage <|-- UnconnectedFromChannelGroupContentMessageImpl
+    GroupContentMessage <|-- PotentiallyFromUserGroupContentMessage
+    PotentiallyFromUserGroupContentMessage <|-- CommonChannelDirectMessagesContentMessage
+    PotentiallyFromUserGroupContentMessage <|-- CommonForumContentMessage
+    PotentiallyFromUserGroupContentMessage <|-- CommonGroupContentMessage
+    PotentiallyFromUserGroupContentMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
+    AccessibleMessage <|-- ContentMessage
+    ContentMessage <|-- CommonMessage
+    ContentMessage <|-- PossiblyMediaGroupMessage
+    PossiblyMediaGroupMessage <|-- CommonMessage
+    AccessibleMessage <|-- OptionallyFromUserMessage
+    OptionallyFromUserMessage <|-- ChannelContentMessage
+    OptionallyFromUserMessage <|-- FromUserMessage
+    FromUserMessage <|-- BusinessContentMessage
+    FromUserMessage <|-- CommonChannelDirectMessagesContentMessage
+    FromUserMessage <|-- CommonForumContentMessage
+    FromUserMessage <|-- CommonGroupContentMessage
+    FromUserMessage <|-- CommonSuggestedChannelDirectMessagesContentMessage
+    FromUserMessage <|-- GroupEventMessage
+    FromUserMessage <|-- PassportMessage
+    FromUserMessage <|-- PrivateContentMessage
+    AccessibleMessage <|-- PassportMessage
+    AccessibleMessage <|-- PossiblyEditedMessage
+    PossiblyEditedMessage <|-- CommonMessage
+    AccessibleMessage <|-- PossiblyForwardedMessage
+    PossiblyForwardedMessage <|-- CommonMessage
+    AccessibleMessage <|-- PossiblyPaymentMessage
+    AccessibleMessage <|-- PossiblyTopicMessage
+    PossiblyTopicMessage <|-- ForumContentMessage
+    PossiblyTopicMessage <|-- PrivateForumContentMessage
+    AccessibleMessage <|-- SignedMessage
+    SignedMessage <|-- AnonymousForumContentMessage
+    SignedMessage <|-- AnonymousGroupContentMessage
+    SignedMessage <|-- ChannelContentMessage
+    SignedMessage <|-- FromChannelGroupContentMessage
+    AccessibleMessage <|-- UnknownMessageType
+    Message <|-- InaccessibleMessage
+    Message <|-- PossiblyOfflineMessage
+    PossiblyOfflineMessage <|-- CommonMessage
+    PossiblyOfflineMessage <|-- PrivateContentMessage
+    Message <|-- PossiblyPaidMessage
+    PossiblyPaidMessage <|-- CommonMessage
+    Message <|-- PossiblyWithEffectMessage
+    PossiblyWithEffectMessage <|-- PrivateContentMessage
 ```
 
 As you may see, it is a little bit complex and require several tools for types conversation.
